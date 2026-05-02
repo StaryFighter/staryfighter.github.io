@@ -76,7 +76,7 @@
     #hero {
       min-height: 100vh;
       display: flex; align-items: center;
-      padding: 0 5vw;
+      padding: 120px 5vw 80px 5vw; /* Adjusted padding to prevent name cut-off and move content up */
       position: relative;
       overflow: hidden;
     }
@@ -203,12 +203,6 @@
       line-height: 1.2; margin-bottom: 1rem;
     }
 
-    .section-intro {
-      color: var(--muted); max-width: 560px;
-      font-size: 1rem; line-height: 1.8;
-      margin-bottom: 3.5rem;
-    }
-
     /* ── ABOUT ── */
     #about { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
@@ -223,8 +217,6 @@
       color: var(--muted); line-height: 1.9;
       font-size: 1rem; margin-bottom: 1.2rem;
     }
-
-    .about-text p:last-child { margin-bottom: 0; }
 
     .skills-grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -247,45 +239,6 @@
       flex-shrink: 0;
     }
 
-    /* ── EDUCATION ── */
-    .edu-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem; max-width: 1100px;
-    }
-
-    .edu-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px; padding: 2rem 2.2rem;
-      position: relative; overflow: hidden;
-      transition: border-color 0.3s;
-    }
-
-    .edu-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--gold);
-    }
-
-    .edu-card:hover { border-color: rgba(200,169,110,0.3); }
-
-    .edu-school {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 500;
-      color: var(--white); margin-bottom: 0.3rem;
-    }
-
-    .edu-degree {
-      font-size: 0.9rem; color: var(--gold);
-      margin-bottom: 0.5rem; font-weight: 400;
-    }
-
-    .edu-meta {
-      font-size: 0.8rem; color: var(--muted);
-      display: flex; gap: 1.2rem; flex-wrap: wrap;
-    }
-
     /* ── PROJECTS ── */
     #projects { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
@@ -302,22 +255,6 @@
       position: relative; overflow: hidden;
     }
 
-    .project-card::after {
-      content: ''; position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      opacity: 0; transition: opacity 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(200,169,110,0.25);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    }
-
-    .project-card:hover::after { opacity: 1; }
-
     .project-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 3rem; font-weight: 300;
@@ -329,7 +266,6 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.35rem; font-weight: 500;
       color: var(--white); margin-bottom: 0.4rem;
-      line-height: 1.3;
     }
 
     .project-date {
@@ -338,25 +274,29 @@
       margin-bottom: 1rem;
     }
 
-    .project-desc {
-      font-size: 0.88rem; color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .sub-project-list {
-      margin-top: 1rem;
-      border-top: 1px solid var(--border);
-      padding-top: 1rem;
-    }
-
-    .sub-project-item {
-        margin-bottom: 1rem;
-    }
-
     .sub-project-item h4 {
         font-size: 0.95rem;
         color: var(--white);
         margin-bottom: 2px;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; max-width: 1100px;
+    }
+
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px; padding: 2rem 2.2rem;
+      position: relative;
+    }
+
+    .edu-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; width: 3px; height: 100%;
+      background: var(--gold);
     }
 
     /* ── EXPERIENCE ── */
@@ -368,61 +308,12 @@
       margin-left: 1rem;
     }
 
-    .exp-item {
-      position: relative; padding-bottom: 3.5rem;
-    }
-
-    .exp-item:last-child { padding-bottom: 0; }
-
-    .exp-item::before {
-      content: ''; position: absolute;
-      left: -2.5rem; top: 0.45rem;
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 2px solid var(--navy);
-      box-shadow: 0 0 0 3px rgba(200,169,110,0.2);
-      transform: translateX(-50%);
-      margin-left: -1px;
-    }
-
-    .exp-company {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 500;
-      color: var(--white);
-    }
-
-    .exp-role {
-      font-size: 0.85rem; color: var(--gold);
-      font-weight: 500; margin-bottom: 0.2rem;
-      text-transform: uppercase; letter-spacing: 0.06em;
-    }
-
-    .exp-date {
-      font-size: 0.76rem; color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .exp-bullets {
-      list-style: none; display: flex;
-      flex-direction: column; gap: 0.5rem;
-    }
-
-    .exp-bullets li {
-      font-size: 0.88rem; color: var(--muted);
-      line-height: 1.7;
-      display: flex; gap: 0.8rem;
-    }
-
-    .exp-bullets li::before {
-      content: '→'; color: var(--gold);
-      flex-shrink: 0; font-size: 0.8rem;
-      margin-top: 0.15rem;
-    }
+    .exp-item { position: relative; padding-bottom: 3.5rem; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .exp-bullets li { font-size: 0.88rem; color: var(--muted); display: flex; gap: 0.8rem; }
+    .exp-bullets li::before { content: '→'; color: var(--gold); }
 
     /* ── CERTIFICATIONS ── */
-    #certifications { background: var(--panel); border-top: 1px solid var(--border); }
-
     .cert-placeholder {
       max-width: 600px;
       background: var(--card);
@@ -432,117 +323,21 @@
       text-align: center;
     }
 
-    .cert-icon {
-      font-size: 2.5rem; margin-bottom: 1.2rem; opacity: 0.5;
-    }
-
-    .cert-placeholder h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; color: var(--white);
-      margin-bottom: 0.6rem;
-    }
-
-    .cert-placeholder p {
-      color: var(--muted); font-size: 0.9rem;
-    }
-
     /* ── CONTACT ── */
-    #contact { border-top: 1px solid var(--border); }
-
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; max-width: 1000px; align-items: start;
-    }
-
-    .contact-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 300; color: var(--white);
-      line-height: 1.3; margin-bottom: 1.5rem;
-    }
-
-    .contact-tagline em { color: var(--gold); font-style: italic; }
-
-    .contact-sub {
-      color: var(--muted); font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    .contact-links {
-      display: flex; flex-direction: column; gap: 1.2rem;
-    }
-
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; }
     .contact-link {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1.1rem 1.4rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      text-decoration: none;
-      transition: border-color 0.2s, transform 0.2s;
-      color: var(--text);
+      display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem;
+      background: var(--card); border: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
     }
 
-    .contact-link:hover {
-      border-color: var(--gold);
-      transform: translateX(4px);
-      color: var(--white);
-    }
+    /* ── FADE-IN ── */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    .contact-link-icon {
-      width: 36px; height: 36px;
-      background: rgba(200,169,110,0.1);
-      border-radius: 2px;
-      display: flex; align-items: center;
-      justify-content: center;
-      color: var(--gold); font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .contact-link-label {
-      font-size: 0.72rem; color: var(--muted);
-      letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 0.1rem;
-    }
-
-    .contact-link-value {
-      font-size: 0.9rem; color: var(--text);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 2rem 5vw;
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 1rem;
-      background: var(--panel);
-    }
-
-    footer p { font-size: 0.78rem; color: var(--muted); }
-
-    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--gold); }
-
-    /* ── FADE-IN ANIMATION ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .about-grid,
-      .edu-grid,
-      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-grid, .edu-grid, .contact-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero-stats { gap: 2rem; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -585,12 +380,12 @@
           <div class="stat-label">Research Projects</div>
         </div>
         <div>
-          <div class="stat-num">3+</div>
-          <div class="stat-label">Years Industry Experience</div>
+          <div class="stat-num">1 Year</div>
+          <div class="stat-label">MedTech Market Research</div>
         </div>
         <div>
-          <div class="stat-num">500+</div>
-          <div class="stat-label">Properties Analyzed</div>
+          <div class="stat-num">3 Years</div>
+          <div class="stat-label">Property Tax Analysis (500+)</div>
         </div>
       </div>
     </div>
@@ -607,11 +402,7 @@
         <p>
           My work sits at the intersection of healthcare technology and business — I'm interested
           in how rigorous financial and market analysis can drive better decisions in the medical
-          device industry, from early-stage development through commercialization.
-        </p>
-        <p>
-          Outside of research, I've built practical experience in business development,
-          financial modeling, and data analysis across multiple industries.
+          device industry.
         </p>
       </div>
       <div class="fade-up">
@@ -620,7 +411,7 @@
           <div class="skill-tag">Market Research</div>
           <div class="skill-tag">Financial Modeling</div>
           <div class="skill-tag">Medical Device Strategy</div>
-          <div class="skill-tag">SQL &amp; Data Analysis</div>
+          <div class="skill-tag">Data Analysis</div>
           <div class="skill-tag">Competitive Analysis</div>
           <div class="skill-tag">Advanced Excel</div>
           <div class="skill-tag">Clinical Engineering</div>
@@ -633,7 +424,6 @@
   <section id="education">
     <div class="section-label fade-up">Education</div>
     <h2 class="fade-up">Academic Background</h2>
-    <p class="section-intro fade-up">Dual-domain expertise in engineering and business.</p>
     <div class="edu-grid">
       <div class="edu-card fade-up">
         <div class="edu-school">Texas A&amp;M University</div>
@@ -641,7 +431,7 @@
         <div class="edu-meta">
           <span>College Station, TX</span>
           <span>GPA 3.48</span>
-          <span>Completing (Expected May 2027)</span>
+          <span>Expected May 2027</span>
         </div>
       </div>
       <div class="edu-card fade-up">
@@ -659,30 +449,26 @@
   <section id="projects">
     <div class="section-label fade-up">Research</div>
     <h2 class="fade-up">Academic Projects</h2>
-    <p class="section-intro fade-up">Applied research across biomedical devices, corporate strategy, and operational analysis.</p>
     <div class="projects-grid">
-
       <div class="project-card fade-up">
         <div class="project-num">01</div>
         <div class="project-title">Texas A&M Research</div>
         <div class="project-date">2025 – 2026</div>
-        <div class="sub-project-list">
-            <div class="sub-project-item">
-                <h4>Biomedical Device Case Study (Jan 2025 – Aug 2025)</h4>
-                <p class="project-desc">Analyzed market drivers, sterilization impact, and accuracy degradation for a surgical device.</p>
-            </div>
-            <div class="sub-project-item">
-                <h4>Addiction Prevention & Recovery Device (Aug 2025 – May 2026)</h4>
-                <p class="project-desc">Explored engineering solutions for patient monitoring and recovery engagement.</p>
-            </div>
-            <div class="sub-project-item">
-                <h4>Post Kidney Transplant Monitoring (Jan 2026 – May 2026)</h4>
-                <p class="project-desc">Evaluated remote patient monitoring systems for transplant patient outcomes.</p>
-            </div>
-            <div class="sub-project-item">
-                <h4>Stainless Steel PEG-Gelatin Biofilm (Jan 2026 – May 2026)</h4>
-                <p class="project-desc">Researched biofilm coatings to improve biocompatibility of stainless steel implants.</p>
-            </div>
+        <div class="sub-project-item">
+            <h4>Biomedical Device Case Study (Jan 2025 – Aug 2025)</h4>
+            <p class="project-desc">Analyzed market drivers and sterilization impact for a surgical device.</p>
+        </div>
+        <div class="sub-project-item">
+            <h4>Addiction Prevention & Recovery Device (Aug 2025 – May 2026)</h4>
+            <p class="project-desc">Engineering solutions for patient monitoring and recovery engagement.</p>
+        </div>
+        <div class="sub-project-item">
+            <h4>Post Kidney Transplant Monitoring (Jan 2026 – May 2026)</h4>
+            <p class="project-desc">Evaluating remote patient monitoring systems for transplant outcomes.</p>
+        </div>
+        <div class="sub-project-item">
+            <h4>Stainless Steel PEG-Gelatin Biofilm (Jan 2026 – May 2026)</h4>
+            <p class="project-desc">Researched biofilm coatings to improve biocompatibility of implants.</p>
         </div>
       </div>
 
@@ -690,60 +476,41 @@
         <div class="project-num">02</div>
         <div class="project-title">UT Dallas Research</div>
         <div class="project-date">2023 – 2024</div>
-        <div class="sub-project-list">
-            <div class="sub-project-item">
-                <h4>Nvidia Strategic Analysis (Jan 2024 – May 2024)</h4>
-                <p class="project-desc">Performed competitive analysis and financial modeling of Nvidia’s market position for Senior Capstone.</p>
-            </div>
-            <div class="sub-project-item">
-                <h4>Southwest Christmas Crisis (Aug 2023 – Dec 2023)</h4>
-                <p class="project-desc">Analyzed root causes of the 2022 operational meltdown and recovery leadership strategies.</p>
-            </div>
+        <div class="sub-project-item">
+            <h4>Nvidia Strategic Analysis (Jan 2024 – May 2024)</h4>
+            <p class="project-desc">Competitive analysis and financial modeling of Nvidia’s market position.</p>
+        </div>
+        <div class="sub-project-item">
+            <h4>Southwest Christmas Crisis Analysis (Aug 2023 – Dec 2023)</h4>
+            <p class="project-desc">Analyzed root causes of the 2022 operational meltdown and recovery.</p>
         </div>
       </div>
-
     </div>
   </section>
 
   <section id="experience">
     <div class="section-label fade-up">Career</div>
     <h2 class="fade-up">Work Experience</h2>
-    <p class="section-intro fade-up">Industry experience spanning medtech strategy, financial services, and real estate analytics.</p>
-
     <div class="experience-list">
-
       <div class="exp-item fade-up">
         <div class="exp-role">Business Development Associate</div>
         <div class="exp-company">SageSpectra</div>
         <div class="exp-date">College Station, TX &nbsp;·&nbsp; August 2025 – May 2026</div>
         <ul class="exp-bullets">
-          <li>Analyzed medical device markets, patient needs, and competitors to guide company strategy.</li>
-          <li>Assessed device functionality and clinical applications to support development decisions.</li>
-          <li>Built financial models projecting revenues, COGS, and operating expenses.</li>
+          <li>Analyzed medical device markets and competitors to guide strategy.</li>
+          <li>Built financial models projecting revenues and operating expenses.</li>
         </ul>
       </div>
-
       <div class="exp-item fade-up">
         <div class="exp-role">Finance / Accounting Intern</div>
         <div class="exp-company">Allied Professionals' Insurance Services</div>
         <div class="exp-date">Frisco, TX &nbsp;·&nbsp; January 2023 – May 2023</div>
-        <ul class="exp-bullets">
-          <li>Reconciled bond portfolios and improved accuracy of financial reporting.</li>
-          <li>Streamlined data transfers across systems using VLOOKUP and advanced Excel functions.</li>
-          <li>Queried and analyzed SQL databases to generate insights for portfolio managers.</li>
-        </ul>
       </div>
-
       <div class="exp-item fade-up">
         <div class="exp-role">Property Tax Analyst</div>
         <div class="exp-company">Longhorn IV Investments LLC</div>
         <div class="exp-date">Dallas, TX &nbsp;·&nbsp; June 2018 – December 2021</div>
-        <ul class="exp-bullets">
-          <li>Updated valuation records for 500+ residential properties across DFW and Houston.</li>
-          <li>Maintained home value data to support accurate property tax assessments.</li>
-        </ul>
       </div>
-
     </div>
   </section>
 
@@ -752,7 +519,7 @@
     <h2 class="fade-up">Future Opportunities</h2>
     <div class="edu-card fade-up" style="max-width: 900px; margin-top: 2rem;">
         <p class="hero-desc" style="margin-bottom: 0;">
-            I am currently <strong>seeking summer internships or full-time opportunities</strong> starting in 2027 within the medical device, healthcare consulting, or med-tech strategy sectors. I am eager to apply my dual expertise in finance and biomedical engineering to solve complex commercialization and operational challenges.
+            I am currently <strong>seeking summer internships or full-time opportunities</strong> starting in 2027 within the medical device or healthcare consulting sectors.
         </p>
     </div>
   </section>
@@ -763,7 +530,7 @@
     <div class="cert-placeholder fade-up">
       <div class="cert-icon">🎓</div>
       <h3>Coming Summer 2026</h3>
-      <p>Online certifications are in progress — check back soon for updates on completed credentials and coursework.</p>
+      <p>Online certifications are in progress.</p>
     </div>
   </section>
 
@@ -772,40 +539,16 @@
       <div class="fade-up">
         <div class="section-label">Get In Touch</div>
         <p class="contact-tagline">Let's start a<br><em>conversation.</em></p>
-        <p class="contact-sub">
-          Whether you're looking to collaborate on research, discuss opportunities,
-          or just connect — feel free to reach out.
-        </p>
       </div>
       <div class="contact-links fade-up">
-        <a href="mailto:zolomon.kaliser@tamu.edu" class="contact-link">
-          <div class="contact-link-icon">✉</div>
-          <div>
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">zolomon.kaliser@tamu.edu</div>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="contact-link">
-          <div class="contact-link-icon">in</div>
-          <div>
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-value">linkedin.com/in/zolomonkaliser</div>
-          </div>
-        </a>
-        <a href="tel:4692169278" class="contact-link">
-          <div class="contact-link-icon">☎</div>
-          <div>
-            <div class="contact-link-label">Phone</div>
-            <div class="contact-link-value">(469) 216-9278</div>
-          </div>
-        </a>
+        <a href="mailto:zolomon.kaliser@tamu.edu" class="contact-link">Email: zolomon.kaliser@tamu.edu</a>
+        <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="contact-link">LinkedIn Profile</a>
       </div>
     </div>
   </section>
 
   <footer>
     <p>© 2026 Zolomon Kaliser. All rights reserved.</p>
-    <p>Built with <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
   </footer>
 
   <script>
@@ -816,7 +559,6 @@
         }
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 
