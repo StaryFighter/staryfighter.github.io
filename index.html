@@ -185,9 +185,10 @@
     section { padding: 7rem 5vw; position: relative; }
 
     .section-label {
-      font-size: 0.72rem; letter-spacing: 0.22em;
+      font-size: 1rem; /* Increased as requested */
+      letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--gold);
-      font-weight: 500; margin-bottom: 0.9rem;
+      font-weight: 500; margin-bottom: 1.2rem;
       display: flex; align-items: center; gap: 0.8rem;
     }
 
@@ -198,9 +199,9 @@
 
     h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.3rem, 4.5vw, 3.4rem); /* Increased slightly as requested */
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 400; color: var(--white);
-      line-height: 1.2; margin-bottom: 1rem;
+      line-height: 1.2; margin-bottom: 1.5rem;
     }
 
     /* ── ABOUT ── */
@@ -209,7 +210,7 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
+      gap: 5rem; align-items: start;
       max-width: 1100px;
     }
 
@@ -218,23 +219,25 @@
       font-size: 1rem; margin-bottom: 1.2rem;
     }
 
-    .skills-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
     }
 
     .skill-tag {
-      padding: 0.7rem 1rem;
+      padding: 0.8rem 1.2rem;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 2px;
-      font-size: 0.82rem; color: var(--text);
+      font-size: 1.1rem; /* Increased as requested */
+      color: var(--text);
       letter-spacing: 0.03em;
-      display: flex; align-items: center; gap: 0.6rem;
+      display: flex; align-items: center; gap: 0.8rem;
     }
 
     .skill-tag::before {
-      content: ''; width: 5px; height: 5px;
+      content: ''; width: 6px; height: 6px;
       background: var(--gold); border-radius: 50%;
       flex-shrink: 0;
     }
@@ -256,10 +259,11 @@
     }
 
     .project-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem; font-weight: 300;
-      color: rgba(200,169,110,0.12);
+      font-family: 'Outfit', sans-serif; /* Matched to date font */
+      font-size: 3rem; font-weight: 500;
+      color: var(--gold); /* Made darker/visible to match date */
       line-height: 1; margin-bottom: 1.2rem;
+      opacity: 0.8;
     }
 
     .project-title {
@@ -274,16 +278,25 @@
       margin-bottom: 1rem;
     }
 
+    .sub-project-item { margin-bottom: 1.5rem; }
+
     .sub-project-item h4 {
-        font-size: 0.95rem;
+        font-size: 1.1rem;
+        font-family: 'Cormorant Garamond', serif;
         color: var(--white);
-        margin-bottom: 2px;
+        margin-bottom: 6px;
     }
+
+    .proj-bullets {
+      list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .proj-bullets li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.6rem; }
+    .proj-bullets li::before { content: '•'; color: var(--gold); }
 
     /* ── EDUCATION ── */
     .edu-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem; max-width: 1100px;
+      display: flex; flex-direction: column;
+      gap: 2rem; max-width: 900px;
     }
 
     .edu-card {
@@ -295,8 +308,25 @@
 
     .edu-card::before {
       content: ''; position: absolute;
-      top: 0; left: 0; width: 3px; height: 100%;
+      top: 0; left: 0; width: 4px; height: 100%;
       background: var(--gold);
+    }
+
+    .edu-degree-header {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem; font-weight: 500;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+
+    .edu-university {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-stats-row {
+      font-size: 0.9rem; color: var(--muted);
+      letter-spacing: 0.02em;
     }
 
     /* ── EXPERIENCE ── */
@@ -325,35 +355,22 @@
       text-transform: uppercase; letter-spacing: 0.06em;
     }
 
-    .exp-date {
-      font-size: 0.76rem; color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    /* ── CERTIFICATIONS ── */
-    .cert-placeholder {
-      max-width: 600px;
-      background: var(--card);
-      border: 1px dashed rgba(200,169,110,0.25);
-      border-radius: 4px;
-      padding: 3.5rem;
-      text-align: center;
-    }
-
     /* ── CONTACT ── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; }
     .contact-link {
       display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem;
       background: var(--card); border: 1px solid var(--border);
-      text-decoration: none; color: var(--text);
+      text-decoration: none; color: var(--text); border-radius: 4px;
+      transition: all 0.2s;
     }
+    .contact-link:hover { border-color: var(--gold); color: var(--white); }
 
     /* ── FADE-IN ── */
     .fade-up { opacity: 0; transform: translateY(24px); transition: 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 900px) {
-      .about-grid, .edu-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -414,18 +431,18 @@
         <div class="section-label">About Me</div>
         <h2>Engineering meets<br>business strategy.</h2>
         <p>
-          Currently 21 years old, I have navigated a highly accelerated academic path. After graduating high school at 14, I immediately began my undergraduate studies in Finance at UT Dallas, followed by my current pursuit of a Master of Engineering in Biomedical Engineering at Texas A&M University (Expected May 2027).
+          Currently 20 years old, I have navigated a highly accelerated academic path. After graduating high school at 14, I immediately began my undergraduate studies in Finance at UT Dallas, followed by my current pursuit of a Master of Engineering in Biomedical Engineering at Texas A&M University (Expected May 2027).
         </p>
         <p>
-          This focused timeline has allowed me to develop a unique intersectional expertise in healthcare technology and business strategy. I am deeply interested in how rigorous financial modeling and market analysis can optimize decision-making within the medical device industry.
+          By the time I complete my Master's at age 21, I will have bridged the gap between complex clinical engineering and high-level strategic finance. I am deeply interested in how rigorous financial modeling and market analysis can optimize decision-making within the medical device industry.
         </p>
         <p>
-          My background combines clinical engineering considerations with the strategic mindset of a finance professional, aiming to bridge the gap between technical innovation and successful commercialization.
+          My background allows me to evaluate innovation through both a technical and commercial lens, ensuring that life-saving technologies are not only functional but also strategically viable.
         </p>
       </div>
       <div class="fade-up">
-        <div class="section-label" style="margin-bottom: 1.4rem;">Core Competencies</div>
-        <div class="skills-grid">
+        <div class="section-label">Core Competencies</div>
+        <div class="skills-list">
           <div class="skill-tag">Market Research</div>
           <div class="skill-tag">Financial Modeling</div>
           <div class="skill-tag">Medical Device Strategy</div>
@@ -444,22 +461,15 @@
     <h2 class="fade-up">Academic Background</h2>
     <div class="edu-grid">
       <div class="edu-card fade-up">
-        <div class="edu-school">Texas A&amp;M University</div>
-        <div class="edu-degree">Master of Engineering in Biomedical Engineering</div>
-        <div class="edu-meta">
-          <span>College Station, TX</span>
-          <span>GPA 3.48</span>
-          <span>Expected May 2027</span>
-        </div>
+        <div class="edu-degree-header">Master of Engineering in Biomedical Engineering</div>
+        <div class="edu-university">Texas A&amp;M University (College Station, TX)</div>
+        <div class="edu-stats-row">GPA 3.48 — Expected Graduation in May, 2027</div>
       </div>
+
       <div class="edu-card fade-up">
-        <div class="edu-school">University of Texas at Dallas</div>
-        <div class="edu-degree">Bachelor of Science in Finance</div>
-        <div class="edu-meta">
-          <span>Richardson, TX</span>
-          <span>GPA 3.4</span>
-          <span>Graduated August 2024</span>
-        </div>
+        <div class="edu-degree-header">Bachelor of Science in Finance</div>
+        <div class="edu-university">University of Texas at Dallas (Richardson, TX)</div>
+        <div class="edu-stats-row">GPA 3.4 — Graduated August 2024</div>
       </div>
     </div>
   </section>
@@ -472,21 +482,30 @@
         <div class="project-num">01</div>
         <div class="project-title">Texas A&M Research</div>
         <div class="project-date">2025 – 2026</div>
+        
         <div class="sub-project-item">
-            <h4>Biomedical Device Case Study (Jan 2025 – Aug 2025)</h4>
-            <p class="project-desc">Analyzed market drivers and sterilization impact for a surgical device.</p>
+            <h4>Biomedical Device Case Study</h4>
+            <ul class="proj-bullets">
+                <li>Analyzed market drivers and sterilization impact for a specific surgical device.</li>
+            </ul>
         </div>
         <div class="sub-project-item">
-            <h4>Addiction Prevention & Recovery Device (Aug 2025 – May 2026)</h4>
-            <p class="project-desc">Engineering solutions for patient monitoring and recovery engagement.</p>
+            <h4>Addiction Prevention & Recovery Device</h4>
+            <ul class="proj-bullets">
+                <li>Engineering solutions for patient monitoring and recovery engagement.</li>
+            </ul>
         </div>
         <div class="sub-project-item">
-            <h4>Post Kidney Transplant Monitoring (Jan 2026 – May 2026)</h4>
-            <p class="project-desc">Evaluating remote patient monitoring systems for transplant outcomes.</p>
+            <h4>Post Kidney Transplant Monitoring</h4>
+            <ul class="proj-bullets">
+                <li>Evaluating remote patient monitoring systems for transplant outcomes.</li>
+            </ul>
         </div>
         <div class="sub-project-item">
-            <h4>Stainless Steel PEG-Gelatin Biofilm (Jan 2026 – May 2026)</h4>
-            <p class="project-desc">Researched biofilm coatings to improve biocompatibility of implants.</p>
+            <h4>Stainless Steel PEG-Gelatin Biofilm</h4>
+            <ul class="proj-bullets">
+                <li>Researched biofilm coatings to improve biocompatibility of implants.</li>
+            </ul>
         </div>
       </div>
 
@@ -494,13 +513,20 @@
         <div class="project-num">02</div>
         <div class="project-title">UT Dallas Research</div>
         <div class="project-date">2023 – 2024</div>
+        
         <div class="sub-project-item">
-            <h4>Nvidia Strategic Analysis (Jan 2024 – May 2024)</h4>
-            <p class="project-desc">Competitive analysis and financial modeling of Nvidia’s market position.</p>
+            <h4>Nvidia Strategic Analysis</h4>
+            <ul class="proj-bullets">
+                <li>Developed competitive analysis and financial modeling of Nvidia’s market position.</li>
+                <li>Presented strategic growth forecasts based on AI hardware demand cycles.</li>
+            </ul>
         </div>
         <div class="sub-project-item">
-            <h4>Southwest Christmas Crisis Analysis (Aug 2023 – Dec 2023)</h4>
-            <p class="project-desc">Analyzed root causes of the 2022 operational meltdown and recovery.</p>
+            <h4>Southwest Christmas Crisis Analysis</h4>
+            <ul class="proj-bullets">
+                <li>Analyzed root causes of the 2022 operational meltdown and recovery measures.</li>
+                <li>Evaluated software infrastructure failures and subsequent leadership responses.</li>
+            </ul>
         </div>
       </div>
     </div>
@@ -573,6 +599,7 @@
       </div>
       <div class="contact-links fade-up">
         <a href="mailto:zolomon.kaliser@tamu.edu" class="contact-link">Email: zolomon.kaliser@tamu.edu</a>
+        <a href="tel:4692169278" class="contact-link">Phone: (469) 216-9278</a>
         <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="contact-link">LinkedIn Profile</a>
       </div>
     </div>
