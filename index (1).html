@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zolomon Kaliser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #07090f;
+      --panel:  #0d1117;
+      --card:   #12181f;
+      --border: rgba(255,255,255,0.07);
+      --gold:   #c8a96e;
+      --gold2:  #e4c98a;
+      --text:   #dde1ea;
+      --muted:  #7a8394;
+      --white:  #f0f2f6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 5vw;
+      background: rgba(7,9,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 500;
+      color: var(--white); letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.2rem; list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted); font-size: 0.82rem;
+      text-decoration: none; letter-spacing: 0.1em;
+      text-transform: uppercase; font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 0 5vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-line {
+      position: absolute;
+      top: 50%; right: -10%;
+      width: 55vw; height: 55vw;
+      border-radius: 50%;
+      border: 1px solid rgba(200,169,110,0.07);
+      transform: translateY(-50%);
+    }
+    .hero-bg-line:nth-child(2) { width: 40vw; height: 40vw; border-color: rgba(200,169,110,0.05); }
+    .hero-bg-line:nth-child(3) { width: 25vw; height: 25vw; border-color: rgba(200,169,110,0.04); }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 500; margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--white); margin-bottom: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    h1 span { color: var(--gold); font-style: italic; }
+
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 520px; margin-bottom: 2.8rem;
+      line-height: 1.8;
+    }
+
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer; border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(200,169,110,0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 400;
+      color: var(--white); line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 5vw; position: relative; }
+
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 500; margin-bottom: 0.9rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+
+    .section-label::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; color: var(--white);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      color: var(--muted); max-width: 560px;
+      font-size: 1rem; line-height: 1.8;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      max-width: 1100px;
+    }
+
+    .about-text p {
+      color: var(--muted); line-height: 1.9;
+      font-size: 1rem; margin-bottom: 1.2rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .skill-tag {
+      padding: 0.7rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 0.82rem; color: var(--text);
+      letter-spacing: 0.03em;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .skill-tag::before {
+      content: ''; width: 5px; height: 5px;
+      background: var(--gold); border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; max-width: 1100px;
+    }
+
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px; padding: 2rem 2.2rem;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .edu-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+    }
+
+    .edu-card:hover { border-color: rgba(200,169,110,0.3); }
+
+    .edu-school {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 500;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+
+    .edu-degree {
+      font-size: 0.9rem; color: var(--gold);
+      margin-bottom: 0.5rem; font-weight: 400;
+    }
+
+    .edu-meta {
+      font-size: 0.8rem; color: var(--muted);
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; max-width: 1100px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px; padding: 2.2rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+
+    .project-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,169,110,0.25);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .project-card:hover::after { opacity: 1; }
+
+    .project-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 300;
+      color: rgba(200,169,110,0.12);
+      line-height: 1; margin-bottom: 1.2rem;
+    }
+
+    .project-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 500;
+      color: var(--white); margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .project-date {
+      font-size: 0.75rem; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-list {
+      display: flex; flex-direction: column;
+      gap: 0; max-width: 900px;
+      border-left: 1px solid var(--border);
+      padding-left: 2.5rem;
+      margin-left: 1rem;
+    }
+
+    .exp-item {
+      position: relative; padding-bottom: 3.5rem;
+    }
+
+    .exp-item:last-child { padding-bottom: 0; }
+
+    .exp-item::before {
+      content: ''; position: absolute;
+      left: -2.5rem; top: 0.45rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--navy);
+      box-shadow: 0 0 0 3px rgba(200,169,110,0.2);
+      transform: translateX(-50%);
+      margin-left: -1px;
+    }
+
+    .exp-company {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 500;
+      color: var(--white);
+    }
+
+    .exp-role {
+      font-size: 0.85rem; color: var(--gold);
+      font-weight: 500; margin-bottom: 0.2rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    .exp-date {
+      font-size: 0.76rem; color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .exp-bullets {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 0.5rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.7;
+      display: flex; gap: 0.8rem;
+    }
+
+    .exp-bullets li::before {
+      content: '→'; color: var(--gold);
+      flex-shrink: 0; font-size: 0.8rem;
+      margin-top: 0.15rem;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications { background: var(--panel); border-top: 1px solid var(--border); }
+
+    .cert-placeholder {
+      max-width: 600px;
+      background: var(--card);
+      border: 1px dashed rgba(200,169,110,0.25);
+      border-radius: 4px;
+      padding: 3.5rem;
+      text-align: center;
+    }
+
+    .cert-icon {
+      font-size: 2.5rem; margin-bottom: 1.2rem; opacity: 0.5;
+    }
+
+    .cert-placeholder h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .cert-placeholder p {
+      color: var(--muted); font-size: 0.9rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact { border-top: 1px solid var(--border); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; max-width: 1000px; align-items: start;
+    }
+
+    .contact-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300; color: var(--white);
+      line-height: 1.3; margin-bottom: 1.5rem;
+    }
+
+    .contact-tagline em { color: var(--gold); font-style: italic; }
+
+    .contact-sub {
+      color: var(--muted); font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+      color: var(--text);
+    }
+
+    .contact-link:hover {
+      border-color: var(--gold);
+      transform: translateX(4px);
+      color: var(--white);
+    }
+
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      background: rgba(200,169,110,0.1);
+      border-radius: 2px;
+      display: flex; align-items: center;
+      justify-content: center;
+      color: var(--gold); font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-link-label {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.1rem;
+    }
+
+    .contact-link-value {
+      font-size: 0.9rem; color: var(--text);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 5vw;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+      background: var(--panel);
+    }
+
+    footer p { font-size: 0.78rem; color: var(--muted); }
+
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── FADE-IN ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .edu-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Zolomon Kaliser</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-line"></div>
+    <div class="hero-bg-line"></div>
+    <div class="hero-bg-line"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Biomedical Engineering &amp; Finance</div>
+      <h1>Zolomon<br><span>Kaliser</span></h1>
+      <p class="hero-desc">
+        Graduate researcher at Texas A&amp;M University with a background in finance —
+        bridging clinical engineering, market strategy, and data-driven decision-making.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">3.48</div>
+          <div class="stat-label">Graduate GPA</div>
+        </div>
+        <div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Research Projects</div>
+        </div>
+        <div>
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years Industry Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Properties Analyzed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">About Me</div>
+        <h2>Engineering meets<br>business strategy.</h2>
+        <p>
+          I'm pursuing a Master of Engineering in Biomedical Engineering at Texas A&amp;M University
+          (expected May 2027), building on an undergraduate degree in Finance from UT Dallas.
+        </p>
+        <p>
+          My work sits at the intersection of healthcare technology and business — I'm interested
+          in how rigorous financial and market analysis can drive better decisions in the medical
+          device industry, from early-stage development through commercialization.
+        </p>
+        <p>
+          Outside of research, I've built practical experience in business development,
+          financial modeling, and data analysis across multiple industries.
+        </p>
+      </div>
+      <div class="fade-up">
+        <div class="section-label" style="margin-bottom: 1.4rem;">Core Competencies</div>
+        <div class="skills-grid">
+          <div class="skill-tag">Market Research</div>
+          <div class="skill-tag">Financial Modeling</div>
+          <div class="skill-tag">Medical Device Strategy</div>
+          <div class="skill-tag">SQL &amp; Data Analysis</div>
+          <div class="skill-tag">Competitive Analysis</div>
+          <div class="skill-tag">Advanced Excel</div>
+          <div class="skill-tag">Clinical Engineering</div>
+          <div class="skill-tag">Presentation &amp; Communication</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label fade-up">Education</div>
+    <h2 class="fade-up">Academic Background</h2>
+    <p class="section-intro fade-up">Dual-domain expertise in engineering and business.</p>
+    <div class="edu-grid">
+      <div class="edu-card fade-up">
+        <div class="edu-school">Texas A&amp;M University</div>
+        <div class="edu-degree">M.Eng. in Biomedical Engineering</div>
+        <div class="edu-meta">
+          <span>College Station, TX</span>
+          <span>GPA 3.48</span>
+          <span>Expected May 2027</span>
+        </div>
+      </div>
+      <div class="edu-card fade-up">
+        <div class="edu-school">UT Dallas</div>
+        <div class="edu-degree">B.S. in Finance</div>
+        <div class="edu-meta">
+          <span>Richardson, TX</span>
+          <span>GPA 3.4</span>
+          <span>Graduated August 2024</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label fade-up">Research</div>
+    <h2 class="fade-up">Academic Projects</h2>
+    <p class="section-intro fade-up">Applied research across biomedical devices, corporate strategy, and operational analysis.</p>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-num">01</div>
+        <div class="project-title">Biomedical Device Case Study</div>
+        <div class="project-date">Jan 2025 – Aug 2025 &nbsp;·&nbsp; Guided Research</div>
+        <p class="project-desc">
+          Conducted market research and competitive landscape analysis for a surgical device.
+          Evaluated adoption drivers, financial trends, and clinical engineering considerations
+          including sterilization impact and accuracy degradation over device lifecycle.
+        </p>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-num">02</div>
+        <div class="project-title">Nvidia Strategic Analysis</div>
+        <div class="project-date">Jan 2024 – May 2024 &nbsp;·&nbsp; Senior Capstone</div>
+        <p class="project-desc">
+          Delivered four faculty-reviewed presentations on Nvidia's market position and strategic
+          direction. Performed competitive analyses of major industry players and built market
+          forecasts and financial models to evaluate growth opportunities and risks.
+        </p>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-num">03</div>
+        <div class="project-title">Southwest Christmas Crisis Report</div>
+        <div class="project-date">Aug 2023 – Dec 2023 &nbsp;·&nbsp; Research Report</div>
+        <p class="project-desc">
+          Analyzed the root causes of Southwest Airlines' 2022 operational meltdown and evaluated
+          leadership's recovery measures. Directed written and oral presentation delivery
+          to a class of 30+ students.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label fade-up">Career</div>
+    <h2 class="fade-up">Work Experience</h2>
+    <p class="section-intro fade-up">Industry experience spanning medtech strategy, financial services, and real estate analytics.</p>
+
+    <div class="experience-list">
+
+      <div class="exp-item fade-up">
+        <div class="exp-role">Business Development Associate</div>
+        <div class="exp-company">SageSpectra</div>
+        <div class="exp-date">College Station, TX &nbsp;·&nbsp; August 2025 – Present</div>
+        <ul class="exp-bullets">
+          <li>Analyzed medical device markets, patient needs, and competitors to guide company strategy.</li>
+          <li>Assessed device functionality and clinical applications to support development decisions.</li>
+          <li>Built financial models projecting revenues, COGS, and operating expenses.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-role">Finance / Accounting Intern</div>
+        <div class="exp-company">Allied Professionals' Insurance Services</div>
+        <div class="exp-date">Frisco, TX &nbsp;·&nbsp; January 2023 – May 2023</div>
+        <ul class="exp-bullets">
+          <li>Reconciled bond portfolios and improved accuracy of financial reporting.</li>
+          <li>Streamlined data transfers across systems using VLOOKUP and advanced Excel functions.</li>
+          <li>Queried and analyzed SQL databases to generate insights for portfolio managers.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-role">Property Tax Analyst</div>
+        <div class="exp-company">Longhorn IV Investments LLC</div>
+        <div class="exp-date">Dallas, TX &nbsp;·&nbsp; June 2018 – December 2021</div>
+        <ul class="exp-bullets">
+          <li>Updated valuation records for 500+ residential properties across DFW and Houston.</li>
+          <li>Maintained home value data to support accurate property tax assessments.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-label fade-up">Credentials</div>
+    <h2 class="fade-up">Certifications</h2>
+    <div class="cert-placeholder fade-up">
+      <div class="cert-icon">🎓</div>
+      <h3>Coming Summer 2025</h3>
+      <p>Online certifications are in progress — check back soon for updates on completed credentials and coursework.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="section-label">Get In Touch</div>
+        <p class="contact-tagline">Let's start a<br><em>conversation.</em></p>
+        <p class="contact-sub">
+          Whether you're looking to collaborate on research, discuss opportunities,
+          or just connect — feel free to reach out.
+        </p>
+      </div>
+      <div class="contact-links fade-up">
+        <a href="mailto:zolomon.kaliser@tamu.edu" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">zolomon.kaliser@tamu.edu</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">linkedin.com/in/zolomonkaliser</div>
+          </div>
+        </a>
+        <a href="tel:4692169278" class="contact-link">
+          <div class="contact-link-icon">☎</div>
+          <div>
+            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-value">(469) 216-9278</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Zolomon Kaliser. All rights reserved.</p>
+    <p>Built with <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+  </footer>
+
+  <!-- SCROLL ANIMATION -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
