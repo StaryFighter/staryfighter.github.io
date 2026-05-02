@@ -290,7 +290,7 @@
     #projects { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
     .projects-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem; max-width: 1100px;
     }
 
@@ -341,6 +341,22 @@
     .project-desc {
       font-size: 0.88rem; color: var(--muted);
       line-height: 1.8;
+    }
+
+    .sub-project-list {
+      margin-top: 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .sub-project-item {
+        margin-bottom: 1rem;
+    }
+
+    .sub-project-item h4 {
+        font-size: 0.95rem;
+        color: var(--white);
+        margin-bottom: 2px;
     }
 
     /* ── EXPERIENCE ── */
@@ -532,18 +548,18 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">Zolomon Kaliser</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Research</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-bg-line"></div>
     <div class="hero-bg-line"></div>
@@ -565,7 +581,7 @@
           <div class="stat-label">Graduate GPA</div>
         </div>
         <div>
-          <div class="stat-num">3</div>
+          <div class="stat-num">6</div>
           <div class="stat-label">Research Projects</div>
         </div>
         <div>
@@ -580,15 +596,13 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="about-grid">
       <div class="about-text fade-up">
         <div class="section-label">About Me</div>
         <h2>Engineering meets<br>business strategy.</h2>
         <p>
-          I'm pursuing a Master of Engineering in Biomedical Engineering at Texas A&amp;M University
-          (expected May 2027), building on an undergraduate degree in Finance from UT Dallas.
+          I am currently completing a Master of Engineering in Biomedical Engineering at Texas A&M University (Expected May 2027), following my Bachelors in Finance from UT Dallas (2024).
         </p>
         <p>
           My work sits at the intersection of healthcare technology and business — I'm interested
@@ -616,7 +630,6 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
   <section id="education">
     <div class="section-label fade-up">Education</div>
     <h2 class="fade-up">Academic Background</h2>
@@ -624,16 +637,16 @@
     <div class="edu-grid">
       <div class="edu-card fade-up">
         <div class="edu-school">Texas A&amp;M University</div>
-        <div class="edu-degree">M.Eng. in Biomedical Engineering</div>
+        <div class="edu-degree">Master of Engineering in Biomedical Engineering</div>
         <div class="edu-meta">
           <span>College Station, TX</span>
           <span>GPA 3.48</span>
-          <span>Expected May 2027</span>
+          <span>Completing (Expected May 2027)</span>
         </div>
       </div>
       <div class="edu-card fade-up">
-        <div class="edu-school">UT Dallas</div>
-        <div class="edu-degree">B.S. in Finance</div>
+        <div class="edu-school">University of Texas at Dallas</div>
+        <div class="edu-degree">Bachelor of Science in Finance</div>
         <div class="edu-meta">
           <span>Richardson, TX</span>
           <span>GPA 3.4</span>
@@ -643,7 +656,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="section-label fade-up">Research</div>
     <h2 class="fade-up">Academic Projects</h2>
@@ -652,41 +664,47 @@
 
       <div class="project-card fade-up">
         <div class="project-num">01</div>
-        <div class="project-title">Biomedical Device Case Study</div>
-        <div class="project-date">Jan 2025 – Aug 2025 &nbsp;·&nbsp; Guided Research</div>
-        <p class="project-desc">
-          Conducted market research and competitive landscape analysis for a surgical device.
-          Evaluated adoption drivers, financial trends, and clinical engineering considerations
-          including sterilization impact and accuracy degradation over device lifecycle.
-        </p>
+        <div class="project-title">Texas A&M Research</div>
+        <div class="project-date">2025 – 2026</div>
+        <div class="sub-project-list">
+            <div class="sub-project-item">
+                <h4>Biomedical Device Case Study (Jan 2025 – Aug 2025)</h4>
+                <p class="project-desc">Analyzed market drivers, sterilization impact, and accuracy degradation for a surgical device.</p>
+            </div>
+            <div class="sub-project-item">
+                <h4>Addiction Prevention & Recovery Device (Aug 2025 – May 2026)</h4>
+                <p class="project-desc">Explored engineering solutions for patient monitoring and recovery engagement.</p>
+            </div>
+            <div class="sub-project-item">
+                <h4>Post Kidney Transplant Monitoring (Jan 2026 – May 2026)</h4>
+                <p class="project-desc">Evaluated remote patient monitoring systems for transplant patient outcomes.</p>
+            </div>
+            <div class="sub-project-item">
+                <h4>Stainless Steel PEG-Gelatin Biofilm (Jan 2026 – May 2026)</h4>
+                <p class="project-desc">Researched biofilm coatings to improve biocompatibility of stainless steel implants.</p>
+            </div>
+        </div>
       </div>
 
       <div class="project-card fade-up">
         <div class="project-num">02</div>
-        <div class="project-title">Nvidia Strategic Analysis</div>
-        <div class="project-date">Jan 2024 – May 2024 &nbsp;·&nbsp; Senior Capstone</div>
-        <p class="project-desc">
-          Delivered four faculty-reviewed presentations on Nvidia's market position and strategic
-          direction. Performed competitive analyses of major industry players and built market
-          forecasts and financial models to evaluate growth opportunities and risks.
-        </p>
-      </div>
-
-      <div class="project-card fade-up">
-        <div class="project-num">03</div>
-        <div class="project-title">Southwest Christmas Crisis Report</div>
-        <div class="project-date">Aug 2023 – Dec 2023 &nbsp;·&nbsp; Research Report</div>
-        <p class="project-desc">
-          Analyzed the root causes of Southwest Airlines' 2022 operational meltdown and evaluated
-          leadership's recovery measures. Directed written and oral presentation delivery
-          to a class of 30+ students.
-        </p>
+        <div class="project-title">UT Dallas Research</div>
+        <div class="project-date">2023 – 2024</div>
+        <div class="sub-project-list">
+            <div class="sub-project-item">
+                <h4>Nvidia Strategic Analysis (Jan 2024 – May 2024)</h4>
+                <p class="project-desc">Performed competitive analysis and financial modeling of Nvidia’s market position for Senior Capstone.</p>
+            </div>
+            <div class="sub-project-item">
+                <h4>Southwest Christmas Crisis (Aug 2023 – Dec 2023)</h4>
+                <p class="project-desc">Analyzed root causes of the 2022 operational meltdown and recovery leadership strategies.</p>
+            </div>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
   <section id="experience">
     <div class="section-label fade-up">Career</div>
     <h2 class="fade-up">Work Experience</h2>
@@ -697,7 +715,7 @@
       <div class="exp-item fade-up">
         <div class="exp-role">Business Development Associate</div>
         <div class="exp-company">SageSpectra</div>
-        <div class="exp-date">College Station, TX &nbsp;·&nbsp; August 2025 – Present</div>
+        <div class="exp-date">College Station, TX &nbsp;·&nbsp; August 2025 – May 2026</div>
         <ul class="exp-bullets">
           <li>Analyzed medical device markets, patient needs, and competitors to guide company strategy.</li>
           <li>Assessed device functionality and clinical applications to support development decisions.</li>
@@ -729,18 +747,26 @@
     </div>
   </section>
 
-  <!-- CERTIFICATIONS -->
+  <section id="opportunities" style="background: var(--panel); border-top: 1px solid var(--border);">
+    <div class="section-label fade-up">Looking Ahead</div>
+    <h2 class="fade-up">Future Opportunities</h2>
+    <div class="edu-card fade-up" style="max-width: 900px; margin-top: 2rem;">
+        <p class="hero-desc" style="margin-bottom: 0;">
+            I am currently <strong>seeking summer internships or full-time opportunities</strong> starting in 2027 within the medical device, healthcare consulting, or med-tech strategy sectors. I am eager to apply my dual expertise in finance and biomedical engineering to solve complex commercialization and operational challenges.
+        </p>
+    </div>
+  </section>
+
   <section id="certifications">
     <div class="section-label fade-up">Credentials</div>
     <h2 class="fade-up">Certifications</h2>
     <div class="cert-placeholder fade-up">
       <div class="cert-icon">🎓</div>
-      <h3>Coming Summer 2025</h3>
+      <h3>Coming Summer 2026</h3>
       <p>Online certifications are in progress — check back soon for updates on completed credentials and coursework.</p>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-grid">
       <div class="fade-up">
@@ -777,13 +803,11 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Zolomon Kaliser. All rights reserved.</p>
+    <p>© 2026 Zolomon Kaliser. All rights reserved.</p>
     <p>Built with <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
   </footer>
 
-  <!-- SCROLL ANIMATION -->
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
