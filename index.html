@@ -32,7 +32,7 @@
       font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
-      text-align: left; /* Base alignment is left */
+      text-align: left;
     }
 
     /* ── NOISE OVERLAY ── */
@@ -97,7 +97,7 @@
       position: relative; z-index: 1;
       max-width: 820px;
       margin: 0 auto;
-      text-align: center; /* Hero title/desc usually look better centered */
+      text-align: center;
     }
 
     .hero-eyebrow {
@@ -196,7 +196,7 @@
       text-transform: uppercase; color: var(--gold);
       font-weight: 500; margin-bottom: 1.2rem;
       display: flex; align-items: center; gap: 0.8rem;
-      justify-content: center; /* Label is centered */
+      justify-content: center;
     }
 
     .section-label::before {
@@ -209,7 +209,7 @@
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 400; color: var(--white);
       line-height: 1.2; margin-bottom: 2.5rem;
-      text-align: center; /* Section headers centered */
+      text-align: center;
     }
 
     /* ── ABOUT ── */
@@ -226,7 +226,7 @@
     .about-text p {
       color: var(--muted); line-height: 1.9;
       font-size: 1rem; margin-bottom: 1.2rem;
-      text-align: left; /* Text blocks left-aligned */
+      text-align: left;
     }
 
     .skills-list {
@@ -244,7 +244,7 @@
       color: var(--text);
       letter-spacing: 0.03em;
       display: flex; align-items: center; gap: 0.8rem;
-      width: 100%; /* Equal width blocks */
+      width: 100%;
       text-align: left;
     }
 
@@ -269,7 +269,7 @@
       border-radius: 4px; padding: 2.2rem;
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
       position: relative; overflow: hidden;
-      text-align: left; /* Content left-aligned */
+      text-align: left;
     }
 
     .project-num {
@@ -333,10 +333,12 @@
     .tamu-card-img {
       width: 100%;
       height: 250px;
-      object-fit: contain; /* Shows entire image without cutting */
       background: #090d13;
-      padding: 2.5rem; /* Zoom out effect by increasing internal space */
       display: block;
+      /* MODIFY THE % BELOW TO CHANGE IMAGE ZOOM */
+      background-size: 95%; 
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .tamu-card-img-placeholder {
@@ -436,6 +438,16 @@
       text-transform: uppercase; letter-spacing: 0.06em;
     }
 
+    /* ── CERTIFICATIONS ── */
+    .cert-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto;
+    }
+    .cert-card {
+      background: var(--card); border: 1px solid var(--border); padding: 1.8rem; border-radius: 4px; text-align: left;
+    }
+    .cert-name { font-family: 'Cormorant Garamond', serif; color: var(--white); font-size: 1.2rem; margin-bottom: 0.4rem; line-height: 1.3; }
+    .cert-issuer { font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; }
+
     /* ── CONTACT ── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; margin: 0 auto; text-align: left; }
     .contact-link {
@@ -466,7 +478,7 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     @media (max-width: 900px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-grid, .contact-grid, .cert-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -579,7 +591,7 @@
   <section id="about">
     <div class="about-grid">
       <div class="about-text fade-up">
-        <div class="section-label">About Me</div>
+        <div class="section-label" style="justify-content: flex-start;">About Me</div>
         <h2 style="text-align: left;">Engineering meets<br>business strategy.</h2>
         <p>
           Currently 20 years old, I have navigated a highly accelerated academic path. After graduating high school at 14, I immediately began my undergraduate studies in Finance at UT Dallas, followed by my current pursuit of a Master of Engineering in Biomedical Engineering at Texas A&M University (Expected May 2027).
@@ -592,7 +604,7 @@
         </p>
       </div>
       <div class="fade-up">
-        <div class="section-label">Core Competencies</div>
+        <div class="section-label" style="justify-content: flex-start;">Core Competencies</div>
         <div class="skills-list">
           <div class="skill-tag">Market Research</div>
           <div class="skill-tag">Financial Modeling</div>
@@ -631,8 +643,7 @@
     <div class="tamu-grid">
 
       <div class="tamu-card fade-up">
-        <img src="biomedical-device.jpg" alt="Biomedical Device Case Study" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">🔬</div>
+        <div class="tamu-card-img" style="background-image: url('image_5fc42c.png');"></div>
         <div class="tamu-card-body">
           <div class="tamu-card-title">Biomedical Device Case Study</div>
           <div class="tamu-card-date">Jan 2025 &ndash; Aug 2025 &nbsp;&middot;&nbsp; Guided Research</div>
@@ -641,8 +652,7 @@
       </div>
 
       <div class="tamu-card fade-up">
-        <img src="addiction-device.jpg" alt="Addiction Prevention Device" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">💊</div>
+        <div class="tamu-card-img" style="background-image: url('image_5fc40e.jpg');"></div>
         <div class="tamu-card-body">
           <div class="tamu-card-title">Addiction Prevention &amp; Recovery Device</div>
           <div class="tamu-card-date">Aug 2025 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
@@ -651,8 +661,7 @@
       </div>
 
       <div class="tamu-card fade-up">
-        <img src="kidney-monitoring.jpg" alt="Kidney Transplant Monitoring" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">🫀</div>
+        <div class="tamu-card-img" style="background-image: url('image_5f542a.jpg');"></div>
         <div class="tamu-card-body">
           <div class="tamu-card-title">Post Kidney Transplant Remote Patient Monitoring</div>
           <div class="tamu-card-date">Jan 2026 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
@@ -661,8 +670,7 @@
       </div>
 
       <div class="tamu-card fade-up">
-        <img src="biofilm.jpg" alt="Stainless Steel Biofilm Research" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">🧫</div>
+        <div class="tamu-card-img" style="background-image: url('image_5f5394.png');"></div>
         <div class="tamu-card-body">
           <div class="tamu-card-title">Stainless Steel PEG-Gelatin Biofilm</div>
           <div class="tamu-card-date">Jan 2026 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
@@ -743,6 +751,21 @@
     </div>
   </section>
 
+  <section id="certifications">
+    <div class="section-label fade-up">Credentials</div>
+    <h2 class="fade-up">Certifications</h2>
+    <div class="cert-grid fade-up">
+      <div class="cert-card">
+        <div class="cert-name">SOLIDWORKS: Simulation for Finite Element Analysis</div>
+        <div class="cert-issuer">LinkedIn Learning</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Introductory Human Physiology</div>
+        <div class="cert-issuer">Duke University / Coursera</div>
+      </div>
+    </div>
+  </section>
+
   <section id="opportunities" style="background: var(--panel); border-top: 1px solid var(--border);">
     <div class="section-label fade-up">Looking Ahead</div>
     <h2 class="fade-up">Future Opportunities</h2>
@@ -753,16 +776,6 @@
         <p class="hero-desc" style="margin-bottom: 0; text-align: left; max-width: 100%;">
             My primary interest lies within the medical device industry, healthcare consulting, and med-tech strategy. I am eager to contribute to teams that value data-driven market analysis and clinical engineering insights.
         </p>
-    </div>
-  </section>
-
-  <section id="certifications">
-    <div class="section-label fade-up">Credentials</div>
-    <h2 class="fade-up">Certifications</h2>
-    <div style="text-align: center; max-width: 600px; margin: 0 auto;" class="fade-up">
-      <div style="font-size: 3rem; margin-bottom: 1rem;">🎓</div>
-      <h3 style="color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Coming Summer 2026</h3>
-      <p style="color: var(--muted);">Online certifications are currently in progress.</p>
     </div>
   </section>
 
