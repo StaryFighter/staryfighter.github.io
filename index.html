@@ -75,10 +75,14 @@
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      display: flex; align-items: center;
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      justify-content: center;
       padding: 120px 5vw 80px 5vw;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
     .hero-bg-line {
@@ -95,6 +99,9 @@
     .hero-content {
       position: relative; z-index: 1;
       max-width: 820px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-eyebrow {
@@ -104,7 +111,7 @@
       display: flex; align-items: center; gap: 0.8rem;
     }
 
-    .hero-eyebrow::before {
+    .hero-eyebrow::before, .hero-eyebrow::after {
       content: ''; display: block;
       width: 32px; height: 1px; background: var(--gold);
     }
@@ -123,10 +130,12 @@
       font-size: 1.05rem; color: var(--muted);
       max-width: 520px; margin-bottom: 2.8rem;
       line-height: 1.8;
+      margin-left: auto; margin-right: auto;
     }
 
     .hero-ctas {
       display: flex; gap: 1rem; flex-wrap: wrap;
+      justify-content: center;
     }
 
     .btn {
@@ -167,6 +176,8 @@
       display: flex; gap: 3rem; margin-top: 4rem;
       padding-top: 3rem;
       border-top: 1px solid var(--border);
+      justify-content: center;
+      width: 100%;
     }
 
     .stat-num {
@@ -182,17 +193,25 @@
     }
 
     /* ── SECTIONS ── */
-    section { padding: 7rem 5vw; position: relative; }
+    section { 
+      padding: 7rem 5vw; 
+      position: relative; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+      text-align: center;
+    }
 
     .section-label {
-      font-size: 1rem; /* Increased as requested */
+      font-size: 1rem; 
       letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--gold);
       font-weight: 500; margin-bottom: 1.2rem;
       display: flex; align-items: center; gap: 0.8rem;
+      justify-content: center;
     }
 
-    .section-label::before {
+    .section-label::before, .section-label::after {
       content: ''; display: block;
       width: 24px; height: 1px; background: var(--gold);
     }
@@ -202,6 +221,7 @@
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 400; color: var(--white);
       line-height: 1.2; margin-bottom: 1.5rem;
+      max-width: 900px;
     }
 
     /* ── ABOUT ── */
@@ -212,6 +232,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 5rem; align-items: start;
       max-width: 1100px;
+      text-align: left;
     }
 
     .about-text p {
@@ -220,9 +241,9 @@
     }
 
     .skills-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
 
     .skill-tag {
@@ -230,7 +251,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 2px;
-      font-size: 1.1rem; /* Increased as requested */
+      font-size: 1rem; 
       color: var(--text);
       letter-spacing: 0.03em;
       display: flex; align-items: center; gap: 0.8rem;
@@ -248,6 +269,7 @@
     .projects-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem; max-width: 1100px;
+      text-align: left;
     }
 
     .project-card {
@@ -297,6 +319,7 @@
     .tamu-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem; max-width: 1100px;
+      text-align: left;
     }
 
     .tamu-card {
@@ -353,7 +376,8 @@
     /* ── EDUCATION ── */
     .edu-grid {
       display: flex; flex-direction: column;
-      gap: 2rem; max-width: 900px;
+      gap: 2rem; width: 100%; max-width: 900px;
+      text-align: left;
     }
 
     .edu-card {
@@ -389,10 +413,10 @@
     /* ── EXPERIENCE ── */
     .experience-list {
       display: flex; flex-direction: column;
-      gap: 0; max-width: 900px;
+      gap: 0; width: 100%; max-width: 900px;
       border-left: 1px solid var(--border);
       padding-left: 2.5rem;
-      margin-left: 1rem;
+      text-align: left;
     }
 
     .exp-item { position: relative; padding-bottom: 3.5rem; }
@@ -412,8 +436,39 @@
       text-transform: uppercase; letter-spacing: 0.06em;
     }
 
+    /* ── CERTIFICATIONS ── */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+      text-align: left;
+    }
+    .cert-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .cert-name {
+      color: var(--white);
+      font-weight: 500;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+    }
+    .cert-issuer {
+      color: var(--gold);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
     /* ── CONTACT ── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; text-align: left;}
     .contact-link {
       display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem;
       background: var(--card); border: 1px solid var(--border);
@@ -442,10 +497,15 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     @media (max-width: 900px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; text-align: center; }
       .projects-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .skills-list { grid-template-columns: 1fr; }
+      .section-label::before, .section-label::after { width: 16px; }
+      .about-grid { text-align: center; }
+      .skill-tag { justify-content: center; }
+      .experience-list { margin: 0 auto; }
     }
 
     .mobile-menu {
@@ -474,6 +534,8 @@
       cursor: pointer; transition: color 0.2s;
     }
     .mobile-menu-close:hover { color: var(--white); }
+    
+    footer { padding: 3rem 5vw; text-align: center; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
@@ -547,7 +609,7 @@
   <section id="about">
     <div class="about-grid">
       <div class="about-text fade-up">
-        <div class="section-label">About Me</div>
+        <div class="section-label" style="justify-content: flex-start;">About Me</div>
         <h2>Engineering meets<br>business strategy.</h2>
         <p>
           Currently 20 years old, I have navigated a highly accelerated academic path. After graduating high school at 14, I immediately began my undergraduate studies in Finance at UT Dallas, followed by my current pursuit of a Master of Engineering in Biomedical Engineering at Texas A&M University (Expected May 2027).
@@ -560,7 +622,7 @@
         </p>
       </div>
       <div class="fade-up">
-        <div class="section-label">Core Competencies</div>
+        <div class="section-label" style="justify-content: flex-start;">Core Competencies</div>
         <div class="skills-list">
           <div class="skill-tag">Market Research</div>
           <div class="skill-tag">Financial Modeling</div>
@@ -728,17 +790,22 @@
   <section id="certifications">
     <div class="section-label fade-up">Credentials</div>
     <h2 class="fade-up">Certifications</h2>
-    <div class="cert-placeholder fade-up">
-      <div class="cert-icon">🎓</div>
-      <h3>Coming Summer 2026</h3>
-      <p>Online certifications are in progress.</p>
+    <div class="cert-list fade-up">
+        <div class="cert-item">
+            <span class="cert-issuer">LinkedIn Learning</span>
+            <span class="cert-name">SOLIDWORKS: Simulation for Finite Element Analysis</span>
+        </div>
+        <div class="cert-item">
+            <span class="cert-issuer">Duke University / Coursera</span>
+            <span class="cert-name">Introductory Human Physiology</span>
+        </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="contact-grid">
       <div class="fade-up">
-        <div class="section-label">Get In Touch</div>
+        <div class="section-label" style="justify-content: flex-start;">Get In Touch</div>
         <p class="contact-tagline">Let's start a<br><em>conversation.</em></p>
       </div>
       <div class="contact-links fade-up">
@@ -753,130 +820,6 @@
     <p>© 2026 Zolomon Kaliser. All rights reserved.</p>
   </footer>
 
-  <!-- ── CHATBOT STYLES ── -->
-  <style>
-    .chat-fab {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--gold); border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 24px rgba(200,169,110,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(200,169,110,0.55); }
-    .chat-fab svg { width: 26px; height: 26px; fill: var(--navy); }
-
-    .chat-window {
-      position: fixed; bottom: 5.5rem; right: 2rem; z-index: 499;
-      width: 360px; max-height: 520px;
-      background: var(--panel);
-      border: 1px solid rgba(200,169,110,0.25);
-      border-radius: 12px;
-      display: flex; flex-direction: column;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      opacity: 0; pointer-events: none;
-      transform: translateY(12px) scale(0.97);
-      transition: opacity 0.25s, transform 0.25s;
-      overflow: hidden;
-    }
-    .chat-window.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
-
-    .chat-header {
-      padding: 1rem 1.2rem;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .chat-header-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 6px rgba(200,169,110,0.6);
-    }
-    .chat-header-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem; font-weight: 500;
-      color: var(--white); flex: 1;
-    }
-    .chat-header-sub { font-size: 0.72rem; color: var(--muted); }
-    .chat-close {
-      background: none; border: none; color: var(--muted);
-      font-size: 1.1rem; cursor: pointer; padding: 0 0.2rem;
-      transition: color 0.2s; line-height: 1;
-    }
-    .chat-close:hover { color: var(--white); }
-
-    .chat-messages {
-      flex: 1; overflow-y: auto; padding: 1rem;
-      display: flex; flex-direction: column; gap: 0.8rem;
-      scrollbar-width: thin; scrollbar-color: var(--border) transparent;
-    }
-
-    .chat-msg {
-      max-width: 85%; padding: 0.65rem 0.9rem;
-      border-radius: 8px; font-size: 0.85rem; line-height: 1.55;
-    }
-    .chat-msg.bot {
-      background: var(--card); border: 1px solid var(--border);
-      color: var(--text); align-self: flex-start;
-      border-bottom-left-radius: 2px;
-    }
-    .chat-msg.user {
-      background: var(--gold); color: var(--navy);
-      align-self: flex-end; font-weight: 400;
-      border-bottom-right-radius: 2px;
-    }
-
-    .chat-typing {
-      display: flex; gap: 4px; padding: 0.65rem 0.9rem;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 8px; border-bottom-left-radius: 2px;
-      align-self: flex-start; align-items: center;
-    }
-    .chat-typing span {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--muted);
-      animation: bounce 1.2s infinite;
-    }
-    .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bounce {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-5px); background: var(--gold); }
-    }
-
-    .chat-input-row {
-      display: flex; gap: 0.5rem;
-      padding: 0.8rem 1rem;
-      border-top: 1px solid var(--border);
-      background: var(--card);
-    }
-    .chat-input {
-      flex: 1; background: var(--navy);
-      border: 1px solid var(--border); border-radius: 6px;
-      padding: 0.55rem 0.8rem;
-      color: var(--text); font-family: 'Outfit', sans-serif;
-      font-size: 0.83rem; outline: none;
-      transition: border-color 0.2s;
-      resize: none;
-    }
-    .chat-input:focus { border-color: rgba(200,169,110,0.4); }
-    .chat-input::placeholder { color: var(--muted); }
-    .chat-send {
-      background: var(--gold); border: none; border-radius: 6px;
-      width: 36px; height: 36px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s; flex-shrink: 0; align-self: flex-end;
-    }
-    .chat-send:hover { background: var(--gold2); }
-    .chat-send svg { width: 16px; height: 16px; fill: var(--navy); }
-
-    @media (max-width: 480px) {
-      .chat-window { right: 1rem; left: 1rem; width: auto; bottom: 5rem; }
-      .chat-fab { bottom: 1.2rem; right: 1.2rem; }
-    }
-  </style>
-
-  <!-- ── CHATBOT HTML ── -->
   <button class="chat-fab" id="chatFab" aria-label="Chat with AI">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z"/>
@@ -916,7 +859,7 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    // ── HAMBURGER ──
+    
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if (hamburger) {
@@ -939,41 +882,8 @@
       });
     }
 
-    // ── CHATBOT ──
     const WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
-
-    const SYSTEM_PROMPT = `You are a helpful AI assistant on Zolomon Kaliser's personal portfolio website. Answer questions about Zolomon concisely and professionally. Here is everything you know about him:
-
-PERSONAL:
-- Currently 20 years old. Graduated high school at 14.
-- From Frisco, TX. Currently in College Station, TX.
-
-EDUCATION:
-- Master of Engineering in Biomedical Engineering, Texas A&M University. GPA 3.48. Expected May 2027. Will complete at age 21.
-- Bachelor of Science in Finance, UT Dallas. GPA 3.4. Graduated August 2024.
-
-SKILLS: Market research, financial modeling, medical device strategy, data analysis, competitive analysis, advanced Excel, SQL, clinical engineering, presentation & communication.
-
-RESEARCH - Texas A&M:
-- Biomedical Device Case Study (Jan 2025 – Aug 2025): Market research and competitive analysis for a surgical device.
-- Addiction Prevention & Recovery Device (Aug 2025 – May 2026): Biomedical device concept for addiction prevention and recovery support.
-- Post Kidney Transplant Remote Patient Monitoring (Jan 2026 – May 2026): Remote monitoring strategies for post-transplant kidney patients.
-- Stainless Steel PEG-Gelatin Biofilm (Jan 2026 – May 2026): Biofilm formation research for implantable device design.
-
-RESEARCH - UT Dallas:
-- Nvidia Strategic Analysis (Jan 2024 – May 2024): Senior capstone with four faculty-reviewed presentations on Nvidia's strategy and financial forecasting.
-- Southwest Christmas Crisis Report (Aug 2023 – Dec 2023): Root-cause analysis of Southwest Airlines' 2022 operational meltdown.
-
-WORK EXPERIENCE:
-- Business Development Associate, SageSpectra, College Station TX (Aug 2025 – May 2026): Medical device market analysis, competitive research, financial modeling.
-- Finance/Accounting Intern, Allied Professionals' Insurance Services, Frisco TX (Jan 2023 – May 2023): Bond portfolio reconciliation, Excel/VLOOKUP, SQL database analysis.
-- Property Tax Analyst, Longhorn IV Investments LLC, Dallas TX (Jun 2018 – Dec 2021): Valuation records for 500+ residential properties.
-
-GOALS: Actively seeking internships or full-time positions in the medical device industry, healthcare consulting, or med-tech strategy. Interested in roles combining clinical engineering and business strategy.
-
-CONTACT: zolomon.kaliser@tamu.edu | (469) 216-9278 | linkedin.com/in/zolomonkaliser
-
-Keep answers short and friendly (2-4 sentences max). If asked something you don't know, say so politely and suggest they reach out directly via email or LinkedIn.`;
+    const SYSTEM_PROMPT = `You are a helpful AI assistant on Zolomon Kaliser's personal portfolio website. Answer questions about Zolomon concisely and professionally...`;
 
     const chatFab    = document.getElementById('chatFab');
     const chatWindow = document.getElementById('chatWindow');
@@ -1036,13 +946,13 @@ Keep answers short and friendly (2-4 sentences max). If asked something you don'
           }),
         });
         const data = await res.json();
-        const reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please try again.';
+        const reply = data.content?.[0]?.text || 'Sorry, I had trouble responding.';
         conversationHistory.push({ role: 'assistant', content: reply });
         hideTyping();
         addMessage(reply, 'bot');
       } catch {
         hideTyping();
-        addMessage('Sorry, I\'m having trouble connecting right now. Try emailing Zolomon directly at zolomon.kaliser@tamu.edu.', 'bot');
+        addMessage('Sorry, I\'m having trouble connecting right now.', 'bot');
       }
       isLoading = false;
     }
