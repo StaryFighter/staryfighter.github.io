@@ -259,9 +259,9 @@
     }
 
     .project-num {
-      font-family: 'Outfit', sans-serif; /* Matched to date font */
+      font-family: 'Outfit', sans-serif;
       font-size: 3rem; font-weight: 500;
-      color: var(--gold); /* Made darker/visible to match date */
+      color: var(--gold);
       line-height: 1; margin-bottom: 1.2rem;
       opacity: 0.8;
     }
@@ -292,6 +292,63 @@
     }
     .proj-bullets li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.6rem; }
     .proj-bullets li::before { content: '•'; color: var(--gold); }
+
+    /* ── TAMU IMAGE CARDS ── */
+    .tamu-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem; max-width: 1100px;
+    }
+
+    .tamu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .tamu-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,169,110,0.3);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .tamu-card-img {
+      width: 100%; height: 200px;
+      object-fit: cover; display: block;
+      background: var(--navy);
+    }
+
+    .tamu-card-img-placeholder {
+      width: 100%; height: 200px;
+      background: linear-gradient(135deg, #0d1117 0%, #12181f 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(200,169,110,0.2);
+      font-size: 3rem;
+    }
+
+    .tamu-card-body { padding: 1.4rem 1.6rem 1.6rem; }
+
+    .tamu-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 500;
+      color: var(--white); margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .tamu-card-date {
+      font-size: 0.72rem; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+
+    .tamu-card-desc {
+      font-size: 0.86rem; color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 700px) {
+      .tamu-grid { grid-template-columns: 1fr; }
+    }
 
     /* ── EDUCATION ── */
     .edu-grid {
@@ -430,6 +487,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="resume.pdf" target="_blank" style="color: var(--gold); border: 1px solid rgba(200,169,110,0.4); padding: 0.3rem 0.9rem; border-radius: 2px;">Resume</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -445,6 +503,7 @@
       <li><a href="#experience" class="mobile-link">Experience</a></li>
       <li><a href="#certifications" class="mobile-link">Certifications</a></li>
       <li><a href="#contact" class="mobile-link">Contact</a></li>
+      <li><a href="resume.pdf" target="_blank" class="mobile-link" style="color: var(--gold);">Resume</a></li>
     </ul>
   </div>
 
@@ -462,6 +521,7 @@
       <div class="hero-ctas">
         <a href="#projects" class="btn btn-primary">View My Work</a>
         <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+        <a href="resume.pdf" target="_blank" class="btn btn-outline">Resume ↗</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -534,59 +594,84 @@
   </section>
 
   <section id="projects">
-    <div class="section-label fade-up">Research</div>
-    <h2 class="fade-up">Academic Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card fade-up">
-        <div class="project-num">01</div>
-        <div class="project-title">Texas A&M Research</div>
-        <div class="project-date">2025 – 2026</div>
-        
-        <div class="sub-project-item">
-            <h4>Biomedical Device Case Study</h4>
-            <ul class="proj-bullets">
-                <li>Analyzed market drivers and sterilization impact for a specific surgical device.</li>
-            </ul>
-        </div>
-        <div class="sub-project-item">
-            <h4>Addiction Prevention & Recovery Device</h4>
-            <ul class="proj-bullets">
-                <li>Engineering solutions for patient monitoring and recovery engagement.</li>
-            </ul>
-        </div>
-        <div class="sub-project-item">
-            <h4>Post Kidney Transplant Monitoring</h4>
-            <ul class="proj-bullets">
-                <li>Evaluating remote patient monitoring systems for transplant outcomes.</li>
-            </ul>
-        </div>
-        <div class="sub-project-item">
-            <h4>Stainless Steel PEG-Gelatin Biofilm</h4>
-            <ul class="proj-bullets">
-                <li>Researched biofilm coatings to improve biocompatibility of implants.</li>
-            </ul>
+    <div class="section-label fade-up">Texas A&amp;M University</div>
+    <h2 class="fade-up">Graduate Research Projects</h2>
+    <div class="tamu-grid">
+
+      <div class="tamu-card fade-up">
+        <img src="images/biomedical-device.jpg" alt="Biomedical Device Case Study" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="tamu-card-img-placeholder" style="display:none">🔬</div>
+        <div class="tamu-card-body">
+          <div class="tamu-card-title">Biomedical Device Case Study</div>
+          <div class="tamu-card-date">Jan 2025 &ndash; Aug 2025 &nbsp;&middot;&nbsp; Guided Research</div>
+          <p class="tamu-card-desc">Analyzed market drivers and sterilization impact for a specific surgical device, including competitive landscape and clinical engineering considerations.</p>
         </div>
       </div>
 
+      <div class="tamu-card fade-up">
+        <img src="images/addiction-device.jpg" alt="Addiction Prevention Device" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="tamu-card-img-placeholder" style="display:none">💊</div>
+        <div class="tamu-card-body">
+          <div class="tamu-card-title">Addiction Prevention &amp; Recovery Device</div>
+          <div class="tamu-card-date">Aug 2025 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
+          <p class="tamu-card-desc">Engineering solutions for patient monitoring and recovery engagement, assessing clinical need and feasibility of a biomedical device concept.</p>
+        </div>
+      </div>
+
+      <div class="tamu-card fade-up">
+        <img src="images/kidney-monitoring.jpg" alt="Kidney Transplant Monitoring" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="tamu-card-img-placeholder" style="display:none">🫀</div>
+        <div class="tamu-card-body">
+          <div class="tamu-card-title">Post Kidney Transplant Remote Patient Monitoring</div>
+          <div class="tamu-card-date">Jan 2026 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
+          <p class="tamu-card-desc">Evaluated remote monitoring strategies and device solutions to improve outcomes and reduce in-person follow-up burden for post-transplant kidney patients.</p>
+        </div>
+      </div>
+
+      <div class="tamu-card fade-up">
+        <img src="images/biofilm.jpg" alt="Stainless Steel Biofilm Research" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="tamu-card-img-placeholder" style="display:none">🧫</div>
+        <div class="tamu-card-body">
+          <div class="tamu-card-title">Stainless Steel PEG-Gelatin Biofilm</div>
+          <div class="tamu-card-date">Jan 2026 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
+          <p class="tamu-card-desc">Researched biofilm formation on stainless steel with PEG-Gelatin coatings to improve biocompatibility and inform implantable device design.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects-utd" style="border-bottom: 1px solid var(--border);">
+    <div class="section-label fade-up">UT Dallas</div>
+    <h2 class="fade-up">Undergraduate Research Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-num">01</div>
+        <div class="project-title">Nvidia Strategic Analysis</div>
+        <div class="project-date">Jan 2024 &ndash; May 2024 &nbsp;&middot;&nbsp; Senior Capstone</div>
+        <ul class="proj-bullets">
+          <li>Delivered four faculty-reviewed presentations on Nvidia's competitive position and long-term strategy.</li>
+          <li>Built financial models and market forecasts based on AI hardware demand cycles.</li>
+        </ul>
+      </div>
       <div class="project-card fade-up">
         <div class="project-num">02</div>
-        <div class="project-title">UT Dallas Research</div>
-        <div class="project-date">2023 – 2024</div>
-        
-        <div class="sub-project-item">
-            <h4>Nvidia Strategic Analysis</h4>
-            <ul class="proj-bullets">
-                <li>Developed competitive analysis and financial modeling of Nvidia’s market position.</li>
-                <li>Presented strategic growth forecasts based on AI hardware demand cycles.</li>
-            </ul>
-        </div>
-        <div class="sub-project-item">
-            <h4>Southwest Christmas Crisis Analysis</h4>
-            <ul class="proj-bullets">
-                <li>Analyzed root causes of the 2022 operational meltdown and recovery measures.</li>
-                <li>Evaluated software infrastructure failures and subsequent leadership responses.</li>
-            </ul>
-        </div>
+        <div class="project-title">Southwest Christmas Crisis Report</div>
+        <div class="project-date">Aug 2023 &ndash; Dec 2023 &nbsp;&middot;&nbsp; Research Report</div>
+        <ul class="proj-bullets">
+          <li>Analyzed root causes of Southwest Airlines' 2022 operational meltdown and leadership recovery measures.</li>
+          <li>Directed written and oral presentation to a class of 30+ students.</li>
+        </ul>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-num">03</div>
+        <div class="project-title">U-Pods</div>
+        <div class="project-date">Jan 2023 &ndash; May 2023 &nbsp;&middot;&nbsp; Junior Marketing Project</div>
+        <ul class="proj-bullets">
+          <li>Conceptualized a campus sleep pod business targeting commuter students with long class gaps, providing affordable on-campus rest in libraries and high-traffic buildings.</li>
+          <li>Surveyed ~100 students to validate demand, receiving strong positive feedback on affordability and convenience.</li>
+          <li>Designed an operational model creating on-campus student employment while filling an unmet student wellness need.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -855,7 +940,7 @@
     }
 
     // ── CHATBOT ──
-    const WORKER_URL = 'https://soft-frost-a08f.zkaliser2024.workers.dev/';
+    const WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
 
     const SYSTEM_PROMPT = `You are a helpful AI assistant on Zolomon Kaliser's personal portfolio website. Answer questions about Zolomon concisely and professionally. Here is everything you know about him:
 
