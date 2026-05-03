@@ -372,7 +372,51 @@
     @media (max-width: 900px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
     }
+
+    .hamburger {
+      display: none;
+      flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none;
+      cursor: pointer; padding: 6px; z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 150;
+      background: rgba(7,9,15,0.97);
+      backdrop-filter: blur(20px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu ul { list-style: none; text-align: center; }
+    .mobile-menu ul li { padding: 1rem 0; }
+    .mobile-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 300;
+      color: var(--white); text-decoration: none;
+      letter-spacing: 0.05em; transition: color 0.2s;
+    }
+    .mobile-link:hover { color: var(--gold); }
+    .mobile-menu-close {
+      position: absolute; top: 1.6rem; right: 5vw;
+      background: none; border: none;
+      color: var(--muted); font-size: 1.4rem;
+      cursor: pointer; transition: color 0.2s;
+    }
+    .mobile-menu-close:hover { color: var(--white); }
   </style>
 </head>
 <body>
@@ -382,12 +426,27 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Research</a></li>
+      <li><a href="#projects">Research Projects</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">✕</button>
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#education" class="mobile-link">Education</a></li>
+      <li><a href="#projects" class="mobile-link">Research Projects</a></li>
+      <li><a href="#experience" class="mobile-link">Experience</a></li>
+      <li><a href="#certifications" class="mobile-link">Certifications</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
 
   <section id="hero">
     <div class="hero-bg-line"></div>
