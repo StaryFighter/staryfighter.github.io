@@ -32,6 +32,7 @@
       font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
+      text-align: center; /* Centered all text */
     }
 
     /* ── NOISE OVERLAY ── */
@@ -75,7 +76,7 @@
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      display: flex; align-items: center;
+      display: flex; align-items: center; justify-content: center; /* Centered container */
       padding: 120px 5vw 80px 5vw;
       position: relative;
       overflow: hidden;
@@ -95,6 +96,7 @@
     .hero-content {
       position: relative; z-index: 1;
       max-width: 820px;
+      margin: 0 auto;
     }
 
     .hero-eyebrow {
@@ -102,6 +104,7 @@
       text-transform: uppercase; color: var(--gold);
       font-weight: 500; margin-bottom: 1.4rem;
       display: flex; align-items: center; gap: 0.8rem;
+      justify-content: center; /* Center eyebrow line */
     }
 
     .hero-eyebrow::before {
@@ -121,12 +124,13 @@
 
     .hero-desc {
       font-size: 1.05rem; color: var(--muted);
-      max-width: 520px; margin-bottom: 2.8rem;
+      max-width: 520px; margin: 0 auto 2.8rem auto; /* Center desc */
       line-height: 1.8;
     }
 
     .hero-ctas {
       display: flex; gap: 1rem; flex-wrap: wrap;
+      justify-content: center; /* Center buttons */
     }
 
     .btn {
@@ -167,6 +171,7 @@
       display: flex; gap: 3rem; margin-top: 4rem;
       padding-top: 3rem;
       border-top: 1px solid var(--border);
+      justify-content: center; /* Center stats */
     }
 
     .stat-num {
@@ -190,6 +195,7 @@
       text-transform: uppercase; color: var(--gold);
       font-weight: 500; margin-bottom: 1.2rem;
       display: flex; align-items: center; gap: 0.8rem;
+      justify-content: center; /* Center labels */
     }
 
     .section-label::before {
@@ -212,6 +218,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 5rem; align-items: start;
       max-width: 1100px;
+      margin: 0 auto; /* Center grid */
     }
 
     .about-text p {
@@ -223,6 +230,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
+      align-items: center; /* Center list items */
     }
 
     .skill-tag {
@@ -234,6 +242,7 @@
       color: var(--text);
       letter-spacing: 0.03em;
       display: flex; align-items: center; gap: 0.8rem;
+      width: fit-content;
     }
 
     .skill-tag::before {
@@ -248,6 +257,7 @@
     .projects-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem; max-width: 1100px;
+      margin: 0 auto; /* Center grid */
     }
 
     .project-card {
@@ -289,6 +299,7 @@
 
     .proj-bullets {
       list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+      align-items: center; /* Center bullets */
     }
     .proj-bullets li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.6rem; }
     .proj-bullets li::before { content: '•'; color: var(--gold); }
@@ -297,6 +308,7 @@
     .tamu-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem; max-width: 1100px;
+      margin: 0 auto; /* Center grid */
     }
 
     .tamu-card {
@@ -316,15 +328,15 @@
 
     .tamu-card-img {
       width: 100%;
-      height: 220px;
-      object-fit: contain;
+      height: 250px; /* Increased height to fill frame more */
+      object-fit: cover; /* Fill frame without being cut out by avoiding containment */
       background: #090d13;
-      padding: 1rem;
+      padding: 0; /* Removed padding so image fills frame */
       display: block;
     }
 
     .tamu-card-img-placeholder {
-      width: 100%; height: 220px;
+      width: 100%; height: 250px;
       background: linear-gradient(135deg, #0d1117 0%, #12181f 100%);
       display: flex; align-items: center; justify-content: center;
       color: rgba(200,169,110,0.2);
@@ -359,6 +371,7 @@
     .edu-grid {
       display: flex; flex-direction: column;
       gap: 2rem; max-width: 900px;
+      margin: 0 auto; /* Center grid */
     }
 
     .edu-card {
@@ -397,11 +410,11 @@
       gap: 0; max-width: 900px;
       border-left: 1px solid var(--border);
       padding-left: 2.5rem;
-      margin-left: 1rem;
+      margin: 0 auto; /* Center list */
     }
 
     .exp-item { position: relative; padding-bottom: 3.5rem; }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; align-items: center;}
     .exp-bullets li { font-size: 0.88rem; color: var(--muted); display: flex; gap: 0.8rem; }
     .exp-bullets li::before { content: '→'; color: var(--gold); }
 
@@ -418,7 +431,7 @@
     }
 
     /* ── CONTACT ── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; margin: 0 auto; }
     .contact-link {
       display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem;
       background: var(--card); border: 1px solid var(--border);
@@ -426,6 +439,10 @@
       transition: all 0.2s;
     }
     .contact-link:hover { border-color: var(--gold); color: var(--white); }
+
+    .contact-links {
+        display: flex; flex-direction: column; gap: 1rem; align-items: center;
+    }
 
     /* ── FADE-IN ── */
     .fade-up { opacity: 0; transform: translateY(24px); transition: 0.7s ease; }
@@ -479,6 +496,15 @@
       cursor: pointer; transition: color 0.2s;
     }
     .mobile-menu-close:hover { color: var(--white); }
+
+    .cert-placeholder {
+        text-align: center;
+    }
+    
+    footer {
+        padding: 2rem;
+        border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -720,7 +746,7 @@
   <section id="opportunities" style="background: var(--panel); border-top: 1px solid var(--border);">
     <div class="section-label fade-up">Looking Ahead</div>
     <h2 class="fade-up">Future Opportunities</h2>
-    <div class="edu-card fade-up" style="max-width: 900px; margin-top: 2rem;">
+    <div class="edu-card fade-up" style="max-width: 900px; margin: 2rem auto 0 auto;">
         <p class="hero-desc" style="margin-bottom: 1.2rem;">
             I am currently <strong>actively seeking summer 2027 internships or full-time opportunities</strong> where I can apply my unique background in Finance and Biomedical Engineering. 
         </p>
@@ -955,7 +981,7 @@ EDUCATION:
 - Master of Engineering in Biomedical Engineering, Texas A&M University. GPA 3.48. Expected May 2027. Will complete at age 21.
 - Bachelor of Science in Finance, UT Dallas. GPA 3.4. Graduated August 2024.
 
-SKILLS: Market research, financial modeling, medical device strategy, data analysis, competitive analysis, advanced Excel, SQL, clinical engineering, presentation & communication.
+SKILLS: Market research, medical device strategy, competitive analysis, product strategy, financial modeling, data analysis, advanced Excel, SQL, project management, stakeholder management, presentation & communication, clinical engineering.
 
 RESEARCH - Texas A&M:
 - Biomedical Device Case Study (Jan 2025 – Aug 2025): Market research and competitive analysis for a surgical device. Focused on cost-effective material selection for multiple sterilization cycles.
