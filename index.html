@@ -11,14 +11,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #07090f;
-      --panel:  #0d1117;
-      --card:   #12181f;
-      --border: rgba(255,255,255,0.07);
+      --navy:   #0e1420;
+      --panel:  #151d2b;
+      --card:   #1c2636;
+      --border: rgba(255,255,255,0.09);
       --gold:   #c8a96e;
       --gold2:  #e4c98a;
-      --text:   #dde1ea;
-      --muted:  #7a8394;
+      --text:   #e2e6ef;
+      --muted:  #95a0b4;
       --white:  #f0f2f6;
     }
 
@@ -438,6 +438,9 @@
       text-transform: uppercase; letter-spacing: 0.06em;
     }
 
+    #experience { padding-bottom: 4rem; }
+    #certifications { padding-top: 4rem; }
+
     /* ── CERTIFICATIONS ── */
     .cert-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto;
@@ -482,6 +485,50 @@
       .projects-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      /* Hero — prevent overflow and make stats wrap nicely */
+      #hero { padding: 100px 6vw 60px 6vw; overflow: hidden; }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem 1.5rem;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .btn { width: 100%; max-width: 280px; justify-content: center; }
+
+      h1 {
+        font-size: clamp(3rem, 12vw, 4.5rem);
+      }
+
+      .hero-eyebrow {
+        font-size: 0.72rem;
+      }
+
+      .hero-desc {
+        font-size: 0.95rem;
+      }
+
+      /* Tighten section padding on mobile */
+      section { padding: 4.5rem 6vw; }
+
+      #experience { padding-bottom: 3rem; }
+      #certifications { padding-top: 3rem; }
+
+      /* Experience timeline - reduce left indent on small screens */
+      .experience-list {
+        padding-left: 1.4rem;
+      }
     }
 
     .mobile-menu {
