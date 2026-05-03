@@ -369,13 +369,6 @@
     .fade-up { opacity: 0; transform: translateY(24px); transition: 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 900px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-    }
-
     .hamburger {
       display: none;
       flex-direction: column; justify-content: center;
@@ -390,6 +383,13 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
 
     .mobile-menu {
       position: fixed; inset: 0; z-index: 150;
@@ -478,7 +478,7 @@
         </div>
         <div>
           <div class="stat-num">3 Years</div>
-          <div class="stat-label">Property Tax Analysis (500+)</div>
+          <div class="stat-label">Homes Valued (500+)</div>
         </div>
       </div>
     </div>
