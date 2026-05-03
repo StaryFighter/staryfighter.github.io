@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE OVERLAY ── */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -59,54 +58,34 @@
       text-decoration: none;
     }
 
-    .nav-links {
-      display: flex; gap: 2.2rem; list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
       color: var(--muted); font-size: 0.82rem;
       text-decoration: none; letter-spacing: 0.1em;
       text-transform: uppercase; font-weight: 400;
       transition: color 0.2s;
     }
-
     .nav-links a:hover { color: var(--gold); }
 
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      display: flex; align-items: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 120px 5vw 80px 5vw;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
+      text-align: center;
     }
 
-    .hero-bg-line {
-      position: absolute;
-      top: 50%; right: -10%;
-      width: 55vw; height: 55vw;
-      border-radius: 50%;
-      border: 1px solid rgba(200,169,110,0.07);
-      transform: translateY(-50%);
-    }
-    .hero-bg-line:nth-child(2) { width: 40vw; height: 40vw; border-color: rgba(200,169,110,0.05); }
-    .hero-bg-line:nth-child(3) { width: 25vw; height: 25vw; border-color: rgba(200,169,110,0.04); }
-
-    .hero-content {
-      position: relative; z-index: 1;
-      max-width: 820px;
-    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
 
     .hero-eyebrow {
       font-size: 0.78rem; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--gold);
       font-weight: 500; margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.8rem;
+      display: inline-flex; align-items: center; gap: 0.8rem;
     }
-
-    .hero-eyebrow::before {
-      content: ''; display: block;
-      width: 32px; height: 1px; background: var(--gold);
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
     }
 
     h1 {
@@ -114,371 +93,131 @@
       font-size: clamp(3.5rem, 8vw, 6.5rem);
       font-weight: 300; line-height: 1.05;
       color: var(--white); margin-bottom: 1.6rem;
-      letter-spacing: -0.01em;
     }
-
     h1 span { color: var(--gold); font-style: italic; }
 
     .hero-desc {
       font-size: 1.05rem; color: var(--muted);
-      max-width: 520px; margin-bottom: 2.8rem;
+      max-width: 520px; margin: 0 auto 2.8rem auto;
       line-height: 1.8;
     }
 
-    .hero-ctas {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.8rem;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.82rem; font-weight: 500;
+      padding: 0.75rem 1.8rem; font-size: 0.82rem; font-weight: 500;
       letter-spacing: 0.08em; text-transform: uppercase;
-      text-decoration: none; border-radius: 2px;
-      transition: all 0.25s;
-      cursor: pointer; border: none;
+      text-decoration: none; border-radius: 2px; transition: all 0.25s;
     }
-
-    .btn-primary {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .btn-primary:hover {
-      background: var(--gold2);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 28px rgba(200,169,110,0.25);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-1px);
-    }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
 
     .hero-stats {
       display: flex; gap: 3rem; margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--border);
+      padding-top: 3rem; border-top: 1px solid var(--border);
+      justify-content: center;
     }
 
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem; font-weight: 400;
-      color: var(--white); line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.75rem; color: var(--muted);
-      letter-spacing: 0.08em; text-transform: uppercase;
-      margin-top: 0.3rem;
-    }
-
-    /* ── SECTIONS ── */
-    section { padding: 7rem 5vw; position: relative; }
+    /* ── SECTIONS GENERAL ── */
+    section { padding: 7rem 5vw; display: flex; flex-direction: column; align-items: center; text-align: center; }
 
     .section-label {
-      font-size: 1rem;
-      letter-spacing: 0.22em;
+      font-size: 1rem; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--gold);
       font-weight: 500; margin-bottom: 1.2rem;
       display: flex; align-items: center; gap: 0.8rem;
     }
-
-    .section-label::before {
-      content: ''; display: block;
-      width: 24px; height: 1px; background: var(--gold);
+    .section-label::before, .section-label::after {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
     }
 
     h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 400; color: var(--white);
-      line-height: 1.2; margin-bottom: 1.5rem;
+      line-height: 1.2; margin-bottom: 3rem;
     }
 
-    /* ── ABOUT ── */
-    #about { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: start;
-      max-width: 1100px;
-    }
-
-    .about-text p {
-      color: var(--muted); line-height: 1.9;
-      font-size: 1rem; margin-bottom: 1.2rem;
-    }
-
-    .skills-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .skill-tag {
-      padding: 0.8rem 1.2rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      font-size: 1.1rem;
-      color: var(--text);
-      letter-spacing: 0.03em;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-
-    .skill-tag::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--gold); border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* ── PROJECTS ── */
-    #projects { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem; max-width: 1100px;
-    }
-
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px; padding: 2.2rem;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      position: relative; overflow: hidden;
-    }
-
-    .project-num {
-      font-family: 'Outfit', sans-serif;
-      font-size: 3rem; font-weight: 500;
-      color: var(--gold);
-      line-height: 1; margin-bottom: 1.2rem;
-      opacity: 0.8;
-    }
-
-    .project-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem; font-weight: 500;
-      color: var(--white); margin-bottom: 0.4rem;
-    }
-
-    .project-date {
-      font-size: 0.75rem; color: var(--gold);
-      letter-spacing: 0.08em; text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .sub-project-item { margin-bottom: 1.5rem; }
-
-    .sub-project-item h4 {
-        font-size: 1.1rem;
-        font-family: 'Cormorant Garamond', serif;
-        color: var(--white);
-        margin-bottom: 6px;
-    }
-
-    .proj-bullets {
-      list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
-    }
-    .proj-bullets li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.6rem; }
-    .proj-bullets li::before { content: '•'; color: var(--gold); }
-
-    /* ── TAMU IMAGE CARDS ── */
+    /* ── TAMU PROJECT CARDS (FIXED IMAGES) ── */
     .tamu-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem; max-width: 1100px;
+      gap: 2rem; max-width: 1100px; width: 100%;
+      text-align: left;
     }
 
     .tamu-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 6px; overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
+      border-radius: 8px; overflow: hidden;
+      display: flex; flex-direction: column;
     }
 
-    .tamu-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(200,169,110,0.3);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    .tamu-img-container {
+      width: 100%;
+      height: 260px; /* Consistent height */
+      background: #fff; /* White background for the diagrams */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 10px; /* Tiny buffer to ensure no edges are clipped */
     }
 
     .tamu-card-img {
       width: 100%;
-      height: 220px;
-      object-fit: contain;
-      background: #090d13;
-      padding: 1rem;
+      height: 100%;
+      object-fit: contain; /* Shows full image without cropping */
       display: block;
     }
 
-    .tamu-card-img-placeholder {
-      width: 100%; height: 220px;
-      background: linear-gradient(135deg, #0d1117 0%, #12181f 100%);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(200,169,110,0.2);
-      font-size: 3rem;
+    .tamu-card-body { padding: 1.8rem; flex-grow: 1; }
+    .tamu-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 0.4rem; }
+    .tamu-card-date { font-size: 0.75rem; color: var(--gold); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .tamu-card-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── EDUCATION & EXPERIENCE ── */
+    .edu-grid, .experience-list { 
+        max-width: 900px; width: 100%; 
+        display: flex; flex-direction: column; gap: 1.5rem; 
+        text-align: left;
     }
 
-    .tamu-card-body { padding: 1.4rem 1.6rem 1.6rem; flex: 1; }
-
-    .tamu-card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; font-weight: 500;
-      color: var(--white); margin-bottom: 0.3rem;
-      line-height: 1.3;
-    }
-
-    .tamu-card-date {
-      font-size: 0.72rem; color: var(--gold);
-      letter-spacing: 0.08em; text-transform: uppercase;
-      margin-bottom: 0.7rem;
-    }
-
-    .tamu-card-desc {
-      font-size: 0.86rem; color: var(--muted);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 700px) {
-      .tamu-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── EDUCATION ── */
-    .edu-grid {
-      display: flex; flex-direction: column;
-      gap: 2rem; max-width: 900px;
-    }
-
-    .edu-card {
+    .edu-card, .exp-item {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 4px; padding: 2rem 2.2rem;
+      padding: 2.2rem; border-radius: 4px;
       position: relative;
     }
 
     .edu-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; width: 4px; height: 100%;
-      background: var(--gold);
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gold);
     }
 
-    .edu-degree-header {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.3rem; font-weight: 500;
-      color: var(--white); margin-bottom: 0.3rem;
-    }
-
-    .edu-university {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-
-    .edu-stats-row {
-      font-size: 0.9rem; color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-
-    /* ── EXPERIENCE ── */
-    .experience-list {
-      display: flex; flex-direction: column;
-      gap: 0; max-width: 900px;
-      border-left: 1px solid var(--border);
-      padding-left: 2.5rem;
-      margin-left: 1rem;
-    }
-
-    .exp-item { position: relative; padding-bottom: 3.5rem; }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .exp-bullets li { font-size: 0.88rem; color: var(--muted); display: flex; gap: 0.8rem; }
+    .exp-role { font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+    .exp-company { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--white); margin: 0.2rem 0; }
+    .exp-bullets, .proj-bullets { list-style: none; margin-top: 1rem; }
+    .exp-bullets li, .proj-bullets li { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem; display: flex; gap: 0.8rem; }
     .exp-bullets li::before { content: '→'; color: var(--gold); }
 
-    .exp-company {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 500;
-      color: var(--white);
+    /* ── PROJECT GRID (UTD) ── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem; max-width: 1100px; width: 100%; text-align: left;
+    }
+    .project-card { background: var(--card); border: 1px solid var(--border); padding: 2rem; border-radius: 4px; }
+    .project-num { font-size: 2.5rem; color: var(--gold); opacity: 0.5; font-weight: 600; margin-bottom: 1rem; }
+
+    /* ── MOBILE RESPONSIVENESS ── */
+    @media (max-width: 900px) {
+      .tamu-grid, .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
 
-    .exp-role {
-      font-size: 0.85rem; color: var(--gold);
-      font-weight: 500; margin-bottom: 0.2rem;
-      text-transform: uppercase; letter-spacing: 0.06em;
-    }
-
-    /* ── CONTACT ── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1000px; }
-    .contact-link {
-      display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem;
-      background: var(--card); border: 1px solid var(--border);
-      text-decoration: none; color: var(--text); border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .contact-link:hover { border-color: var(--gold); color: var(--white); }
-
-    /* ── FADE-IN ── */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: 0.7s ease; }
+    .fade-up { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    .hamburger {
-      display: none;
-      flex-direction: column; justify-content: center;
-      gap: 5px; background: none; border: none;
-      cursor: pointer; padding: 6px; z-index: 200;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--white); border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 900px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-    }
-
-    .mobile-menu {
-      position: fixed; inset: 0; z-index: 150;
-      background: rgba(7,9,15,0.97);
-      backdrop-filter: blur(20px);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
-    .mobile-menu ul { list-style: none; text-align: center; }
-    .mobile-menu ul li { padding: 1rem 0; }
-    .mobile-link {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem; font-weight: 300;
-      color: var(--white); text-decoration: none;
-      letter-spacing: 0.05em; transition: color 0.2s;
-    }
-    .mobile-link:hover { color: var(--gold); }
-    .mobile-menu-close {
-      position: absolute; top: 1.6rem; right: 5vw;
-      background: none; border: none;
-      color: var(--muted); font-size: 1.4rem;
-      cursor: pointer; transition: color 0.2s;
-    }
-    .mobile-menu-close:hover { color: var(--white); }
+    footer { padding: 4rem 5vw; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.8rem; }
   </style>
 </head>
 <body>
@@ -488,95 +227,34 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Research Projects</a></li>
+      <li><a href="#projects">Research</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="resume.pdf" target="_blank" style="color: var(--gold); border: 1px solid rgba(200,169,110,0.4); padding: 0.3rem 0.9rem; border-radius: 2px;">Resume</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">✕</button>
-    <ul>
-      <li><a href="#about" class="mobile-link">About</a></li>
-      <li><a href="#education" class="mobile-link">Education</a></li>
-      <li><a href="#projects" class="mobile-link">Research Projects</a></li>
-      <li><a href="#experience" class="mobile-link">Experience</a></li>
-      <li><a href="#certifications" class="mobile-link">Certifications</a></li>
-      <li><a href="#contact" class="mobile-link">Contact</a></li>
-      <li><a href="resume.pdf" target="_blank" class="mobile-link" style="color: var(--gold);">Resume</a></li>
-    </ul>
-  </div>
-
   <section id="hero">
-    <div class="hero-bg-line"></div>
-    <div class="hero-bg-line"></div>
-    <div class="hero-bg-line"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Biomedical Engineering &amp; Finance</div>
       <h1>Zolomon<br><span>Kaliser</span></h1>
-      <p class="hero-desc">
-        Graduate researcher at Texas A&amp;M University with a background in finance —
-        bridging clinical engineering, market strategy, and data-driven decision-making.
-      </p>
+      <p class="hero-desc">Graduate researcher at Texas A&amp;M University bridging clinical engineering and market strategy.</p>
       <div class="hero-ctas">
         <a href="#projects" class="btn btn-primary">View My Work</a>
         <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-        <a href="resume.pdf" target="_blank" class="btn btn-outline">Resume ↗</a>
       </div>
       <div class="hero-stats">
-        <div>
-          <div class="stat-num">3.48</div>
-          <div class="stat-label">Graduate GPA</div>
-        </div>
-        <div>
-          <div class="stat-num">7</div>
-          <div class="stat-label">Research Projects</div>
-        </div>
-        <div>
-          <div class="stat-num">1 Year</div>
-          <div class="stat-label">MedTech Market Research</div>
-        </div>
-        <div>
-          <div class="stat-num">3 Years</div>
-          <div class="stat-label">Homes Valued (500+)</div>
-        </div>
+        <div><div class="stat-num" style="font-size: 2.4rem; color: white;">3.48</div><div class="stat-label" style="font-size: 0.7rem; color: var(--gold); text-transform: uppercase;">Graduate GPA</div></div>
+        <div style="width: 1px; background: var(--border);"></div>
+        <div><div class="stat-num" style="font-size: 2.4rem; color: white;">7</div><div class="stat-label" style="font-size: 0.7rem; color: var(--gold); text-transform: uppercase;">Research Projects</div></div>
       </div>
     </div>
   </section>
 
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-text fade-up">
-        <div class="section-label">About Me</div>
-        <h2>Engineering meets<br>business strategy.</h2>
-        <p>
-          Currently 20 years old, I have navigated a highly accelerated academic path. After graduating high school at 14, I immediately began my undergraduate studies in Finance at UT Dallas, followed by my current pursuit of a Master of Engineering in Biomedical Engineering at Texas A&M University (Expected May 2027).
-        </p>
-        <p>
-          By the time I complete my Master's at age 21, I will have bridged the gap between complex clinical engineering and high-level strategic finance. I am deeply interested in how rigorous financial modeling and market analysis can optimize decision-making within the medical device industry.
-        </p>
-        <p>
-          My background allows me to evaluate innovation through both a technical and commercial lens, ensuring that life-saving technologies are not only functional but also strategically viable.
-        </p>
-      </div>
-      <div class="fade-up">
-        <div class="section-label">Core Competencies</div>
-        <div class="skills-list">
-          <div class="skill-tag">Market Research</div>
-          <div class="skill-tag">Financial Modeling</div>
-          <div class="skill-tag">Medical Device Strategy</div>
-          <div class="skill-tag">Data Analysis</div>
-          <div class="skill-tag">Competitive Analysis</div>
-          <div class="skill-tag">Advanced Excel</div>
-          <div class="skill-tag">Clinical Engineering</div>
-          <div class="skill-tag">Presentation &amp; Communication</div>
-        </div>
-      </div>
+  <section id="about" style="background: var(--panel);">
+    <div class="section-label fade-up">About Me</div>
+    <h2 class="fade-up">Engineering meets business strategy.</h2>
+    <div class="hero-desc fade-up" style="max-width: 800px; text-align: center;">
+      Currently 20 years old, I have navigated a highly accelerated academic path. After graduating high school at 14, I completed my Finance degree at UT Dallas and am now pursuing a Master of Engineering in Biomedical Engineering at Texas A&M. I evaluate innovation through both a technical and commercial lens.
     </div>
   </section>
 
@@ -585,470 +263,102 @@
     <h2 class="fade-up">Academic Background</h2>
     <div class="edu-grid">
       <div class="edu-card fade-up">
-        <div class="edu-degree-header">Master of Engineering in Biomedical Engineering</div>
-        <div class="edu-university">Texas A&amp;M University (College Station, TX)</div>
-        <div class="edu-stats-row">GPA 3.48 — Expected Graduation in May, 2027</div>
+        <div style="font-weight: 600; color: white; font-size: 1.2rem;">Master of Engineering in Biomedical Engineering</div>
+        <div style="color: var(--gold); font-family: 'Cormorant Garamond'; font-size: 1.3rem;">Texas A&amp;M University</div>
+        <div style="font-size: 0.85rem; color: var(--muted);">GPA 3.48 — Expected May 2027</div>
       </div>
-
       <div class="edu-card fade-up">
-        <div class="edu-degree-header">Bachelor of Science in Finance</div>
-        <div class="edu-university">University of Texas at Dallas (Richardson, TX)</div>
-        <div class="edu-stats-row">GPA 3.4 — Graduated August 2024</div>
+        <div style="font-weight: 600; color: white; font-size: 1.2rem;">Bachelor of Science in Finance</div>
+        <div style="color: var(--gold); font-family: 'Cormorant Garamond'; font-size: 1.3rem;">University of Texas at Dallas</div>
+        <div style="font-size: 0.85rem; color: var(--muted);">GPA 3.4 — Graduated August 2024</div>
       </div>
     </div>
   </section>
 
-  <section id="projects">
-    <div class="section-label fade-up">Texas A&amp;M University</div>
+  <section id="projects" style="background: var(--panel);">
+    <div class="section-label fade-up">Texas A&M</div>
     <h2 class="fade-up">Graduate Research Projects</h2>
     <div class="tamu-grid">
-
       <div class="tamu-card fade-up">
-        <img src="biomedical-device.jpg" alt="Biomedical Device Case Study" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">🔬</div>
+        <div class="tamu-img-container"><img src="biomedical-device.jpg" class="tamu-card-img" alt="Device Case Study"></div>
         <div class="tamu-card-body">
           <div class="tamu-card-title">Biomedical Device Case Study</div>
-          <div class="tamu-card-date">Jan 2025 &ndash; Aug 2025 &nbsp;&middot;&nbsp; Guided Research</div>
-          <p class="tamu-card-desc">Analyzed market drivers and sterilization impact for a specific surgical device, including competitive landscape and clinical engineering considerations. This research focused on identifying cost-effective materials that maintain integrity through multiple autoclave cycles, ensuring both patient safety and hospital budget alignment.</p>
+          <div class="tamu-card-date">Jan 2025 – Aug 2025</div>
+          <p class="tamu-card-desc">Analyzed market drivers and sterilization impact for surgical devices, focusing on cost-effective material integrity.</p>
         </div>
       </div>
-
       <div class="tamu-card fade-up">
-        <img src="addiction-device.jpg" alt="Addiction Prevention Device" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">💊</div>
+        <div class="tamu-img-container"><img src="addiction-device.jpg" class="tamu-card-img" alt="Addiction Device"></div>
         <div class="tamu-card-body">
-          <div class="tamu-card-title">Addiction Prevention &amp; Recovery Device</div>
-          <div class="tamu-card-date">Aug 2025 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
-          <p class="tamu-card-desc">Engineering solutions for patient monitoring and recovery engagement, assessing clinical need and feasibility of a biomedical device concept. The project involves developing a non-invasive wearable sensor suite that tracks physiological markers of stress and cravings, providing real-time data to healthcare providers for early intervention.</p>
+          <div class="tamu-card-title">Addiction Prevention & Recovery</div>
+          <div class="tamu-card-date">Aug 2025 – May 2026</div>
+          <p class="tamu-card-desc">Developing a non-invasive wearable sensor suite that tracks physiological markers of stress and cravings.</p>
         </div>
       </div>
-
       <div class="tamu-card fade-up">
-        <img src="kidney-monitoring.jpg" alt="Kidney Transplant Monitoring" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">🫀</div>
+        <div class="tamu-img-container"><img src="kidney-monitoring.jpg" class="tamu-card-img" alt="Kidney Monitoring"></div>
         <div class="tamu-card-body">
-          <div class="tamu-card-title">Post Kidney Transplant Remote Patient Monitoring</div>
-          <div class="tamu-card-date">Jan 2026 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
-          <p class="tamu-card-desc">Evaluated remote monitoring strategies and device solutions to improve outcomes and reduce in-person follow-up burden for post-transplant kidney patients. I assessed the integration of subcutaneous biosensors with mobile health platforms to provide continuous graft health monitoring, potentially reducing the incidence of acute rejection through predictive analytics.</p>
+          <div class="tamu-card-title">Post Kidney Transplant Monitoring</div>
+          <div class="tamu-card-date">Jan 2026 – May 2026</div>
+          <p class="tamu-card-desc">Assessed the integration of subcutaneous biosensors with mobile health platforms to reduce acute rejection incidents.</p>
         </div>
       </div>
-
       <div class="tamu-card fade-up">
-        <img src="biofilm.jpg" alt="Stainless Steel Biofilm Research" class="tamu-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="tamu-card-img-placeholder" style="display:none">🧫</div>
+        <div class="tamu-img-container"><img src="biofilm.jpg" class="tamu-card-img" alt="Biofilm Research"></div>
         <div class="tamu-card-body">
           <div class="tamu-card-title">Stainless Steel PEG-Gelatin Biofilm</div>
-          <div class="tamu-card-date">Jan 2026 &ndash; May 2026 &nbsp;&middot;&nbsp; Graduate Project</div>
-          <p class="tamu-card-desc">Researched biofilm formation on stainless steel with PEG-Gelatin coatings to improve biocompatibility and inform implantable device design. This work involved spectroscopic analysis of protein adsorption rates, aiming to quantify how specific polymer ratios can inhibit bacterial colonization on orthopedic hardware and long-term surgical implants.</p>
+          <div class="tamu-card-date">Jan 2026 – May 2026</div>
+          <p class="tamu-card-desc">Spectroscopic analysis of protein adsorption rates to inhibit bacterial colonization on orthopedic hardware.</p>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="projects-utd" style="border-bottom: 1px solid var(--border);">
-    <div class="section-label fade-up">UT Dallas</div>
-    <h2 class="fade-up">Undergraduate Research Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card fade-up">
-        <div class="project-num">01</div>
-        <div class="project-title">Nvidia Strategic Analysis</div>
-        <div class="project-date">Jan 2024 &ndash; May 2024 &nbsp;&middot;&nbsp; Senior Capstone</div>
-        <ul class="proj-bullets">
-          <li>Delivered four faculty-reviewed presentations on Nvidia's competitive position and long-term strategy.</li>
-          <li>Built financial models and market forecasts based on AI hardware demand cycles.</li>
-        </ul>
-      </div>
-      <div class="project-card fade-up">
-        <div class="project-num">02</div>
-        <div class="project-title">Southwest Christmas Crisis Report</div>
-        <div class="project-date">Aug 2023 &ndash; Dec 2023 &nbsp;&middot;&nbsp; Research Report</div>
-        <ul class="proj-bullets">
-          <li>Analyzed root causes of Southwest Airlines' 2022 operational meltdown and leadership recovery measures.</li>
-          <li>Directed written and oral presentation to a class of 30+ students.</li>
-        </ul>
-      </div>
-      <div class="project-card fade-up">
-        <div class="project-num">03</div>
-        <div class="project-title">U-Pods</div>
-        <div class="project-date">Jan 2023 &ndash; May 2023 &nbsp;&middot;&nbsp; Junior Marketing Project</div>
-        <ul class="proj-bullets">
-          <li>Conceptualized a campus sleep pod business targeting commuter students with long class gaps, providing affordable on-campus rest in libraries and high-traffic buildings.</li>
-          <li>Surveyed ~100 students to validate demand, receiving strong positive feedback on affordability and convenience.</li>
-          <li>Designed an operational model creating on-campus student employment while filling an unmet student wellness need.</li>
-        </ul>
       </div>
     </div>
   </section>
 
   <section id="experience">
-    <div class="section-label fade-up">Career</div>
-    <h2 class="fade-up">Work Experience</h2>
+    <div class="section-label fade-up">Experience</div>
+    <h2 class="fade-up">Professional Journey</h2>
     <div class="experience-list">
       <div class="exp-item fade-up">
         <div class="exp-role">Business Development Associate</div>
         <div class="exp-company">SageSpectra</div>
-        <div class="exp-date">College Station, TX &nbsp;·&nbsp; August 2025 – May 2026</div>
+        <div class="exp-date" style="font-size: 0.8rem; color: var(--muted);">2025 – 2026</div>
         <ul class="exp-bullets">
-          <li>Analyzed medical device markets, patient needs, and competitors to guide company strategy.</li>
-          <li>Assessed device functionality and clinical applications to support development decisions.</li>
-          <li>Built financial models projecting revenues, COGS, and operating expenses.</li>
+          <li>Analyzed medical device markets and patient needs to guide development decisions.</li>
+          <li>Built financial models projecting revenues and COGS for new med-tech concepts.</li>
         </ul>
       </div>
       <div class="exp-item fade-up">
         <div class="exp-role">Finance / Accounting Intern</div>
-        <div class="exp-company">Allied Professionals' Insurance Services</div>
-        <div class="exp-date">Frisco, TX &nbsp;·&nbsp; January 2023 – May 2023</div>
+        <div class="exp-company">Allied Professionals' Insurance</div>
+        <div class="exp-date" style="font-size: 0.8rem; color: var(--muted);">2023</div>
         <ul class="exp-bullets">
-          <li>Reconciled bond portfolios and improved accuracy of financial reporting.</li>
-          <li>Streamlined data transfers across systems using VLOOKUP and advanced Excel functions.</li>
-          <li>Queried and analyzed SQL databases to generate insights for portfolio managers.</li>
-        </ul>
-      </div>
-      <div class="exp-item fade-up">
-        <div class="exp-role">Property Tax Analyst</div>
-        <div class="exp-company">Longhorn IV Investments LLC</div>
-        <div class="exp-date">Dallas, TX &nbsp;·&nbsp; June 2018 – December 2021</div>
-        <ul class="exp-bullets">
-          <li>Updated valuation records for 500+ residential properties across DFW and Houston.</li>
-          <li>Maintained home value data to support accurate property tax assessments.</li>
+          <li>Reconciled bond portfolios and utilized SQL to generate insights for managers.</li>
+          <li>Optimized financial reporting using advanced Excel and VLOOKUP functions.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="opportunities" style="background: var(--panel); border-top: 1px solid var(--border);">
-    <div class="section-label fade-up">Looking Ahead</div>
-    <h2 class="fade-up">Future Opportunities</h2>
-    <div class="edu-card fade-up" style="max-width: 900px; margin-top: 2rem;">
-        <p class="hero-desc" style="margin-bottom: 1.2rem;">
-            I am currently <strong>actively seeking summer 2027 internships or full-time opportunities</strong> where I can apply my unique background in Finance and Biomedical Engineering. 
-        </p>
-        <p class="hero-desc" style="margin-bottom: 0;">
-            My primary interest lies within the medical device industry, healthcare consulting, and med-tech strategy. I am eager to contribute to teams that value data-driven market analysis, clinical engineering insights, and robust strategic planning to bring life-saving technologies to market more effectively.
-        </p>
-    </div>
-  </section>
-
-  <section id="certifications">
-    <div class="section-label fade-up">Credentials</div>
-    <h2 class="fade-up">Certifications</h2>
-    <div class="cert-placeholder fade-up">
-      <div class="cert-icon">🎓</div>
-      <h3>Coming Summer 2026</h3>
-      <p>Online certifications are in progress.</p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="contact-grid">
-      <div class="fade-up">
-        <div class="section-label">Get In Touch</div>
-        <p class="contact-tagline">Let's start a<br><em>conversation.</em></p>
-      </div>
-      <div class="contact-links fade-up">
-        <a href="mailto:zolomon.kaliser@tamu.edu" class="contact-link">Email: zolomon.kaliser@tamu.edu</a>
-        <a href="tel:4692169278" class="contact-link">Phone: (469) 216-9278</a>
-        <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="contact-link">LinkedIn Profile</a>
-      </div>
+  <section id="contact" style="background: var(--panel);">
+    <div class="section-label fade-up">Contact</div>
+    <h2 class="fade-up">Let's connect.</h2>
+    <div class="hero-ctas fade-up">
+      <a href="mailto:zolomon.kaliser@tamu.edu" class="btn btn-primary">Email Me</a>
+      <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 Zolomon Kaliser. All rights reserved.</p>
+    <p>© 2026 Zolomon Kaliser. Centered, Balanced, and Strategic.</p>
   </footer>
-
-  <style>
-    .chat-fab {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--gold); border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 24px rgba(200,169,110,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(200,169,110,0.55); }
-    .chat-fab svg { width: 26px; height: 26px; fill: var(--navy); }
-
-    .chat-window {
-      position: fixed; bottom: 5.5rem; right: 2rem; z-index: 499;
-      width: 360px; max-height: 520px;
-      background: var(--panel);
-      border: 1px solid rgba(200,169,110,0.25);
-      border-radius: 12px;
-      display: flex; flex-direction: column;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      opacity: 0; pointer-events: none;
-      transform: translateY(12px) scale(0.97);
-      transition: opacity 0.25s, transform 0.25s;
-      overflow: hidden;
-    }
-    .chat-window.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
-
-    .chat-header {
-      padding: 1rem 1.2rem;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .chat-header-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 6px rgba(200,169,110,0.6);
-    }
-    .chat-header-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem; font-weight: 500;
-      color: var(--white); flex: 1;
-    }
-    .chat-header-sub { font-size: 0.72rem; color: var(--muted); }
-    .chat-close {
-      background: none; border: none; color: var(--muted);
-      font-size: 1.1rem; cursor: pointer; padding: 0 0.2rem;
-      transition: color 0.2s; line-height: 1;
-    }
-    .chat-close:hover { color: var(--white); }
-
-    .chat-messages {
-      flex: 1; overflow-y: auto; padding: 1rem;
-      display: flex; flex-direction: column; gap: 0.8rem;
-      scrollbar-width: thin; scrollbar-color: var(--border) transparent;
-    }
-
-    .chat-msg {
-      max-width: 85%; padding: 0.65rem 0.9rem;
-      border-radius: 8px; font-size: 0.85rem; line-height: 1.55;
-    }
-    .chat-msg.bot {
-      background: var(--card); border: 1px solid var(--border);
-      color: var(--text); align-self: flex-start;
-      border-bottom-left-radius: 2px;
-    }
-    .chat-msg.user {
-      background: var(--gold); color: var(--navy);
-      align-self: flex-end; font-weight: 400;
-      border-bottom-right-radius: 2px;
-    }
-
-    .chat-typing {
-      display: flex; gap: 4px; padding: 0.65rem 0.9rem;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 8px; border-bottom-left-radius: 2px;
-      align-self: flex-start; align-items: center;
-    }
-    .chat-typing span {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--muted);
-      animation: bounce 1.2s infinite;
-    }
-    .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bounce {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-5px); background: var(--gold); }
-    }
-
-    .chat-input-row {
-      display: flex; gap: 0.5rem;
-      padding: 0.8rem 1rem;
-      border-top: 1px solid var(--border);
-      background: var(--card);
-    }
-    .chat-input {
-      flex: 1; background: var(--navy);
-      border: 1px solid var(--border); border-radius: 6px;
-      padding: 0.55rem 0.8rem;
-      color: var(--text); font-family: 'Outfit', sans-serif;
-      font-size: 0.83rem; outline: none;
-      transition: border-color 0.2s;
-      resize: none;
-    }
-    .chat-input:focus { border-color: rgba(200,169,110,0.4); }
-    .chat-input::placeholder { color: var(--muted); }
-    .chat-send {
-      background: var(--gold); border: none; border-radius: 6px;
-      width: 36px; height: 36px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s; flex-shrink: 0; align-self: flex-end;
-    }
-    .chat-send:hover { background: var(--gold2); }
-    .chat-send svg { width: 16px; height: 16px; fill: var(--navy); }
-
-    @media (max-width: 480px) {
-      .chat-window { right: 1rem; left: 1rem; width: auto; bottom: 5rem; }
-      .chat-fab { bottom: 1.2rem; right: 1.2rem; }
-    }
-  </style>
-
-  <button class="chat-fab" id="chatFab" aria-label="Chat with AI">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z"/>
-    </svg>
-  </button>
-
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-      <div class="chat-header-dot"></div>
-      <div>
-        <div class="chat-header-title">Ask About Zolomon</div>
-        <div class="chat-header-sub">AI assistant — typically replies instantly</div>
-      </div>
-      <button class="chat-close" id="chatClose">✕</button>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg bot">
-        Hi! I'm an AI assistant that knows all about Zolomon's background, research, and experience. What would you like to know?
-      </div>
-    </div>
-    <div class="chat-input-row">
-      <input class="chat-input" id="chatInput" placeholder="Ask me anything..." maxlength="300" />
-      <button class="chat-send" id="chatSend" aria-label="Send">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
-        </svg>
-      </button>
-    </div>
-  </div>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-        }
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    // ── HAMBURGER ──
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-      });
-      document.getElementById('mobileClose').addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-      document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-          document.body.style.overflow = '';
-        });
-      });
-    }
-
-    // ── CHATBOT ──
-    const WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
-
-    const SYSTEM_PROMPT = `You are a helpful AI assistant on Zolomon Kaliser's personal portfolio website. Answer questions about Zolomon concisely and professionally. Here is everything you know about him:
-
-PERSONAL:
-- Currently 20 years old. Graduated high school at 14.
-- From Frisco, TX. Currently in College Station, TX.
-
-EDUCATION:
-- Master of Engineering in Biomedical Engineering, Texas A&M University. GPA 3.48. Expected May 2027. Will complete at age 21.
-- Bachelor of Science in Finance, UT Dallas. GPA 3.4. Graduated August 2024.
-
-SKILLS: Market research, financial modeling, medical device strategy, data analysis, competitive analysis, advanced Excel, SQL, clinical engineering, presentation & communication.
-
-RESEARCH - Texas A&M:
-- Biomedical Device Case Study (Jan 2025 – Aug 2025): Market research and competitive analysis for a surgical device. Focused on cost-effective material selection for multiple sterilization cycles.
-- Addiction Prevention & Recovery Device (Aug 2025 – May 2026): Concept for wearable sensors that track stress markers to provide real-time recovery support.
-- Post Kidney Transplant Remote Patient Monitoring (Jan 2026 – May 2026): Strategies for subcutaneous biosensors to continuously monitor graft health and predict rejection.
-- Stainless Steel PEG-Gelatin Biofilm (Jan 2026 – May 2026): Spectroscopic research on polymer ratios to inhibit bacterial colonization on surgical implants.
-
-RESEARCH - UT Dallas:
-- Nvidia Strategic Analysis (Jan 2024 – May 2024): Senior capstone with four faculty-reviewed presentations on Nvidia's strategy and financial forecasting.
-- Southwest Christmas Crisis Report (Aug 2023 – Dec 2023): Root-cause analysis of Southwest Airlines' 2022 operational meltdown.
-
-WORK EXPERIENCE:
-- Business Development Associate, SageSpectra, College Station TX (Aug 2025 – May 2026): Medical device market analysis, competitive research, financial modeling.
-- Finance/Accounting Intern, Allied Professionals' Insurance Services, Frisco TX (Jan 2023 – May 2023): Bond portfolio reconciliation, Excel/VLOOKUP, SQL database analysis.
-- Property Tax Analyst, Longhorn IV Investments LLC, Dallas TX (Jun 2018 – Dec 2021): Valuation records for 500+ residential properties.
-
-GOALS: Actively seeking internships or full-time positions in the medical device industry, healthcare consulting, or med-tech strategy. Interested in roles combining clinical engineering and business strategy.
-
-CONTACT: zolomon.kaliser@tamu.edu | (469) 216-9278 | linkedin.com/in/zolomonkaliser
-
-Keep answers short and friendly (2-4 sentences max). If asked something you don't know, say so politely and suggest they reach out directly via email or LinkedIn.`;
-
-    const chatFab    = document.getElementById('chatFab');
-    const chatWindow = document.getElementById('chatWindow');
-    const chatClose  = document.getElementById('chatClose');
-    const chatInput  = document.getElementById('chatInput');
-    const chatSend   = document.getElementById('chatSend');
-    const chatMessages = document.getElementById('chatMessages');
-
-    let conversationHistory = [];
-    let isLoading = false;
-
-    chatFab.addEventListener('click', () => chatWindow.classList.toggle('open'));
-    chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
-
-    chatInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-    });
-    chatSend.addEventListener('click', sendMessage);
-
-    function addMessage(text, role) {
-      const msg = document.createElement('div');
-      msg.className = `chat-msg ${role}`;
-      msg.textContent = text;
-      chatMessages.appendChild(msg);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      return msg;
-    }
-
-    function showTyping() {
-      const t = document.createElement('div');
-      t.className = 'chat-typing'; t.id = 'typingIndicator';
-      t.innerHTML = '<span></span><span></span><span></span>';
-      chatMessages.appendChild(t);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function hideTyping() {
-      const t = document.getElementById('typingIndicator');
-      if (t) t.remove();
-    }
-
-    async function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text || isLoading) return;
-      isLoading = true;
-      chatInput.value = '';
-      addMessage(text, 'user');
-      conversationHistory.push({ role: 'user', content: text });
-      showTyping();
-
-      try {
-        const res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001',
-            max_tokens: 300,
-            system: SYSTEM_PROMPT,
-            messages: conversationHistory,
-          }),
-        });
-        const data = await res.json();
-        const reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please try again.';
-        conversationHistory.push({ role: 'assistant', content: reply });
-        hideTyping();
-        addMessage(reply, 'bot');
-      } catch {
-        hideTyping();
-        addMessage('Sorry, I\'m having trouble connecting right now. Try emailing Zolomon directly at zolomon.kaliser@tamu.edu.', 'bot');
-      }
-      isLoading = false;
-    }
   </script>
 </body>
 </html>
