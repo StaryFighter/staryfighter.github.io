@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Market Research for Early-Stage Medtech — Zolomon Kaliser</title>
+  <title>Market Research for Early-Stage Medtech | Zolomon Kaliser</title>
 
   <!-- SEO / Social -->
   <meta name="description" content="Fixed-scope market research for early-stage medical device and medtech startups: competitive landscape, market sizing, reimbursement, and strategy reports by Zolomon Kaliser." />
   <meta name="author" content="Zolomon Kaliser" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Market Research for Early-Stage Medtech — Zolomon Kaliser" />
+  <meta property="og:title" content="Market Research for Early-Stage Medtech | Zolomon Kaliser" />
   <meta property="og:description" content="Fixed-scope competitive landscape, market sizing, and strategy reports for early-stage medtech. Every package includes live working sessions." />
   <meta property="og:url" content="https://zolomon-kaliser.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Market Research for Early-Stage Medtech — Zolomon Kaliser" />
+  <meta name="twitter:title" content="Market Research for Early-Stage Medtech | Zolomon Kaliser" />
   <meta name="twitter:description" content="Fixed-scope competitive landscape, market sizing, and strategy reports for early-stage medtech." />
   <meta name="theme-color" content="#fbfaf7" />
   <link rel="canonical" href="https://zolomon-kaliser.com/" />
@@ -112,44 +112,53 @@
 
     /* ── HERO ── */
     #hero {
-      padding: 140px 5vw 64px;
+      padding: 124px 5vw 60px;
       border-bottom: 1px solid var(--border);
       background:
         linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
     }
-    .hero-content { max-width: 860px; margin: 0 auto; text-align: center; }
+    .hero-grid {
+      max-width: 1150px; margin: 0 auto;
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 4rem; align-items: center;
+    }
+    .hero-copy { text-align: left; }
     .hero-eyebrow {
       font-size: 0.78rem; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--accent);
       font-weight: 600; margin-bottom: 1.5rem;
       display: inline-flex; align-items: center; gap: 0.8rem;
     }
-    .hero-eyebrow::before, .hero-eyebrow::after {
+    .hero-eyebrow::before {
       content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: 0.5;
     }
 
     h1 {
       font-family: var(--serif);
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-size: clamp(2.3rem, 4.2vw, 3.4rem);
       font-weight: 600; line-height: 1.12;
       margin-bottom: 1.5rem; letter-spacing: -0.01em;
       color: var(--ink);
     }
     .hero-desc {
-      font-size: 1.1rem; color: var(--muted);
-      max-width: 640px; margin: 0 auto 2.6rem; line-height: 1.85;
+      font-size: 1.06rem; color: var(--muted);
+      max-width: 560px; margin: 0 0 2.4rem; line-height: 1.8;
     }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start; }
 
     .hero-cred {
-      margin-top: 2.4rem; padding-top: 1.6rem;
+      margin-top: 2.2rem; padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       font-size: 0.88rem; color: var(--muted);
+      max-width: 560px;
     }
     .hero-cred strong { color: var(--ink); font-weight: 600; }
 
+    .hero-visual { position: relative; }
+    .hero-visual svg { width: 100%; height: auto; display: block; }
+
     /* ── SECTIONS ── */
-    section { padding: 4.25rem 5vw; }
+    section { padding: 3.6rem 5vw; }
     section.alt { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
     .section-label {
@@ -213,7 +222,7 @@
     .price-meta { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin: 0.5rem 0 1.6rem; }
     .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; flex: 1; margin-bottom: 1.8rem; }
     .price-features li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.6rem; line-height: 1.55; }
-    .price-features li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+    .price-features li::before { content: '·'; color: var(--accent); flex-shrink: 0; font-weight: 700; }
     .price-features li.meet { color: var(--ink); font-weight: 500; }
     .price-features li.meet::before { content: '✓'; }
     .price-card .btn { justify-content: center; }
@@ -317,6 +326,13 @@
       .why-grid, .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero-copy { text-align: center; }
+      .hero-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: 0.5; }
+      .hero-desc { margin: 0 auto 2.4rem; }
+      .hero-ctas { justify-content: center; }
+      .hero-cred { max-width: none; }
+      .hero-visual { display: none; }
     }
     @media (max-width: 600px) {
       #hero { padding: 112px 6vw 48px; }
@@ -405,21 +421,68 @@
 
   <main>
   <section id="hero">
-    <div class="hero-content">
-      <div class="hero-eyebrow">Market Research Services</div>
-      <h1>Market intelligence for early-stage medtech.</h1>
-      <p class="hero-desc">
-        Fixed-scope competitive landscape, market sizing, and strategy reports for medical
-        device startups. Clear deliverables, set timelines, and a live working session in
-        every package, so the research answers your actual question.
-      </p>
-      <div class="hero-ctas">
-        <a href="#packages" class="btn btn-primary">View Packages</a>
-        <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-outline">zolomon@zolomon-kaliser.com</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">Market Research Services</div>
+        <h1>Market intelligence for early-stage medtech.</h1>
+        <p class="hero-desc">
+          Fixed-scope competitive landscape, market sizing, and strategy reports for medical
+          device startups. Clear deliverables, set timelines, and a live working session in
+          every package, so the research answers your actual question.
+        </p>
+        <div class="hero-ctas">
+          <a href="#packages" class="btn btn-primary">View Packages</a>
+          <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-outline">zolomon@zolomon-kaliser.com</a>
+        </div>
+        <p class="hero-cred">
+          <strong>Zolomon Kaliser</strong> · Graduate researcher in Biomedical Engineering at Texas A&amp;M University · B.S. in Finance, UT Dallas
+        </p>
       </div>
-      <p class="hero-cred">
-        <strong>Zolomon Kaliser</strong> — Graduate researcher in Biomedical Engineering at Texas A&amp;M University · B.S. in Finance, UT Dallas
-      </p>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
+          <!-- offset back card for depth -->
+          <rect x="64" y="52" width="440" height="376" rx="12" fill="#ece9df"/>
+          <!-- main report card -->
+          <rect x="40" y="28" width="440" height="376" rx="12" fill="#ffffff" stroke="#e4e0d6"/>
+
+          <!-- card header -->
+          <rect x="70" y="58" width="46" height="5" rx="2.5" fill="#2e6e63"/>
+          <rect x="70" y="76" width="208" height="11" rx="3" fill="#1c2b3a" opacity="0.85"/>
+          <rect x="70" y="95" width="148" height="9" rx="3" fill="#d8d3c6"/>
+          <line x1="70" y1="124" x2="450" y2="124" stroke="#e4e0d6"/>
+
+          <!-- TAM / SAM / SOM concentric circles -->
+          <circle cx="158" cy="232" r="70" fill="#1f3a5f" opacity="0.06"/>
+          <circle cx="158" cy="232" r="70" fill="none" stroke="#1f3a5f" opacity="0.3"/>
+          <circle cx="158" cy="248" r="46" fill="#2e6e63" opacity="0.12"/>
+          <circle cx="158" cy="248" r="46" fill="none" stroke="#2e6e63" opacity="0.4"/>
+          <circle cx="158" cy="266" r="24" fill="#2e6e63" opacity="0.88"/>
+          <text x="158" y="180" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#1f3a5f" opacity="0.75" font-weight="600">TAM</text>
+          <text x="158" y="218" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#2e6e63" opacity="0.85" font-weight="600">SAM</text>
+          <text x="158" y="270" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#ffffff" font-weight="600">SOM</text>
+
+          <!-- growth line chart -->
+          <line x1="272" y1="160" x2="272" y2="290" stroke="#e4e0d6"/>
+          <line x1="272" y1="290" x2="448" y2="290" stroke="#e4e0d6"/>
+          <path d="M272 272 L307 252 L342 259 L377 222 L412 202 L444 168 L444 290 L272 290 Z" fill="#2e6e63" opacity="0.08"/>
+          <polyline points="272,272 307,252 342,259 377,222 412,202 444,168" fill="none" stroke="#2e6e63" stroke-width="2"/>
+          <circle cx="307" cy="252" r="3" fill="#1f3a5f"/>
+          <circle cx="342" cy="259" r="3" fill="#1f3a5f"/>
+          <circle cx="377" cy="222" r="3" fill="#1f3a5f"/>
+          <circle cx="412" cy="202" r="3" fill="#1f3a5f"/>
+          <circle cx="444" cy="168" r="5" fill="#2e6e63"/>
+          <circle cx="444" cy="168" r="9" fill="#2e6e63" opacity="0.2"/>
+
+          <!-- findings rows -->
+          <circle cx="76" cy="334" r="3" fill="#2e6e63"/>
+          <rect x="90" y="329" width="250" height="9" rx="3" fill="#d8d3c6"/>
+          <circle cx="76" cy="358" r="3" fill="#2e6e63"/>
+          <rect x="90" y="353" width="300" height="9" rx="3" fill="#d8d3c6"/>
+          <circle cx="76" cy="382" r="3" fill="#2e6e63"/>
+          <rect x="90" y="377" width="212" height="9" rx="3" fill="#d8d3c6"/>
+        </svg>
+      </div>
     </div>
   </section>
 
@@ -490,7 +553,7 @@
           <li>Regulatory snapshot: likely pathway and predicate devices</li>
           <li>5-7 page written brief</li>
         </ul>
-        <a href="mailto:zolomon@zolomon-kaliser.com?subject=Market%20Brief%20inquiry" class="btn btn-outline">Start a Brief</a>
+        <a href="intake.html?package=brief" class="btn btn-outline">Start a Brief</a>
       </div>
 
       <div class="card price-card featured fade-up">
@@ -506,7 +569,7 @@
           <li>Reimbursement and pricing landscape</li>
           <li>10-15 page report</li>
         </ul>
-        <a href="mailto:zolomon@zolomon-kaliser.com?subject=Market%20Report%20inquiry" class="btn btn-primary">Start a Report</a>
+        <a href="intake.html?package=report" class="btn btn-primary">Start a Report</a>
       </div>
 
       <div class="card price-card fade-up">
@@ -520,7 +583,7 @@
           <li>5-year revenue model in editable Excel</li>
           <li>Go-to-market and pricing recommendations</li>
         </ul>
-        <a href="mailto:zolomon@zolomon-kaliser.com?subject=Strategy%20Package%20inquiry" class="btn btn-outline">Start a Strategy</a>
+        <a href="intake.html?package=strategy" class="btn btn-outline">Start a Strategy</a>
       </div>
 
     </div>
@@ -562,7 +625,7 @@
       <p>
         Early-stage medical device work is sensitive, and I treat every engagement as
         confidential. <strong>I'm glad to sign a mutual NDA and a non-compete agreement when
-        appropriate</strong> before you share anything proprietary — just ask when you reach out.
+        appropriate</strong> before you share anything proprietary. Just ask when you reach out.
       </p>
       <p>
         Your documents, data, and findings are never reused, resold, or shared. The research
@@ -582,7 +645,7 @@
     <div class="reviews-grid fade-up" id="reviewsGrid"></div>
     <div class="reviews-empty fade-up" id="reviewsEmpty" hidden>
       Client reviews will appear here as engagements wrap up. Worked with me already?
-      Use the form below — I'd be glad to feature your feedback.
+      Use the form below. I'd be glad to feature your feedback.
     </div>
 
     <div class="review-form-wrap fade-up">
@@ -623,7 +686,7 @@
     <div class="faq-list fade-up">
       <details class="faq-item">
         <summary>Do you sign NDAs?</summary>
-        <div class="faq-answer">Yes. I'm glad to sign a <strong>mutual NDA and a non-compete agreement when appropriate</strong> before you share anything proprietary. Confidentiality is the default on every engagement — your device, data, and findings stay private.</div>
+        <div class="faq-answer">Yes. I'm glad to sign a <strong>mutual NDA and a non-compete agreement when appropriate</strong> before you share anything proprietary. Confidentiality is the default on every engagement. Your device, data, and findings stay private.</div>
       </details>
       <details class="faq-item">
         <summary>How does payment work?</summary>
@@ -639,7 +702,7 @@
       </details>
       <details class="faq-item">
         <summary>What if my project doesn't fit a package?</summary>
-        <div class="faq-answer">Email me what you're trying to decide. Every engagement starts with a conversation, and scope can be tailored — the packages are a starting point, not a ceiling.</div>
+        <div class="faq-answer">Email me what you're trying to decide. Every engagement starts with a conversation, and scope can be tailored. The packages are a starting point, not a ceiling.</div>
       </details>
       <details class="faq-item">
         <summary>How is the research sourced?</summary>
@@ -703,7 +766,7 @@
             '<div class="review-author"><strong></strong><span></span></div>';
           card.querySelector('.review-text').textContent = r.text;
           card.querySelector('.review-author strong').textContent = r.name;
-          if (r.company) card.querySelector('.review-author span').textContent = ' — ' + r.company;
+          if (r.company) card.querySelector('.review-author span').textContent = ', ' + r.company;
           grid.appendChild(card);
         });
       }
