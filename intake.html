@@ -175,6 +175,14 @@
 
     .form-note { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
 
+    .form-success {
+      background: #eef5f0; border: 1px solid #bcd8c8;
+      border-radius: 8px; padding: 1.1rem 1.3rem;
+      font-size: 0.92rem; color: var(--ink); line-height: 1.65;
+      text-align: center; margin-bottom: 1.4rem;
+    }
+    .form-success strong { color: var(--accent); }
+
     /* ── WHAT HAPPENS NEXT ── */
     .next-strip {
       max-width: 680px; margin: 2.8rem auto 0;
@@ -277,7 +285,16 @@
 
   <section>
     <div class="intake-wrap">
-      <form class="intake-form" id="intakeForm">
+      <div class="form-success" id="formSuccess" hidden>
+        <strong>Intake received.</strong> Thanks — I'll reply within one business day to confirm fit and suggest a package.
+      </div>
+      <form class="intake-form" id="intakeForm" action="https://formsubmit.co/zolomon@zolomon-kaliser.com" method="POST">
+
+        <input type="hidden" name="_subject" value="New client intake — zolomon-kaliser.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://zolomon-kaliser.com/intake.html?sent=1" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         <div class="row">
           <div class="field">
@@ -359,7 +376,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Send Intake</button>
-        <p class="form-note">Submitting opens a pre-filled email to zolomon@zolomon-kaliser.com in your mail app. Review it and hit send.</p>
+        <p class="form-note">Your intake goes straight to my inbox — no email app needed. I'll reply within one business day.</p>
       </form>
 
       <div class="next-strip">
@@ -396,32 +413,14 @@
         }
       }
 
-      // ── INTAKE FORM → EMAIL ──
-      var form = document.getElementById('intakeForm');
-      form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        function v(id) { return document.getElementById(id).value.trim(); }
-        var name = v('fName'), email = v('fEmail');
-        if (!name || !email) return;
-
-        var company = v('fCompany');
-        var subject = 'Client intake: ' + (company || name);
-        var body =
-          'Name: ' + name + '\n' +
-          'Email: ' + email + '\n' +
-          'Company: ' + (company || '(not given)') + '\n' +
-          'Role: ' + (v('fRole') || '(not given)') + '\n\n' +
-          'Device / product:\n' + v('fDevice') + '\n\n' +
-          'Development stage: ' + v('fStage') + '\n\n' +
-          'Decision this research supports:\n' + v('fDecision') + '\n\n' +
-          'Package interest: ' + v('fPackage') + '\n' +
-          'Timeline: ' + v('fTimeline') + '\n\n' +
-          'Notes:\n' + (v('fNotes') || '(none)') + '\n';
-
-        window.location.href = 'mailto:zolomon@zolomon-kaliser.com' +
-          '?subject=' + encodeURIComponent(subject) +
-          '&body=' + encodeURIComponent(body);
-      });
+      // ── SUCCESS MESSAGE AFTER FORMSUBMIT REDIRECT (?sent=1) ──
+      if (params.get('sent') === '1') {
+        var success = document.getElementById('formSuccess');
+        var intakeForm = document.getElementById('intakeForm');
+        success.hidden = false;
+        intakeForm.hidden = true;
+        success.scrollIntoView({ block: 'center' });
+      }
 
       // ── NAV SHRINK ──
       var nav = document.getElementById('nav');

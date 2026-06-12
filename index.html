@@ -269,6 +269,14 @@
     .review-form .btn { align-self: center; }
     .review-form-note { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; }
 
+    .form-success {
+      background: #eef5f0; border: 1px solid #bcd8c8;
+      border-radius: 8px; padding: 1.1rem 1.3rem;
+      font-size: 0.92rem; color: var(--ink); line-height: 1.65;
+      text-align: center; margin-bottom: 1.4rem;
+    }
+    .form-success strong { color: var(--accent); }
+
     /* ── ABOUT STRIP ── */
     .about-strip { max-width: 860px; margin: 0 auto; text-align: center; }
     .about-strip p { color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; }
@@ -398,6 +406,7 @@
       <li><a href="#why">Why Me</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#packages">Packages</a></li>
+      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="mailto:zolomon@zolomon-kaliser.com" class="nav-cta">Email Me</a></li>
@@ -413,6 +422,7 @@
       <li><a href="#why" class="mobile-link">Why Me</a></li>
       <li><a href="#process" class="mobile-link">Process</a></li>
       <li><a href="#packages" class="mobile-link">Packages</a></li>
+      <li><a href="#reviews" class="mobile-link">Reviews</a></li>
       <li><a href="#faq" class="mobile-link">FAQ</a></li>
       <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
       <li><a href="mailto:zolomon@zolomon-kaliser.com" class="mobile-link" style="color: var(--navy);">Email Me</a></li>
@@ -634,9 +644,6 @@
     </div>
   </section>
 
-  <!-- REVIEWS SECTION — hidden until real client reviews exist.
-       To restore: remove this comment wrapper (and the matching "END REVIEWS" line below),
-       and re-add the "Reviews" links to the desktop and mobile nav menus.
   <section id="reviews" class="alt">
     <div class="section-label fade-up">Client Feedback</div>
     <h2 class="fade-up">What clients say.</h2>
@@ -651,18 +658,25 @@
     <div class="review-form-wrap fade-up">
       <div class="review-form-title">Leave a review</div>
       <p class="review-form-sub">Worked with me on a brief, report, or strategy package? Share a sentence or two about the experience.</p>
-      <form class="review-form" id="reviewForm">
+      <div class="form-success" id="reviewSuccess" hidden>
+        <strong>Review received — thank you.</strong> I verify reviews against real engagements before publishing them here.
+      </div>
+      <form class="review-form" id="reviewForm" action="https://formsubmit.co/zolomon@zolomon-kaliser.com" method="POST">
+        <input type="hidden" name="_subject" value="New review submission — zolomon-kaliser.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://zolomon-kaliser.com/index.html?review=sent#reviews" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="row">
           <input type="text" id="rName" name="name" placeholder="Your name" required maxlength="60" />
           <input type="text" id="rCompany" name="company" placeholder="Company / role (optional)" maxlength="80" />
         </div>
         <textarea id="rText" name="review" placeholder="Your review (a few sentences)" required maxlength="500"></textarea>
         <button type="submit" class="btn btn-primary">Submit Review</button>
-        <p class="review-form-note">Submitting opens an email to me with your review. Reviews are verified against real engagements before they're published here.</p>
+        <p class="review-form-note">Your review is sent straight to me — no email app needed. Reviews are verified against real engagements before they're published here.</p>
       </form>
     </div>
   </section>
-  END REVIEWS -->
 
   <section id="about-strip">
     <div class="section-label fade-up">About</div>
@@ -747,7 +761,6 @@
       if (!reduceMotion) document.body.classList.add('js-anim');
 
       // ── RENDER REVIEWS ──
-      // (Guarded so this is skipped while the Reviews section is commented out.)
       var grid = document.getElementById('reviewsGrid');
       var empty = document.getElementById('reviewsEmpty');
       if (grid && empty)
@@ -766,28 +779,21 @@
             '<div class="review-author"><strong></strong><span></span></div>';
           card.querySelector('.review-text').textContent = r.text;
           card.querySelector('.review-author strong').textContent = r.name;
-          if (r.company) card.querySelector('.review-author span').textContent = ', ' + r.company;
+          if (r.company) card.querySelector('.review-author span').textContent = ' — ' + r.company;
           grid.appendChild(card);
         });
       }
 
-      // ── REVIEW FORM → EMAIL ──
-      // (Guarded so this is skipped while the Reviews section is commented out.)
-      var form = document.getElementById('reviewForm');
-      if (form) form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        var name = document.getElementById('rName').value.trim();
-        var company = document.getElementById('rCompany').value.trim();
-        var text = document.getElementById('rText').value.trim();
-        if (!name || !text) return;
-        var subject = 'Website review from ' + name;
-        var body = 'Name: ' + name + '\n' +
-                   'Company / role: ' + (company || '(not given)') + '\n\n' +
-                   'Review:\n' + text + '\n';
-        window.location.href = 'mailto:zolomon@zolomon-kaliser.com' +
-          '?subject=' + encodeURIComponent(subject) +
-          '&body=' + encodeURIComponent(body);
-      });
+      // ── REVIEW FORM SUCCESS MESSAGE AFTER FORMSUBMIT REDIRECT (?review=sent) ──
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('review') === 'sent') {
+        var reviewSuccess = document.getElementById('reviewSuccess');
+        var reviewForm = document.getElementById('reviewForm');
+        if (reviewSuccess && reviewForm) {
+          reviewSuccess.hidden = false;
+          reviewForm.hidden = true;
+        }
+      }
 
       // ── SCROLL REVEAL ──
       var faders = document.querySelectorAll('.fade-up');
