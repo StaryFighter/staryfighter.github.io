@@ -436,24 +436,4 @@
       var mobileMenu = document.getElementById('mobileMenu');
       if (hamburger) {
         function closeMenu() {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        }
-        hamburger.addEventListener('click', function () {
-          var open = mobileMenu.classList.toggle('open');
-          hamburger.classList.toggle('open', open);
-          hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-          document.body.style.overflow = open ? 'hidden' : '';
-        });
-        document.getElementById('mobileClose').addEventListener('click', closeMenu);
-        document.querySelectorAll('.mobile-link').forEach(function (link) {
-          link.addEventListener('click', closeMenu);
-        });
-      }
-    })();
-  </script>
-
-</body>
-</html>
+          hamburger.classList.remove('open
