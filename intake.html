@@ -288,7 +288,7 @@
       <div class="form-success" id="formSuccess" hidden>
         <strong>Intake received.</strong> Thanks — I'll reply within one business day to confirm fit and suggest a package.
       </div>
-      <form class="intake-form" id="intakeForm" action="https://formsubmit.co/zolomon@zolomon-kaliser.com" method="POST">
+      <form class="intake-form" id="intakeForm" action="https://formsubmit.co/952ef13cedc51ff44743658dbfb76633" method="POST">
 
         <input type="hidden" name="_subject" value="New client intake — zolomon-kaliser.com" />
         <input type="hidden" name="_template" value="table" />
@@ -436,4 +436,27 @@
       var mobileMenu = document.getElementById('mobileMenu');
       if (hamburger) {
         function closeMenu() {
-          hamburger.classList.remove('open
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+        function openMenu() {
+          hamburger.classList.add('open');
+          mobileMenu.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+        hamburger.addEventListener('click', function () {
+          if (hamburger.classList.contains('open')) closeMenu(); else openMenu();
+        });
+        var mobileClose = document.getElementById('mobileClose');
+        if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
