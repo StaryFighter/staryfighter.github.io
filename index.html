@@ -219,7 +219,16 @@
     .price-tagline { font-size: 0.87rem; color: var(--muted); margin-bottom: 1.4rem; min-height: 2.6em; }
     .price-amount { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; color: var(--ink); line-height: 1; }
     .price-amount .cur { font-size: 1.3rem; font-weight: 500; color: var(--accent); vertical-align: super; }
-    .price-meta { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin: 0.5rem 0 1.6rem; }
+    .price-meta { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin: 0.5rem 0 0.9rem; }
+    .price-total { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.55rem; }
+    .price-deposit {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.7rem 0.9rem; margin-bottom: 1.6rem;
+      font-size: 0.86rem; color: var(--ink); line-height: 1.5;
+    }
+    section.alt .price-deposit { background: var(--white); }
+    .price-deposit strong { color: var(--accent); font-weight: 700; }
+    .price-deposit .dep-sub { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
     .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; flex: 1; margin-bottom: 1.8rem; }
     .price-features li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.6rem; line-height: 1.55; }
     .price-features li::before { content: '·'; color: var(--accent); flex-shrink: 0; font-weight: 700; }
@@ -581,7 +590,11 @@
         <div class="price-name">Market Brief</div>
         <div class="price-tagline">A fast, focused read on your competitive field.</div>
         <div class="price-amount"><span class="cur">$</span>499</div>
-        <div class="price-meta">5 business days</div>
+        <div class="price-meta">5 business days · fixed price</div>
+        <div class="price-deposit">
+          <strong>$249.50 deposit to start</strong>
+          <span class="dep-sub">50% upfront · remaining $249.50 invoiced on completion</span>
+        </div>
         <ul class="price-features">
           <li class="meet">1 meeting: 30-minute scoping call</li>
           <li>Competitive landscape: closest competitors, positioning, and differentiation</li>
@@ -596,7 +609,11 @@
         <div class="price-name">Market Report</div>
         <div class="price-tagline">Sizing and landscape, ready for fundraising and planning.</div>
         <div class="price-amount"><span class="cur">$</span>1,249</div>
-        <div class="price-meta">7 business days</div>
+        <div class="price-meta">7 business days · fixed price</div>
+        <div class="price-deposit">
+          <strong>$624.50 deposit to start</strong>
+          <span class="dep-sub">50% upfront · remaining $624.50 invoiced on completion</span>
+        </div>
         <ul class="price-features">
           <li class="meet">2 meetings: scoping call + findings walkthrough</li>
           <li>Everything in Market Brief</li>
@@ -611,7 +628,11 @@
         <div class="price-name">Strategy Package</div>
         <div class="price-tagline">The full commercial picture, model included.</div>
         <div class="price-amount"><span class="cur">$</span>2,499</div>
-        <div class="price-meta">14 business days</div>
+        <div class="price-meta">14 business days · fixed price</div>
+        <div class="price-deposit">
+          <strong>$1,249.50 deposit to start</strong>
+          <span class="dep-sub">50% upfront · remaining $1,249.50 invoiced on completion</span>
+        </div>
         <ul class="price-features">
           <li class="meet">3 meetings: scoping, mid-point check-in, final presentation</li>
           <li>Everything in Market Report</li>
@@ -629,7 +650,7 @@
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg>
           Payment terms
         </div>
-        <p>Fixed price per package. <strong>50% due upfront</strong> to begin, <strong>50% on completion</strong> when the deliverable is in your hands. Applies to every package.</p>
+        <p>Fixed price per package. After we scope the work, a <strong>50% deposit</strong> paid by card through a secure Stripe link starts the timeline. The <strong>remaining 50% is invoiced on completion</strong>, when the deliverable is in your hands. Applies to every package.</p>
       </div>
       <div class="terms-item">
         <div class="terms-head">
@@ -729,7 +750,7 @@
       </details>
       <details class="faq-item">
         <summary>How does payment work?</summary>
-        <div class="faq-answer">Each package is a fixed price. <strong>50% is due upfront</strong> to begin the work and <strong>50% on completion</strong>, when the finished deliverable is in your hands. This applies to all three packages.</div>
+        <div class="faq-answer">Each package is a fixed price split into two parts. We start with a quick intake and scoping call to confirm fit and scope. Then a <strong>50% deposit</strong>, paid by card through a secure Stripe link, kicks off the work and starts your timeline. The <strong>remaining 50% is invoiced separately on completion</strong>, when the finished deliverable is in your hands. This applies to all three packages.</div>
       </details>
       <details class="faq-item">
         <summary>Do you offer revisions?</summary>
@@ -756,33 +777,4 @@
     <p class="contact-sub fade-up">Send a sentence or two about your device and your question. I'll reply with whether I can help and which package fits.</p>
     <div class="contact-ctas fade-up">
       <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-primary">zolomon@zolomon-kaliser.com</a>
-      <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-    </div>
-  </section>
-  </main>
-
-  <footer>
-    <p>© 2026 Zolomon Kaliser. All rights reserved. &nbsp;·&nbsp; <a href="portfolio.html">Portfolio</a></p>
-  </footer>
-
-  <script>
-    /* ════════════════════════════════════════════════════════════════
-       PUBLISHED REVIEWS — add approved reviews here.
-       Copy the example block, paste it inside the REVIEWS array,
-       and fill in the fields. Stars: 1-5. Company is optional ("").
-       ════════════════════════════════════════════════════════════════
-       Example:
-       { name: "Jane Smith", company: "CEO, Acme Medical", stars: 5,
-         text: "Zolomon's market report gave us exactly the sizing data we needed for our seed round." },
-    */
-    var REVIEWS = [
-      // ← paste approved reviews here
-    ];
-
-    (function () {
-      'use strict';
-      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (!reduceMotion) document.body.classList.add('js-anim');
-
-      // ── RENDER REVIE
+      <a href="https
