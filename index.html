@@ -418,7 +418,7 @@
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="mailto:zolomon@zolomon-kaliser.com" class="nav-cta">Email Me</a></li>
+      <li><a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -434,6 +434,7 @@
       <li><a href="#reviews" class="mobile-link">Reviews</a></li>
       <li><a href="#faq" class="mobile-link">FAQ</a></li>
       <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+      <li><a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="mobile-link" style="color: var(--navy);">Book a Call</a></li>
       <li><a href="mailto:zolomon@zolomon-kaliser.com" class="mobile-link" style="color: var(--navy);">Email Me</a></li>
     </ul>
   </div>
@@ -451,6 +452,7 @@
         </p>
         <div class="hero-ctas">
           <a href="#packages" class="btn btn-primary">View Packages</a>
+          <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="btn btn-outline">Book a 30-min call ↗</a>
           <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-outline">zolomon@zolomon-kaliser.com</a>
         </div>
         <p class="hero-cred">
@@ -777,4 +779,133 @@
     <p class="contact-sub fade-up">Send a sentence or two about your device and your question. I'll reply with whether I can help and which package fits.</p>
     <div class="contact-ctas fade-up">
       <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-primary">zolomon@zolomon-kaliser.com</a>
-      <a href="https
+      <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="btn btn-outline">Book a 30-min call ↗</a>
+      <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+  </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Zolomon Kaliser. All rights reserved. &nbsp;·&nbsp; <a href="portfolio.html">Portfolio</a></p>
+  </footer>
+
+  <script>
+    /* ════════════════════════════════════════════════════════════════
+       PUBLISHED REVIEWS — add approved reviews here.
+       Copy the example block, paste it inside the REVIEWS array,
+       and fill in the fields. Stars: 1-5. Company is optional ("").
+       ════════════════════════════════════════════════════════════════
+       Example:
+       { name: "Jane Smith", company: "CEO, Acme Medical", stars: 5,
+         text: "Zolomon's market report gave us exactly the sizing data we needed for our seed round." },
+    */
+    var REVIEWS = [
+      // ← paste approved reviews here
+    ];
+
+    (function () {
+      'use strict';
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!reduceMotion) document.body.classList.add('js-anim');
+
+      // ── RENDER REVIEWS ──
+      var grid = document.getElementById('reviewsGrid');
+      var empty = document.getElementById('reviewsEmpty');
+      if (grid && empty)
+      if (REVIEWS.length === 0) {
+        grid.hidden = true;
+        empty.hidden = false;
+      } else {
+        REVIEWS.forEach(function (r) {
+          var card = document.createElement('div');
+          card.className = 'card review-card';
+          var stars = '★★★★★'.slice(0, Math.max(1, Math.min(5, r.stars || 5)));
+          var author = '<strong></strong>';
+          card.innerHTML =
+            '<div class="review-stars" aria-label="' + (r.stars || 5) + ' out of 5 stars">' + stars + '</div>' +
+            '<p class="review-text"></p>' +
+            '<div class="review-author"><strong></strong><span></span></div>';
+          card.querySelector('.review-text').textContent = r.text;
+          card.querySelector('.review-author strong').textContent = r.name;
+          if (r.company) card.querySelector('.review-author span').textContent = ' — ' + r.company;
+          grid.appendChild(card);
+        });
+      }
+
+      // ── REVIEW FORM SUCCESS MESSAGE AFTER FORMSUBMIT REDIRECT (?review=sent) ──
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('review') === 'sent') {
+        var reviewSuccess = document.getElementById('reviewSuccess');
+        var reviewForm = document.getElementById('reviewForm');
+        if (reviewSuccess && reviewForm) {
+          reviewSuccess.hidden = false;
+          reviewForm.hidden = true;
+        }
+      }
+
+      // ── SCROLL REVEAL ──
+      var faders = document.querySelectorAll('.fade-up');
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        var revealObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e, i) {
+            if (e.isIntersecting) {
+              setTimeout(function () { e.target.classList.add('visible'); }, i * 70);
+              revealObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        faders.forEach(function (el) { revealObs.observe(el); });
+      } else {
+        faders.forEach(function (el) { el.classList.add('visible'); });
+      }
+
+      // ── NAV SHRINK ──
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        var h = document.documentElement;
+        if (h.scrollTop > 30) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // ── SMOOTH SCROLL WITH HEADER OFFSET ──
+      var navH = 72;
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (ev) {
+          var id = link.getAttribute('href');
+          if (id === '#' || id.length < 2) return;
+          var target = document.querySelector(id);
+          if (!target) return;
+          ev.preventDefault();
+          var y = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
+          window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+      });
+
+      // ── HAMBURGER MOBILE MENU ──
+      var hamburger = document.getElementById('hamburger');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (hamburger) {
+        function closeMenu() {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', function () {
+          var open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.body.style.overflow = open ? 'hidden' : '';
+        });
+        document.getElementById('mobileClose').addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
