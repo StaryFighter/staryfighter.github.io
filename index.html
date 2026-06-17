@@ -12,11 +12,21 @@
   <meta property="og:title" content="Market Research for Early-Stage Medtech | Zolomon Kaliser" />
   <meta property="og:description" content="Fixed-scope competitive landscape, market sizing, and strategy reports for early-stage medtech. Every package includes live working sessions." />
   <meta property="og:url" content="https://zolomon-kaliser.com/" />
+  <meta property="og:image" content="https://zolomon-kaliser.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Zolomon Kaliser — market intelligence for early-stage medtech, with a TAM / SAM / SOM nested-circle mark." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Market Research for Early-Stage Medtech | Zolomon Kaliser" />
   <meta name="twitter:description" content="Fixed-scope competitive landscape, market sizing, and strategy reports for early-stage medtech." />
+  <meta name="twitter:image" content="https://zolomon-kaliser.com/og-image.png" />
   <meta name="theme-color" content="#fbfaf7" />
   <link rel="canonical" href="https://zolomon-kaliser.com/" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,7 +165,9 @@
     .hero-cred strong { color: var(--ink); font-weight: 600; }
 
     .hero-visual { position: relative; }
-    .hero-visual svg { width: 100%; height: auto; display: block; }
+    .hero-visual svg { width: 100%; height: auto; display: block; overflow: visible; }
+    /* keep SVG transforms anchored predictably for GSAP */
+    #heroViz [id^="ring-"], #heroViz .accent-dot { transform-box: view-box; }
 
     /* ── SECTIONS ── */
     section { padding: 3.6rem 5vw; }
@@ -268,6 +280,9 @@
     .review-form-sub { text-align: center; font-size: 0.88rem; color: var(--muted); margin-bottom: 1.6rem; }
     .review-form { display: flex; flex-direction: column; gap: 0.9rem; }
     .review-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .rfield { display: flex; flex-direction: column; gap: 0.35rem; }
+    .rfield label { font-size: 0.8rem; font-weight: 600; color: var(--ink); letter-spacing: 0.03em; }
+    .rfield label .opt { color: var(--muted); font-weight: 400; }
     .review-form input, .review-form textarea {
       width: 100%; padding: 0.8rem 1rem;
       border: 1px solid var(--border); border-radius: 6px;
@@ -309,8 +324,7 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--navy); }
 
-    .js-anim .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .js-anim .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .js-anim .fade-up { opacity: 0; transform: translateY(22px); }
 
     /* ── HAMBURGER / MOBILE MENU ── */
     .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 200; }
@@ -345,13 +359,13 @@
       .why-grid, .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2.4rem; }
       .hero-copy { text-align: center; }
       .hero-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: 0.5; }
       .hero-desc { margin: 0 auto 2.4rem; }
       .hero-ctas { justify-content: center; }
       .hero-cred { max-width: none; }
-      .hero-visual { display: none; }
+      .hero-visual { max-width: 420px; margin: 0 auto; order: -1; }
     }
     @media (max-width: 600px) {
       #hero { padding: 112px 6vw 48px; }
@@ -360,6 +374,7 @@
       section { padding: 3.25rem 6vw; }
       .process-grid { grid-template-columns: 1fr; }
       .review-form .row { grid-template-columns: 1fr; }
+      .hero-visual { max-width: 340px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -420,7 +435,7 @@
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a></li>
+      <li><a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Call</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -436,7 +451,7 @@
       <li><a href="#reviews" class="mobile-link">Reviews</a></li>
       <li><a href="#faq" class="mobile-link">FAQ</a></li>
       <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
-      <li><a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="mobile-link" style="color: var(--navy);">Book a Call</a></li>
+      <li><a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener noreferrer" class="mobile-link" style="color: var(--navy);">Book a Call</a></li>
       <li><a href="mailto:zolomon@zolomon-kaliser.com" class="mobile-link" style="color: var(--navy);">Email Me</a></li>
     </ul>
   </div>
@@ -454,7 +469,7 @@
         </p>
         <div class="hero-ctas">
           <a href="#packages" class="btn btn-primary">View Packages</a>
-          <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="btn btn-outline">Book a 30-min call ↗</a>
+          <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Book a 30-min call ↗</a>
           <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-outline">zolomon@zolomon-kaliser.com</a>
         </div>
         <p class="hero-cred">
@@ -463,47 +478,35 @@
       </div>
 
       <div class="hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
-          <!-- offset back card for depth -->
-          <rect x="64" y="52" width="440" height="376" rx="12" fill="#ece9df"/>
-          <!-- main report card -->
-          <rect x="40" y="28" width="440" height="376" rx="12" fill="#ffffff" stroke="#e4e0d6"/>
+        <svg id="heroViz" viewBox="0 0 480 470" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
+          <!-- depth card behind -->
+          <rect x="22" y="30" width="446" height="426" rx="16" fill="#efece3"/>
+          <!-- main card -->
+          <rect x="12" y="18" width="446" height="426" rx="16" fill="#ffffff" stroke="#e4e0d6"/>
 
-          <!-- card header -->
-          <rect x="70" y="58" width="46" height="5" rx="2.5" fill="#2e6e63"/>
-          <rect x="70" y="76" width="208" height="11" rx="3" fill="#1c2b3a" opacity="0.85"/>
-          <rect x="70" y="95" width="148" height="9" rx="3" fill="#d8d3c6"/>
-          <line x1="70" y1="124" x2="450" y2="124" stroke="#e4e0d6"/>
+          <!-- header: market-size figure -->
+          <rect x="40" y="46" width="34" height="5" rx="2.5" fill="#2e6e63"/>
+          <text id="mkt-eyebrow" x="82" y="52" font-size="9.5" letter-spacing="1.3" fill="#5b6573" font-weight="600">ADDRESSABLE MARKET · ILLUSTRATIVE</text>
+          <text id="mkt-fig" x="40" y="92" font-family="Lora, Georgia, serif" font-size="38" font-weight="700" fill="#1c2b3a">$4.2B</text>
+          <text id="mkt-cagr" x="430" y="92" text-anchor="end" font-size="13" fill="#2e6e63" font-weight="600">↑ 11.4% CAGR</text>
+          <line x1="40" y1="108" x2="430" y2="108" stroke="#e4e0d6"/>
 
-          <!-- TAM / SAM / SOM concentric circles -->
-          <circle cx="158" cy="232" r="70" fill="#1f3a5f" opacity="0.06"/>
-          <circle cx="158" cy="232" r="70" fill="none" stroke="#1f3a5f" opacity="0.3"/>
-          <circle cx="158" cy="248" r="46" fill="#2e6e63" opacity="0.12"/>
-          <circle cx="158" cy="248" r="46" fill="none" stroke="#2e6e63" opacity="0.4"/>
-          <circle cx="158" cy="266" r="24" fill="#2e6e63" opacity="0.88"/>
-          <text x="158" y="180" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#1f3a5f" opacity="0.75" font-weight="600">TAM</text>
-          <text x="158" y="218" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#2e6e63" opacity="0.85" font-weight="600">SAM</text>
-          <text x="158" y="270" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#ffffff" font-weight="600">SOM</text>
+          <!-- nested TAM / SAM / SOM rings -->
+          <g id="hero-parallax">
+            <g id="hero-rings">
+              <circle id="ring-tam" cx="240" cy="294" r="138" fill="#1f3a5f" fill-opacity="0.05" stroke="#1f3a5f" stroke-opacity="0.4" stroke-width="1.5"/>
+              <circle id="ring-sam" cx="240" cy="306" r="88" fill="#2e6e63" fill-opacity="0.12" stroke="#2e6e63" stroke-opacity="0.45" stroke-width="1.5"/>
+              <circle id="ring-som" cx="240" cy="320" r="42" fill="#2e6e63"/>
 
-          <!-- growth line chart -->
-          <line x1="272" y1="160" x2="272" y2="290" stroke="#e4e0d6"/>
-          <line x1="272" y1="290" x2="448" y2="290" stroke="#e4e0d6"/>
-          <path d="M272 272 L307 252 L342 259 L377 222 L412 202 L444 168 L444 290 L272 290 Z" fill="#2e6e63" opacity="0.08"/>
-          <polyline points="272,272 307,252 342,259 377,222 412,202 444,168" fill="none" stroke="#2e6e63" stroke-width="2"/>
-          <circle cx="307" cy="252" r="3" fill="#1f3a5f"/>
-          <circle cx="342" cy="259" r="3" fill="#1f3a5f"/>
-          <circle cx="377" cy="222" r="3" fill="#1f3a5f"/>
-          <circle cx="412" cy="202" r="3" fill="#1f3a5f"/>
-          <circle cx="444" cy="168" r="5" fill="#2e6e63"/>
-          <circle cx="444" cy="168" r="9" fill="#2e6e63" opacity="0.2"/>
+              <text id="lbl-tam" x="240" y="180" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#1f3a5f" fill-opacity="0.8" font-weight="600">TAM</text>
+              <text id="lbl-sam" x="240" y="246" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#2e6e63" font-weight="600">SAM</text>
+              <text id="lbl-som" x="240" y="324" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#ffffff" font-weight="600">SOM</text>
 
-          <!-- findings rows -->
-          <circle cx="76" cy="334" r="3" fill="#2e6e63"/>
-          <rect x="90" y="329" width="250" height="9" rx="3" fill="#d8d3c6"/>
-          <circle cx="76" cy="358" r="3" fill="#2e6e63"/>
-          <rect x="90" y="353" width="300" height="9" rx="3" fill="#d8d3c6"/>
-          <circle cx="76" cy="382" r="3" fill="#2e6e63"/>
-          <rect x="90" y="377" width="212" height="9" rx="3" fill="#d8d3c6"/>
+              <circle class="accent-dot" cx="309" cy="174" r="3.2" fill="#2e6e63"/>
+              <circle class="accent-dot" cx="110" cy="246" r="3.2" fill="#1f3a5f"/>
+              <circle class="accent-dot" cx="332" cy="372" r="3.2" fill="#2e6e63"/>
+            </g>
+          </g>
         </svg>
       </div>
     </div>
@@ -606,7 +609,7 @@
           <li>5-7 page written brief</li>
         </ul>
         <a href="intake.html?package=brief" class="btn btn-outline">Start a Brief</a>
-        <a href="samples/Market_Brief_CGM_SAMPLE.pdf" target="_blank" rel="noopener" class="sample-link">View a sample brief ↗</a>
+        <a href="samples/Market_Brief_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer" class="sample-link">View a sample brief ↗</a>
       </div>
 
       <div class="card price-card featured fade-up">
@@ -627,7 +630,7 @@
           <li>10-15 page report</li>
         </ul>
         <a href="intake.html?package=report" class="btn btn-primary">Start a Report</a>
-        <a href="samples/Market_Report_CGM_SAMPLE.pdf" target="_blank" rel="noopener" class="sample-link">View a sample report ↗</a>
+        <a href="samples/Market_Report_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer" class="sample-link">View a sample report ↗</a>
       </div>
 
       <div class="card price-card fade-up">
@@ -646,7 +649,7 @@
           <li>Go-to-market and pricing recommendations</li>
         </ul>
         <a href="intake.html?package=strategy" class="btn btn-outline">Start a Strategy</a>
-        <a href="samples/Strategy_Package_CGM_SAMPLE.pdf" target="_blank" rel="noopener" class="sample-link">View a sample excerpt ↗</a>
+        <a href="samples/Strategy_Package_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer" class="sample-link">View a sample excerpt ↗</a>
       </div>
 
     </div>
@@ -705,10 +708,19 @@
         <input type="hidden" name="_next" value="https://zolomon-kaliser.com/index.html?review=sent#reviews" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="row">
-          <input type="text" id="rName" name="name" placeholder="Your name" required maxlength="60" />
-          <input type="text" id="rCompany" name="company" placeholder="Company / role (optional)" maxlength="80" />
+          <div class="rfield">
+            <label for="rName">Your name</label>
+            <input type="text" id="rName" name="name" placeholder="Jane Smith" required maxlength="60" autocomplete="name" />
+          </div>
+          <div class="rfield">
+            <label for="rCompany">Company / role <span class="opt">(optional)</span></label>
+            <input type="text" id="rCompany" name="company" placeholder="CEO, Acme Medical" maxlength="80" autocomplete="organization" />
+          </div>
         </div>
-        <textarea id="rText" name="review" placeholder="Your review (a few sentences)" required maxlength="500"></textarea>
+        <div class="rfield">
+          <label for="rText">Your review</label>
+          <textarea id="rText" name="review" placeholder="A sentence or two about the experience" required maxlength="500"></textarea>
+        </div>
         <button type="submit" class="btn btn-primary">Submit Review</button>
         <p class="review-form-note">Your review is sent straight to me — no email app needed. Reviews are verified against real engagements before they're published here.</p>
       </form>
@@ -768,8 +780,8 @@
     <p class="contact-sub fade-up">Send a sentence or two about your device and your question. I'll reply with whether I can help and which package fits.</p>
     <div class="contact-ctas fade-up">
       <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-primary">zolomon@zolomon-kaliser.com</a>
-      <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="btn btn-outline">Book a 30-min call ↗</a>
-      <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Book a 30-min call ↗</a>
+      <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn ↗</a>
     </div>
   </section>
   </main>
@@ -777,6 +789,11 @@
   <footer>
     <p>© 2026 Zolomon Kaliser. All rights reserved. &nbsp;·&nbsp; <a href="portfolio.html">Portfolio</a></p>
   </footer>
+
+  <!-- Smooth scroll + scroll-driven motion: GSAP + ScrollTrigger + Lenis (free, open-source CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 
   <script>
     /* ════════════════════════════════════════════════════════════════
@@ -795,31 +812,34 @@
     (function () {
       'use strict';
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (!reduceMotion) document.body.classList.add('js-anim');
+      var hasGSAP  = typeof window.gsap !== 'undefined';
+      var hasST    = hasGSAP && typeof window.ScrollTrigger !== 'undefined';
+      var hasLenis = typeof window.Lenis !== 'undefined';
+      var animate  = hasGSAP && !reduceMotion;
+      if (hasST) gsap.registerPlugin(ScrollTrigger);
 
       // ── RENDER REVIEWS ──
       var grid = document.getElementById('reviewsGrid');
       var empty = document.getElementById('reviewsEmpty');
-      if (grid && empty)
-      if (REVIEWS.length === 0) {
-        grid.hidden = true;
-        empty.hidden = false;
-      } else {
-        REVIEWS.forEach(function (r) {
-          var card = document.createElement('div');
-          card.className = 'card review-card';
-          var stars = '★★★★★'.slice(0, Math.max(1, Math.min(5, r.stars || 5)));
-          var author = '<strong></strong>';
-          card.innerHTML =
-            '<div class="review-stars" aria-label="' + (r.stars || 5) + ' out of 5 stars">' + stars + '</div>' +
-            '<p class="review-text"></p>' +
-            '<div class="review-author"><strong></strong><span></span></div>';
-          card.querySelector('.review-text').textContent = r.text;
-          card.querySelector('.review-author strong').textContent = r.name;
-          if (r.company) card.querySelector('.review-author span').textContent = ' — ' + r.company;
-          grid.appendChild(card);
-        });
+      if (grid && empty) {
+        if (REVIEWS.length === 0) {
+          grid.hidden = true;
+          empty.hidden = false;
+        } else {
+          REVIEWS.forEach(function (r) {
+            var card = document.createElement('div');
+            card.className = 'card review-card';
+            var stars = '★★★★★'.slice(0, Math.max(1, Math.min(5, r.stars || 5)));
+            card.innerHTML =
+              '<div class="review-stars" aria-label="' + (r.stars || 5) + ' out of 5 stars">' + stars + '</div>' +
+              '<p class="review-text"></p>' +
+              '<div class="review-author"><strong></strong><span></span></div>';
+            card.querySelector('.review-text').textContent = r.text;
+            card.querySelector('.review-author strong').textContent = r.name;
+            if (r.company) card.querySelector('.review-author span').textContent = ' — ' + r.company;
+            grid.appendChild(card);
+          });
+        }
       }
 
       // ── REVIEW FORM SUCCESS MESSAGE AFTER FORMSUBMIT REDIRECT (?review=sent) ──
@@ -833,33 +853,109 @@
         }
       }
 
-      // ── SCROLL REVEAL ──
-      var faders = document.querySelectorAll('.fade-up');
-      if (!reduceMotion && 'IntersectionObserver' in window) {
-        var revealObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e, i) {
-            if (e.isIntersecting) {
-              setTimeout(function () { e.target.classList.add('visible'); }, i * 70);
-              revealObs.unobserve(e.target);
+      // ── LENIS SMOOTH SCROLL (site-wide) ──
+      var lenis = null;
+      if (hasLenis && !reduceMotion) {
+        lenis = new Lenis({
+          duration: 1.1,
+          easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+          smoothWheel: true
+        });
+        if (hasST) {
+          lenis.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+          gsap.ticker.lagSmoothing(0);
+        } else {
+          var rafLoop = function (t) { lenis.raf(t); requestAnimationFrame(rafLoop); };
+          requestAnimationFrame(rafLoop);
+        }
+      }
+
+      // ── SCROLL REVEAL (GSAP) ──
+      if (animate) {
+        document.body.classList.add('js-anim');
+        gsap.set('.fade-up', { opacity: 0, y: 22 });
+        if (hasST) {
+          ScrollTrigger.batch('.fade-up', {
+            start: 'top 88%',
+            onEnter: function (els) {
+              gsap.to(els, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', stagger: 0.08, overwrite: true });
             }
           });
-        }, { threshold: 0.12 });
-        faders.forEach(function (el) { revealObs.observe(el); });
-      } else {
-        faders.forEach(function (el) { el.classList.add('visible'); });
+          ScrollTrigger.refresh();
+        } else {
+          gsap.to('.fade-up', { opacity: 1, y: 0, duration: 0.7, stagger: 0.05 });
+        }
+      }
+      // (No JS / reduced motion: .fade-up stays fully visible — content never depends on JS.)
+
+      // ── ANIMATED HERO: TAM / SAM / SOM ──
+      var viz = document.getElementById('heroViz');
+      if (viz && animate) {
+        var tam = document.getElementById('ring-tam');
+        var sam = document.getElementById('ring-sam');
+        var som = document.getElementById('ring-som');
+        var fig = document.getElementById('mkt-fig');
+
+        function dash(el) {
+          var r = parseFloat(el.getAttribute('r'));
+          var c = 2 * Math.PI * r;
+          el.style.strokeDasharray = c;
+          el.style.strokeDashoffset = c;
+          return c;
+        }
+        dash(tam); dash(sam);
+        gsap.set(som, { transformOrigin: 'center', svgOrigin: '240 320', scale: 0, opacity: 0 });
+        gsap.set(['#lbl-tam', '#lbl-sam', '#lbl-som', '#mkt-eyebrow', '#mkt-fig', '#mkt-cagr'], { opacity: 0 });
+        gsap.set('.accent-dot', { opacity: 0, scale: 0, transformOrigin: 'center' });
+
+        var counter = { v: 0 };
+        var tl = gsap.timeline({ delay: 0.15 });
+        tl.to(tam, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' })
+          .to(sam, { strokeDashoffset: 0, duration: 1.0, ease: 'power2.inOut' }, '-=0.70')
+          .to(som, { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(1.6)' }, '-=0.50')
+          .to(['#lbl-tam', '#lbl-sam', '#lbl-som'], { opacity: 1, duration: 0.5, stagger: 0.12 }, '-=0.40')
+          .to(['#mkt-eyebrow', '#mkt-fig', '#mkt-cagr'], { opacity: 1, duration: 0.5, stagger: 0.10 }, '-=0.50')
+          .to(counter, {
+            v: 4.2, duration: 1.1, ease: 'power1.out',
+            onUpdate: function () { fig.textContent = '$' + counter.v.toFixed(1) + 'B'; }
+          }, '-=1.00')
+          .to('.accent-dot', { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1 }, '-=0.60');
+
+        // gentle ambient motion (starts after intro settles)
+        tl.eventCallback('onComplete', function () {
+          gsap.to('#hero-rings', { y: -6, duration: 3.4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+          gsap.to('.accent-dot', {
+            scale: 1.55, opacity: 0.5, duration: 1.9, ease: 'sine.inOut',
+            yoyo: true, repeat: -1, stagger: 0.35, transformOrigin: 'center'
+          });
+        });
+
+        // scroll-reactive: rings nest tighter + slight parallax through the hero
+        if (hasST) {
+          var stCfg = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
+          gsap.to('#ring-sam', { scale: 0.90, svgOrigin: '240 306', ease: 'none', scrollTrigger: stCfg });
+          gsap.to('#ring-som', { scale: 0.82, svgOrigin: '240 320', ease: 'none', scrollTrigger: stCfg });
+          gsap.to('#hero-parallax', { y: -16, ease: 'none', scrollTrigger: stCfg });
+        }
       }
 
       // ── NAV SHRINK ──
       var nav = document.getElementById('nav');
       function onScroll() {
-        var h = document.documentElement;
-        if (h.scrollTop > 30) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+        if ((window.pageYOffset || document.documentElement.scrollTop) > 30) nav.classList.add('shrink');
+        else nav.classList.remove('shrink');
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // ── SMOOTH SCROLL WITH HEADER OFFSET ──
+      // ── SMOOTH SCROLL + URL HASH (updates hash, keeps sections linkable, back/forward works) ──
       var navH = 72;
+      function scrollToTarget(target) {
+        var y = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
+        if (lenis) lenis.scrollTo(y);
+        else window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (ev) {
           var id = link.getAttribute('href');
@@ -867,10 +963,26 @@
           var target = document.querySelector(id);
           if (!target) return;
           ev.preventDefault();
-          var y = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
-          window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+          scrollToTarget(target);
+          if (history.pushState) history.pushState(null, '', id);
+          else window.location.hash = id;
         });
       });
+      // back / forward navigation between sections
+      window.addEventListener('popstate', function () {
+        var h = window.location.hash;
+        if (h && h.length > 1) {
+          var t = document.querySelector(h);
+          if (t) scrollToTarget(t);
+        }
+      });
+      // initial load: honor an existing #hash
+      if (window.location.hash && window.location.hash.length > 1) {
+        var initTarget = document.querySelector(window.location.hash);
+        if (initTarget) {
+          window.setTimeout(function () { scrollToTarget(initTarget); }, (lenis ? 300 : 60));
+        }
+      }
 
       // ── HAMBURGER MOBILE MENU ──
       var hamburger = document.getElementById('hamburger');

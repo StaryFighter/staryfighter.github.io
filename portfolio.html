@@ -12,11 +12,21 @@
   <meta property="og:title" content="Zolomon Kaliser | Biomedical Engineering & Finance" />
   <meta property="og:description" content="Graduate researcher bridging clinical engineering, market strategy, and data-driven decision-making in the medical device industry." />
   <meta property="og:url" content="https://zolomon-kaliser.com/portfolio.html" />
+  <meta property="og:image" content="https://zolomon-kaliser.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Zolomon Kaliser - market intelligence for early-stage medtech, with a TAM / SAM / SOM nested-circle mark." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Zolomon Kaliser | Biomedical Engineering & Finance" />
   <meta name="twitter:description" content="Graduate researcher bridging clinical engineering, market strategy, and data-driven decision-making in the medical device industry." />
+  <meta name="twitter:image" content="https://zolomon-kaliser.com/og-image.png" />
   <meta name="theme-color" content="#fbfaf7" />
   <link rel="canonical" href="https://zolomon-kaliser.com/portfolio.html" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -329,8 +339,7 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--navy); }
 
-    .js-anim .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .js-anim .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .js-anim .fade-up { opacity: 0; transform: translateY(22px); }
 
     /* ── HAMBURGER / MOBILE MENU ── */
     .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 200; }
@@ -398,7 +407,7 @@
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="index.html">Services</a></li>
-      <li><a href="resume.pdf" target="_blank" class="nav-cta">Resume</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-cta">Resume</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -415,7 +424,7 @@
       <li><a href="#certifications" class="mobile-link">Certifications</a></li>
       <li><a href="#contact" class="mobile-link">Contact</a></li>
       <li><a href="index.html" class="mobile-link">Services</a></li>
-      <li><a href="resume.pdf" target="_blank" class="mobile-link" style="color: var(--navy);">Resume</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="mobile-link" style="color: var(--navy);">Resume</a></li>
     </ul>
   </div>
 
@@ -430,8 +439,8 @@
       </p>
       <div class="hero-ctas">
         <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-        <a href="resume.pdf" target="_blank" class="btn btn-outline">Resume ↗</a>
+        <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn ↗</a>
+        <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Resume ↗</a>
       </div>
     </div>
   </section>
@@ -671,11 +680,11 @@
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
             <span><span class="lbl">Phone:</span> (469) 216-9278</span>
           </a>
-          <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" class="contact-link">
+          <a href="https://www.linkedin.com/in/zolomonkaliser/" target="_blank" rel="noopener noreferrer" class="contact-link">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 17v-7"/></svg>
             <span><span class="lbl">LinkedIn:</span> Profile ↗</span>
           </a>
-          <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener" class="contact-link">
+          <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener noreferrer" class="contact-link">
             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
             <span><span class="lbl">Book a call:</span> 30-min intro ↗</span>
           </a>
@@ -689,57 +698,72 @@
     <p>© 2026 Zolomon Kaliser. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Research Services</a></p>
   </footer>
 
+  <!-- Smooth scroll + scroll motion: GSAP + ScrollTrigger + Lenis (free, open-source CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
   <script>
     (function () {
       'use strict';
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hasGSAP  = typeof window.gsap !== 'undefined';
+      var hasST    = hasGSAP && typeof window.ScrollTrigger !== 'undefined';
+      var hasLenis = typeof window.Lenis !== 'undefined';
+      var animate  = hasGSAP && !reduceMotion;
+      if (hasST) gsap.registerPlugin(ScrollTrigger);
 
-      if (!reduceMotion) document.body.classList.add('js-anim');
-
-      // ── SCROLL REVEAL ──
-      var faders = document.querySelectorAll('.fade-up');
-      if (!reduceMotion && 'IntersectionObserver' in window) {
-        var revealObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e, i) {
-            if (e.isIntersecting) {
-              setTimeout(function () { e.target.classList.add('visible'); }, i * 70);
-              revealObs.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.12 });
-        faders.forEach(function (el) { revealObs.observe(el); });
-      } else {
-        faders.forEach(function (el) { el.classList.add('visible'); });
+      // LENIS SMOOTH SCROLL
+      var lenis = null;
+      if (hasLenis && !reduceMotion) {
+        lenis = new Lenis({
+          duration: 1.1,
+          easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+          smoothWheel: true
+        });
+        if (hasST) {
+          lenis.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+          gsap.ticker.lagSmoothing(0);
+        } else {
+          var rafLoop = function (t) { lenis.raf(t); requestAnimationFrame(rafLoop); };
+          requestAnimationFrame(rafLoop);
+        }
       }
 
-      // ── NAV SHRINK ──
+      // SCROLL REVEAL (GSAP)
+      if (animate) {
+        document.body.classList.add('js-anim');
+        gsap.set('.fade-up', { opacity: 0, y: 22 });
+        if (hasST) {
+          ScrollTrigger.batch('.fade-up', {
+            start: 'top 88%',
+            onEnter: function (els) {
+              gsap.to(els, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', stagger: 0.08, overwrite: true });
+            }
+          });
+          ScrollTrigger.refresh();
+        } else {
+          gsap.to('.fade-up', { opacity: 1, y: 0, duration: 0.7, stagger: 0.05 });
+        }
+      }
+
+      // NAV SHRINK
       var nav = document.getElementById('nav');
       function onScroll() {
-        var h = document.documentElement;
-        if (h.scrollTop > 30) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+        if ((window.pageYOffset || document.documentElement.scrollTop) > 30) nav.classList.add('shrink');
+        else nav.classList.remove('shrink');
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // ── ACTIVE NAV LINK ──
-      var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
-      var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
-      if ('IntersectionObserver' in window && sections.length) {
-        var navObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) {
-              var id = e.target.id;
-              navLinks.forEach(function (a) {
-                a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-              });
-            }
-          });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        sections.forEach(function (s) { navObs.observe(s); });
-      }
-
-      // ── SMOOTH SCROLL WITH HEADER OFFSET ──
+      // SMOOTH SCROLL + URL HASH
       var navH = 72;
+      function scrollToTarget(target) {
+        var y = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
+        if (lenis) lenis.scrollTo(y);
+        else window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (ev) {
           var id = link.getAttribute('href');
@@ -747,41 +771,21 @@
           var target = document.querySelector(id);
           if (!target) return;
           ev.preventDefault();
-          var y = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
-          window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+          scrollToTarget(target);
+          if (history.pushState) history.pushState(null, '', id);
+          else window.location.hash = id;
         });
       });
-
-      // ── ANIMATED STAT COUNTERS ──
-      var stats = document.querySelectorAll('.stat-num[data-target]');
-      function animateStat(el) {
-        var target = parseFloat(el.getAttribute('data-target'));
-        var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-        var suffix = el.getAttribute('data-suffix') || '';
-        if (reduceMotion) { el.innerHTML = target.toFixed(decimals) + (suffix ? '<span class="suffix">' + suffix + '</span>' : ''); return; }
-        var dur = 1400, start = null;
-        function step(ts) {
-          if (!start) start = ts;
-          var p = Math.min((ts - start) / dur, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          var val = (target * eased).toFixed(decimals);
-          el.innerHTML = val + (suffix ? '<span class="suffix">' + suffix + '</span>' : '');
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      }
-      if ('IntersectionObserver' in window) {
-        var statObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { animateStat(e.target); statObs.unobserve(e.target); }
-          });
-        }, { threshold: 0.5 });
-        stats.forEach(function (s) { statObs.observe(s); });
-      } else {
-        stats.forEach(animateStat);
+      window.addEventListener('popstate', function () {
+        var h = window.location.hash;
+        if (h && h.length > 1) { var t = document.querySelector(h); if (t) scrollToTarget(t); }
+      });
+      if (window.location.hash && window.location.hash.length > 1) {
+        var initTarget = document.querySelector(window.location.hash);
+        if (initTarget) window.setTimeout(function () { scrollToTarget(initTarget); }, (lenis ? 300 : 60));
       }
 
-      // ── HAMBURGER MOBILE MENU ──
+      // HAMBURGER MOBILE MENU
       var hamburger = document.getElementById('hamburger');
       var mobileMenu = document.getElementById('mobileMenu');
       if (hamburger) {
@@ -797,10 +801,26 @@
           hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
           document.body.style.overflow = open ? 'hidden' : '';
         });
-        document.getElementById('mobileClose').addEventListener('click', closeMenu);
+        var mc = document.getElementById('mobileClose');
+        if (mc) mc.addEventListener('click', closeMenu);
         document.querySelectorAll('.mobile-link').forEach(function (link) {
           link.addEventListener('click', closeMenu);
         });
+      }
+
+      // ACTIVE NAV LINK
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+      var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+      if ('IntersectionObserver' in window && sections.length) {
+        var navObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              var id = e.target.id;
+              navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+            }
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(function (s) { navObs.observe(s); });
       }
     })();
   </script>
