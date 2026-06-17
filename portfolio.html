@@ -339,7 +339,7 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--navy); }
 
-    .js-anim .fade-up { opacity: 0; transform: translateY(22px); }
+    .js-anim .fade-up { opacity: 0; transform: translateY(34px); }
 
     /* ── HAMBURGER / MOBILE MENU ── */
     .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 200; }
@@ -698,10 +698,9 @@
     <p>© 2026 Zolomon Kaliser. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Research Services</a></p>
   </footer>
 
-  <!-- Smooth scroll + scroll motion: GSAP + ScrollTrigger + Lenis (free, open-source CDN) -->
+  <!-- Scroll-driven motion: GSAP + ScrollTrigger (free, open-source CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 
   <script>
     (function () {
@@ -709,42 +708,24 @@
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var hasGSAP  = typeof window.gsap !== 'undefined';
       var hasST    = hasGSAP && typeof window.ScrollTrigger !== 'undefined';
-      var hasLenis = typeof window.Lenis !== 'undefined';
       var animate  = hasGSAP && !reduceMotion;
       if (hasST) gsap.registerPlugin(ScrollTrigger);
 
-      // LENIS SMOOTH SCROLL
-      var lenis = null;
-      if (hasLenis && !reduceMotion) {
-        lenis = new Lenis({
-          duration: 1.1,
-          easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-          smoothWheel: true
-        });
-        if (hasST) {
-          lenis.on('scroll', ScrollTrigger.update);
-          gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-          gsap.ticker.lagSmoothing(0);
-        } else {
-          var rafLoop = function (t) { lenis.raf(t); requestAnimationFrame(rafLoop); };
-          requestAnimationFrame(rafLoop);
-        }
-      }
 
       // SCROLL REVEAL (GSAP)
       if (animate) {
         document.body.classList.add('js-anim');
-        gsap.set('.fade-up', { opacity: 0, y: 22 });
+        gsap.set('.fade-up', { opacity: 0, y: 34 });
         if (hasST) {
           ScrollTrigger.batch('.fade-up', {
-            start: 'top 88%',
+            start: 'top 86%',
             onEnter: function (els) {
-              gsap.to(els, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', stagger: 0.08, overwrite: true });
+              gsap.to(els, { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.10, overwrite: true });
             }
           });
           ScrollTrigger.refresh();
         } else {
-          gsap.to('.fade-up', { opacity: 1, y: 0, duration: 0.7, stagger: 0.05 });
+          gsap.to('.fade-up', { opacity: 1, y: 0, duration: 0.85, stagger: 0.08 });
         }
       }
 
@@ -761,8 +742,7 @@
       var navH = 72;
       function scrollToTarget(target) {
         var y = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
-        if (lenis) lenis.scrollTo(y);
-        else window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+        window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
       }
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (ev) {
@@ -782,7 +762,7 @@
       });
       if (window.location.hash && window.location.hash.length > 1) {
         var initTarget = document.querySelector(window.location.hash);
-        if (initTarget) window.setTimeout(function () { scrollToTarget(initTarget); }, (lenis ? 300 : 60));
+        if (initTarget) window.setTimeout(function () { scrollToTarget(initTarget); }, 60);
       }
 
       // HAMBURGER MOBILE MENU
