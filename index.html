@@ -165,13 +165,14 @@
 
     /* ── HERO VIDEO ── */
     .hero-video-frame {
-      position: relative; margin: 2.8rem auto 0; max-width: 980px;
+      position: relative; margin: 2.8rem auto 0; max-width: 1000px;
+      aspect-ratio: 1280 / 722;
       border-radius: 12px; overflow: hidden;
       border: 1px solid var(--border);
       box-shadow: 0 24px 64px rgba(28, 43, 58, 0.14);
       background: var(--bg-alt); line-height: 0;
     }
-    .hero-video { display: block; width: 100%; height: auto; }
+    .hero-video { display: block; width: 100%; height: 100%; object-fit: cover; }
     .hero-video-play {
       position: absolute; inset: 0; margin: auto;
       width: 72px; height: 72px; border-radius: 50%; border: none; cursor: pointer;
@@ -909,19 +910,22 @@
         }
       }
 
-      // ── HERO VIDEO (reduced-motion aware) ──
+      // ── HERO VIDEO: muted autoplay/loop for everyone; show play button only if the browser blocks autoplay ──
       var heroVideo = document.getElementById('heroVideo');
       var heroPlay = document.getElementById('heroVideoPlay');
-      if (heroVideo && reduceMotion) {
-        heroVideo.removeAttribute('autoplay');
-        heroVideo.removeAttribute('loop');
-        heroVideo.pause();
-        if (heroPlay) {
+      if (heroVideo) {
+        function revealPlay() {
+          if (!heroPlay) return;
           heroPlay.hidden = false;
-          heroPlay.addEventListener('click', function () {
-            heroVideo.play();
-            heroPlay.hidden = true;
-          });
+          heroPlay.onclick = function () {
+            heroVideo.play().then(function () { heroPlay.hidden = true; }).catch(function () {});
+          };
+        }
+        heroVideo.muted = true;
+        heroVideo.playsInline = true;
+        var playAttempt = heroVideo.play();
+        if (playAttempt && typeof playAttempt.catch === 'function') {
+          playAttempt.catch(revealPlay);
         }
       }
 
