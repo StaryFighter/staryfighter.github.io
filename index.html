@@ -127,19 +127,18 @@
       background:
         linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
     }
-    .hero-grid {
-      max-width: 1150px; margin: 0 auto;
-      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: 4rem; align-items: center;
+    .hero-inner {
+      max-width: 1040px; margin: 0 auto; text-align: center;
     }
-    .hero-copy { text-align: left; }
+    .hero-copy { text-align: center; }
     .hero-eyebrow {
       font-size: 0.78rem; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--accent);
       font-weight: 600; margin-bottom: 1.5rem;
       display: inline-flex; align-items: center; gap: 0.8rem;
     }
-    .hero-eyebrow::before {
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
       content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: 0.5;
     }
 
@@ -152,22 +151,37 @@
     }
     .hero-desc {
       font-size: 1.06rem; color: var(--muted);
-      max-width: 560px; margin: 0 0 2.4rem; line-height: 1.8;
+      max-width: 600px; margin: 0 auto 2.4rem; line-height: 1.8;
     }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
     .hero-cred {
-      margin-top: 2.2rem; padding-top: 1.5rem;
+      margin: 2.2rem auto 0; padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       font-size: 0.88rem; color: var(--muted);
-      max-width: 560px;
+      max-width: 640px;
     }
     .hero-cred strong { color: var(--ink); font-weight: 600; }
 
-    .hero-visual { position: relative; }
-    .hero-visual svg { width: 100%; height: auto; display: block; overflow: visible; }
-    /* keep SVG transforms anchored predictably for GSAP */
-    #heroViz [id^="ring-"], #heroViz .accent-dot { transform-box: view-box; }
+    /* ── HERO VIDEO ── */
+    .hero-video-frame {
+      position: relative; margin: 2.8rem auto 0; max-width: 980px;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 64px rgba(28, 43, 58, 0.14);
+      background: var(--bg-alt); line-height: 0;
+    }
+    .hero-video { display: block; width: 100%; height: auto; }
+    .hero-video-play {
+      position: absolute; inset: 0; margin: auto;
+      width: 72px; height: 72px; border-radius: 50%; border: none; cursor: pointer;
+      background: rgba(31, 58, 95, 0.92); color: #fff;
+      font-size: 1.35rem; line-height: 1; padding-left: 4px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(28, 43, 58, 0.25);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-video-play:hover { background: var(--navy-d); transform: scale(1.05); }
 
     /* ── SECTIONS ── */
     section { padding: 3.6rem 5vw; }
@@ -359,13 +373,8 @@
       .why-grid, .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .hero-grid { grid-template-columns: 1fr; gap: 2.4rem; }
-      .hero-copy { text-align: center; }
-      .hero-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: 0.5; }
-      .hero-desc { margin: 0 auto 2.4rem; }
-      .hero-ctas { justify-content: center; }
       .hero-cred { max-width: none; }
-      .hero-visual { max-width: 420px; margin: 0 auto; order: -1; }
+      .hero-video-frame { margin-top: 2.2rem; }
     }
     @media (max-width: 600px) {
       #hero { padding: 112px 6vw 48px; }
@@ -374,7 +383,7 @@
       section { padding: 3.25rem 6vw; }
       .process-grid { grid-template-columns: 1fr; }
       .review-form .row { grid-template-columns: 1fr; }
-      .hero-visual { max-width: 340px; }
+      .hero-video-play { width: 60px; height: 60px; font-size: 1.15rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -458,7 +467,7 @@
 
   <main>
   <section id="hero">
-    <div class="hero-grid">
+    <div class="hero-inner">
       <div class="hero-copy">
         <div class="hero-eyebrow">Market Research Services</div>
         <h1>Market intelligence for early-stage medtech.</h1>
@@ -472,43 +481,22 @@
           <a href="https://calendly.com/zolomon-zolomon-kaliser/30min" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Book a 30-min call ↗</a>
           <a href="mailto:zolomon@zolomon-kaliser.com" class="btn btn-outline">zolomon@zolomon-kaliser.com</a>
         </div>
-        <p class="hero-cred">
-          <strong>Zolomon Kaliser</strong> · Graduate researcher in Biomedical Engineering at Texas A&amp;M University · B.S. in Finance, UT Dallas
-        </p>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <svg id="heroViz" viewBox="0 0 480 470" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
-          <!-- depth card behind -->
-          <rect x="22" y="30" width="446" height="426" rx="16" fill="#efece3"/>
-          <!-- main card -->
-          <rect x="12" y="18" width="446" height="426" rx="16" fill="#ffffff" stroke="#e4e0d6"/>
+      <figure class="hero-video-frame">
+        <video id="heroVideo" class="hero-video"
+               autoplay muted loop playsinline preload="metadata"
+               poster="assets/hero-poster.jpg"
+               aria-label="Animated overview of the Zolomon Kaliser market-sizing approach: total addressable market, the reachable opportunity, a research-to-scale roadmap, and the Market Brief, Market Report, and Strategy packages.">
+          <source src="assets/hero-video.webm" type="video/webm" />
+          <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+        <button class="hero-video-play" id="heroVideoPlay" type="button" aria-label="Play overview video" hidden>▶</button>
+      </figure>
 
-          <!-- header: market-size figure -->
-          <rect x="40" y="46" width="34" height="5" rx="2.5" fill="#2e6e63"/>
-          <text id="mkt-eyebrow" x="82" y="52" font-size="9.5" letter-spacing="1.3" fill="#5b6573" font-weight="600">ADDRESSABLE MARKET · ILLUSTRATIVE</text>
-          <text id="mkt-fig" x="40" y="92" font-family="Lora, Georgia, serif" font-size="38" font-weight="700" fill="#1c2b3a">$4.2B</text>
-          <text id="mkt-cagr" x="430" y="92" text-anchor="end" font-size="13" fill="#2e6e63" font-weight="600">↑ 11.4% CAGR</text>
-          <line x1="40" y1="108" x2="430" y2="108" stroke="#e4e0d6"/>
-
-          <!-- nested TAM / SAM / SOM rings -->
-          <g id="hero-parallax">
-            <g id="hero-rings">
-              <circle id="ring-tam" cx="240" cy="294" r="138" fill="#1f3a5f" fill-opacity="0.05" stroke="#1f3a5f" stroke-opacity="0.4" stroke-width="1.5"/>
-              <circle id="ring-sam" cx="240" cy="306" r="88" fill="#2e6e63" fill-opacity="0.12" stroke="#2e6e63" stroke-opacity="0.45" stroke-width="1.5"/>
-              <circle id="ring-som" cx="240" cy="320" r="42" fill="#2e6e63"/>
-
-              <text id="lbl-tam" x="240" y="180" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#1f3a5f" fill-opacity="0.8" font-weight="600">TAM</text>
-              <text id="lbl-sam" x="240" y="246" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#2e6e63" font-weight="600">SAM</text>
-              <text id="lbl-som" x="240" y="324" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#ffffff" font-weight="600">SOM</text>
-
-              <circle class="accent-dot" cx="309" cy="174" r="3.2" fill="#2e6e63"/>
-              <circle class="accent-dot" cx="110" cy="246" r="3.2" fill="#1f3a5f"/>
-              <circle class="accent-dot" cx="332" cy="372" r="3.2" fill="#2e6e63"/>
-            </g>
-          </g>
-        </svg>
-      </div>
+      <p class="hero-cred">
+        <strong>Zolomon Kaliser</strong> · Graduate researcher in Biomedical Engineering at Texas A&amp;M University · B.S. in Finance, UT Dallas
+      </p>
     </div>
   </section>
 
@@ -918,6 +906,22 @@
           gsap.to('#ring-sam', { scale: 0.90, svgOrigin: '240 306', ease: 'none', scrollTrigger: stCfg });
           gsap.to('#ring-som', { scale: 0.82, svgOrigin: '240 320', ease: 'none', scrollTrigger: stCfg });
           gsap.to('#hero-parallax', { y: -16, ease: 'none', scrollTrigger: stCfg });
+        }
+      }
+
+      // ── HERO VIDEO (reduced-motion aware) ──
+      var heroVideo = document.getElementById('heroVideo');
+      var heroPlay = document.getElementById('heroVideoPlay');
+      if (heroVideo && reduceMotion) {
+        heroVideo.removeAttribute('autoplay');
+        heroVideo.removeAttribute('loop');
+        heroVideo.pause();
+        if (heroPlay) {
+          heroPlay.hidden = false;
+          heroPlay.addEventListener('click', function () {
+            heroVideo.play();
+            heroPlay.hidden = true;
+          });
         }
       }
 
