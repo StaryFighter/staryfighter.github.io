@@ -172,7 +172,7 @@
       box-shadow: 0 24px 64px rgba(28, 43, 58, 0.14);
       background: var(--bg-alt); line-height: 0;
     }
-    .hero-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .hero-video { display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
     .hero-video-play {
       position: absolute; inset: 0; margin: auto;
       width: 72px; height: 72px; border-radius: 50%; border: none; cursor: pointer;
@@ -487,7 +487,7 @@
 
       <figure class="hero-video-frame">
         <video id="heroVideo" class="hero-video"
-               autoplay muted loop playsinline preload="metadata"
+               muted loop playsinline preload="metadata"
                poster="assets/hero-poster.jpg"
                aria-label="Animated overview of the Zolomon Kaliser market-sizing approach: total addressable market, the reachable opportunity, a research-to-scale roadmap, and the Market Brief, Market Report, and Strategy packages.">
           <source src="assets/hero-video.webm" type="video/webm" />
@@ -911,7 +911,7 @@
         }
       }
 
-      // ── HERO VIDEO: muted autoplay/loop; play button reflects real playback state (shown only when paused) ──
+      // ── HERO VIDEO: click-to-start, click-to-toggle; button shows whenever paused ──
       var heroVideo = document.getElementById('heroVideo');
       var heroPlay = document.getElementById('heroVideoPlay');
       if (heroVideo) {
@@ -926,10 +926,10 @@
         if (heroPlay) {
           heroPlay.onclick = function () { heroVideo.play(); };
         }
-        var playAttempt = heroVideo.play();
-        if (playAttempt && typeof playAttempt.catch === 'function') {
-          playAttempt.catch(syncPlayBtn);
-        }
+        heroVideo.addEventListener('click', function () {
+          if (heroVideo.paused) heroVideo.play();
+          else heroVideo.pause();
+        });
         syncPlayBtn();
       }
 
