@@ -910,23 +910,26 @@
         }
       }
 
-      // ── HERO VIDEO: muted autoplay/loop for everyone; show play button only if the browser blocks autoplay ──
+      // ── HERO VIDEO: muted autoplay/loop; play button reflects real playback state (shown only when paused) ──
       var heroVideo = document.getElementById('heroVideo');
       var heroPlay = document.getElementById('heroVideoPlay');
       if (heroVideo) {
-        function revealPlay() {
-          if (!heroPlay) return;
-          heroPlay.hidden = false;
-          heroPlay.onclick = function () {
-            heroVideo.play().then(function () { heroPlay.hidden = true; }).catch(function () {});
-          };
+        function syncPlayBtn() {
+          if (heroPlay) heroPlay.hidden = !heroVideo.paused;
         }
         heroVideo.muted = true;
         heroVideo.playsInline = true;
+        heroVideo.addEventListener('play', syncPlayBtn);
+        heroVideo.addEventListener('playing', syncPlayBtn);
+        heroVideo.addEventListener('pause', syncPlayBtn);
+        if (heroPlay) {
+          heroPlay.onclick = function () { heroVideo.play(); };
+        }
         var playAttempt = heroVideo.play();
         if (playAttempt && typeof playAttempt.catch === 'function') {
-          playAttempt.catch(revealPlay);
+          playAttempt.catch(syncPlayBtn);
         }
+        syncPlayBtn();
       }
 
       // ── NAV SHRINK ──
