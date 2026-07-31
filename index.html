@@ -275,6 +275,7 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 1.5rem; max-width: 1100px; margin: 0 auto 1rem;
     }
+    .reviews-grid.reviews-single { grid-template-columns: minmax(0, 640px); justify-content: center; }
     .review-card { display: flex; flex-direction: column; gap: 0.9rem; }
     .review-stars { color: #c8a44e; font-size: 0.95rem; letter-spacing: 0.15em; }
     .review-text { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink); line-height: 1.75; flex: 1; }
@@ -497,7 +498,7 @@
       </figure>
 
       <p class="hero-cred">
-        <strong>Zolomon Kaliser</strong> · Graduate researcher in Biomedical Engineering at Texas A&amp;M University · B.S. in Finance, UT Dallas
+        <strong>Zolomon Kaliser</strong> · M.Eng. researcher in Biomedical Engineering at Texas A&amp;M University · B.S. in Finance, UT Dallas
       </p>
     </div>
   </section>
@@ -669,8 +670,9 @@
     </div>
 
     <p class="custom-note fade-up">
-      Need something different? Every engagement starts with a conversation.
-      Email <a href="mailto:zolomon@zolomon-kaliser.com">zolomon@zolomon-kaliser.com</a> and tell me what decision you're trying to make.
+      <strong>Need something different?</strong> If your needs don't fit one of the three packages, we'll scope the project
+      together on our call. I'll then send a custom quote based on my estimated hours, the same basis the package
+      prices are built on. Email <a href="mailto:zolomon@zolomon-kaliser.com">zolomon@zolomon-kaliser.com</a> and tell me what decision you're trying to make.
     </p>
   </section>
 
@@ -722,7 +724,7 @@
     <h2 class="fade-up">Who's behind the research.</h2>
     <div class="about-strip fade-up">
       <p>
-        I'm Zolomon Kaliser, a <strong>graduate researcher in Biomedical Engineering at Texas A&amp;M University</strong> with a
+        I'm Zolomon Kaliser, an <strong>M.Eng. researcher in Biomedical Engineering at Texas A&amp;M University</strong> with a
         <strong>B.S. in Finance from UT Dallas</strong>. I've spent the past year analyzing medical device markets,
         patient needs, and competitors professionally, building financial models for device revenue, COGS,
         and operating expenses, and researching devices from surgical instruments to remote patient monitoring.
@@ -755,7 +757,7 @@
       </details>
       <details class="faq-item">
         <summary>What if my project doesn't fit a package?</summary>
-        <div class="faq-answer">Email me what you're trying to decide. Every engagement starts with a conversation, and scope can be tailored. The packages are a starting point, not a ceiling.</div>
+        <div class="faq-answer">Email me what you're trying to decide. Every engagement starts with a conversation, and scope can be tailored. If your project doesn't fit one of the three packages, we'll work through it on the scoping call, and I'll send a <strong>custom quote based on my estimated hours</strong> — the same basis the package prices are built on. The packages are a starting point, not a ceiling.</div>
       </details>
       <details class="faq-item">
         <summary>How is the research sourced?</summary>
@@ -793,9 +795,13 @@
        Example:
        { name: "Jane Smith", company: "CEO, Acme Medical", stars: 5,
          text: "Zolomon's market report gave us exactly the sizing data we needed for our seed round." },
+
+       Stars are OPTIONAL. Omit the "stars" field entirely if the reviewer
+       did not actually give a rating — the card renders without stars.
     */
     var REVIEWS = [
-      // ← paste approved reviews here
+      { name: "Madi Heck", company: "CEO, SageSpectra",
+        text: "Zolomon was a hardworking and dependable member of the SageSpectra team who supported our market research, market sizing, financial analysis, and competitive analysis. He approached each project thoughtfully and delivered thorough, high-quality work." },
     ];
 
     (function () {
@@ -814,12 +820,17 @@
           grid.hidden = true;
           empty.hidden = false;
         } else {
+          if (REVIEWS.length === 1) grid.classList.add('reviews-single');
           REVIEWS.forEach(function (r) {
             var card = document.createElement('div');
             card.className = 'card review-card';
-            var stars = '★★★★★'.slice(0, Math.max(1, Math.min(5, r.stars || 5)));
+            var starHTML = '';
+            if (r.stars) {
+              var n = Math.max(1, Math.min(5, r.stars));
+              starHTML = '<div class="review-stars" aria-label="' + n + ' out of 5 stars">' + '★★★★★'.slice(0, n) + '</div>';
+            }
             card.innerHTML =
-              '<div class="review-stars" aria-label="' + (r.stars || 5) + ' out of 5 stars">' + stars + '</div>' +
+              starHTML +
               '<p class="review-text"></p>' +
               '<div class="review-author"><strong></strong><span></span></div>';
             card.querySelector('.review-text').textContent = r.text;
