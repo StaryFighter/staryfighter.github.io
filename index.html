@@ -163,27 +163,188 @@
     }
     .hero-cred strong { color: var(--ink); font-weight: 600; }
 
-    /* ── HERO VIDEO ── */
-    .hero-video-frame {
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
+
+    /* ── HERO DECK (sample deliverable slideshow) ── */
+    .hero-deck {
+      container-type: inline-size;
       position: relative; margin: 2.8rem auto 0; max-width: 1000px;
-      aspect-ratio: 1280 / 722;
       border-radius: 12px; overflow: hidden;
       border: 1px solid var(--border);
       box-shadow: 0 24px 64px rgba(28, 43, 58, 0.14);
-      background: var(--bg-alt); line-height: 0;
+      background: var(--white);
     }
-    .hero-video { display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
-    .hero-video-play {
-      position: absolute; inset: 0; margin: auto;
-      width: 72px; height: 72px; border-radius: 50%; border: none; cursor: pointer;
-      background: rgba(31, 58, 95, 0.92); color: #fff;
-      font-size: 1.35rem; line-height: 1; padding-left: 4px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px rgba(28, 43, 58, 0.25);
-      transition: background 0.2s, transform 0.2s;
+    .deck-viewport { position: relative; aspect-ratio: 1280 / 722; }
+
+    .deck-slide {
+      display: none; position: absolute; inset: 0;
+      flex-direction: column; text-align: left;
+      padding: 3.2cqw 3.4cqw 2.4cqw;
+      background: var(--white);
     }
-    .hero-video-play:hover { background: var(--navy-d); transform: scale(1.05); }
-    .hero-video-play[hidden] { display: none; }
+    .deck-slide.is-active { display: flex; animation: deckIn 0.42s ease both; }
+    @keyframes deckIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .deck-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 2cqw; }
+    .deck-eyebrow {
+      font-size: 1.12cqw; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 600; color: var(--accent); margin-bottom: 0.9cqw;
+    }
+    .deck-eyebrow span { color: var(--muted); }
+    .deck-title {
+      font-family: var(--serif); font-size: 2.5cqw; font-weight: 600;
+      line-height: 1.15; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .deck-tag {
+      flex: none; font-size: 0.95cqw; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 600; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.5cqw 1.1cqw; white-space: nowrap;
+    }
+    .deck-body { flex: 1; display: flex; gap: 3cqw; margin-top: 2.4cqw; min-height: 0; }
+    .deck-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .deck-aside { width: 26cqw; flex: none; }
+
+    .deck-foot {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 2cqw; padding-top: 1.2cqw; border-top: 1px solid var(--border);
+      font-size: 1cqw; color: var(--muted); letter-spacing: 0.06em;
+    }
+    .deck-foot strong { color: var(--ink); font-weight: 600; }
+
+    /* tables */
+    .deck-table { width: 100%; border-collapse: collapse; }
+    .deck-table th {
+      text-align: left; font-size: 0.92cqw; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; padding: 0 0 0.9cqw;
+      border-bottom: 1px solid var(--border);
+    }
+    .deck-table td {
+      font-size: 1.24cqw; color: var(--ink); padding: 1.05cqw 0;
+      border-bottom: 1px solid var(--border); vertical-align: middle;
+    }
+    .deck-table tbody th {
+      font-size: 1.24cqw; font-weight: 600; color: var(--ink);
+      text-transform: none; letter-spacing: 0;
+      padding: 1.05cqw 0; border-bottom: 1px solid var(--border);
+    }
+    .deck-table tr:last-child td, .deck-table tr:last-child th { border-bottom: none; }
+    .deck-table--wide td, .deck-table--wide tbody th { padding: 0.85cqw 0; }
+    .deck-table .t-name { font-weight: 600; }
+    .deck-table .t-num { font-variant-numeric: tabular-nums; }
+    .deck-table th.t-r, .deck-table td.t-r { text-align: right; }
+    .deck-pill {
+      display: inline-block; font-size: 0.95cqw; letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 600; color: var(--navy); background: var(--bg-alt);
+      border-radius: 3px; padding: 0.35cqw 0.8cqw;
+    }
+
+    /* source notes */
+    .deck-notes-label {
+      font-size: 0.92cqw; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; padding-bottom: 0.9cqw;
+      border-bottom: 1px solid var(--border); margin-bottom: 1.2cqw;
+    }
+    .deck-note { font-size: 1.02cqw; line-height: 1.6; color: var(--muted); margin-bottom: 1.2cqw; }
+
+    /* slide 02 — funnel */
+    .funnel { display: flex; flex-direction: column; justify-content: center; gap: 2.4cqw; height: 100%; }
+    .funnel-row { display: flex; align-items: center; gap: 2cqw; }
+    .funnel-key { width: 6cqw; flex: none; font-size: 1.15cqw; letter-spacing: 0.14em; font-weight: 700; color: var(--navy); }
+    .funnel-track { flex: 1; min-width: 0; }
+    .funnel-bar { height: 2.6cqw; background: var(--navy); border-radius: 2px; min-width: 3px; }
+    .funnel-row:nth-child(2) .funnel-bar { background: #2f5480; }
+    .funnel-row:nth-child(3) .funnel-bar { background: var(--accent); }
+    .funnel-fig { width: 15cqw; flex: none; }
+    .funnel-val { font-family: var(--serif); font-size: 2.6cqw; font-weight: 600; color: var(--ink); line-height: 1.1; }
+    .funnel-pat { font-size: 1.05cqw; color: var(--muted); }
+    .funnel-note { font-size: 1cqw; line-height: 1.55; color: var(--muted); margin-top: 0.7cqw; }
+
+    /* slide 03 — coverage */
+    .cov-label { font-size: 0.92cqw; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 1.2cqw; }
+    .cov-bar { display: flex; height: 1.6cqw; border-radius: 2px; overflow: hidden; margin-bottom: 1.4cqw; }
+    .cov-bar i { display: block; height: 100%; }
+    .cov-key { display: flex; align-items: center; gap: 0.8cqw; font-size: 1.05cqw; color: var(--ink); margin-bottom: 0.8cqw; }
+    .cov-key b { width: 0.9cqw; height: 0.9cqw; border-radius: 2px; flex: none; }
+    .cov-key span { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .cov-blend {
+      margin-top: 1.8cqw; padding-top: 1.4cqw; border-top: 1px solid var(--border);
+    }
+    .cov-blend-val { font-family: var(--serif); font-size: 2.2cqw; font-weight: 600; color: var(--ink); }
+
+    /* slide 04 — chart */
+    .chart { display: flex; align-items: flex-end; gap: 1.4cqw; height: 10cqw; margin-bottom: 1.2cqw; }
+    .chart-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 0.6cqw; height: 100%; }
+    .chart-val { font-size: 1cqw; font-weight: 600; color: var(--navy); font-variant-numeric: tabular-nums; }
+    .chart-bar { width: 100%; background: var(--navy); border-radius: 2px 2px 0 0; }
+    .chart-col:last-child .chart-bar { background: var(--accent); }
+
+    /* controls */
+    .deck-ctrl {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 0.7rem 1rem; border-top: 1px solid var(--border); background: var(--bg);
+    }
+    .deck-dots { display: flex; gap: 0.5rem; align-items: center; }
+    .deck-dot {
+      width: 30px; height: 3px; border: none; padding: 0; border-radius: 2px; cursor: pointer;
+      background: var(--border); transition: background 0.2s;
+    }
+    .deck-dot:hover { background: var(--muted); }
+    .deck-dot[aria-current="true"] { background: var(--navy); }
+    .deck-arrows { display: flex; gap: 0.4rem; }
+    .deck-arrow {
+      width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+      border: 1px solid var(--border); background: var(--white); color: var(--navy);
+      font-size: 0.9rem; line-height: 1; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .deck-arrow:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .deck-count {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); font-variant-numeric: tabular-nums;
+    }
+    .deck-ctrl :focus-visible, .deck-viewport :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* stacked layout for narrow frames */
+    @container (max-width: 760px) {
+      .deck-viewport { aspect-ratio: auto; }
+      .deck-slide { position: static; padding: 1.4rem 1.25rem 1.1rem; }
+      .deck-slide:not(.is-active) { display: none; }
+      .deck-head { flex-direction: column; gap: 0.6rem; }
+      .deck-eyebrow { font-size: 0.62rem; margin-bottom: 0.45rem; }
+      .deck-title { font-size: 1.3rem; }
+      .deck-tag { font-size: 0.56rem; padding: 0.25rem 0.6rem; }
+      .deck-body { flex-direction: column; gap: 1.4rem; margin-top: 1.3rem; }
+      .deck-aside { width: auto; }
+      .deck-foot { font-size: 0.62rem; margin-top: 1.3rem; padding-top: 0.8rem; }
+      .deck-table th { font-size: 0.56rem; padding-bottom: 0.5rem; }
+      .deck-table td, .deck-table tbody th { font-size: 0.78rem; padding: 0.55rem 0; }
+      .deck-table--wide td, .deck-table--wide tbody th { font-size: 0.66rem; padding: 0.45rem 0; }
+      .deck-table--wide th { font-size: 0.52rem; }
+      .deck-pill { font-size: 0.56rem; padding: 0.15rem 0.4rem; }
+      .deck-notes-label { font-size: 0.56rem; padding-bottom: 0.5rem; margin-bottom: 0.7rem; }
+      .deck-note { font-size: 0.72rem; margin-bottom: 0.7rem; }
+      .funnel { gap: 1.1rem; }
+      .funnel-row { flex-wrap: wrap; gap: 0.5rem 0.8rem; }
+      .funnel-key { width: auto; font-size: 0.7rem; }
+      .funnel-track { order: 3; flex-basis: 100%; }
+      .funnel-bar { height: 0.85rem; }
+      .funnel-fig { width: auto; margin-left: auto; text-align: right; }
+      .funnel-val { font-size: 1.35rem; }
+      .funnel-pat, .funnel-note { font-size: 0.72rem; }
+      .funnel-note { order: 4; flex-basis: 100%; margin-top: 0; text-align: left; }
+      .cov-label { font-size: 0.56rem; margin-bottom: 0.6rem; }
+      .cov-bar { height: 0.7rem; margin-bottom: 0.8rem; }
+      .cov-key { font-size: 0.75rem; gap: 0.45rem; margin-bottom: 0.45rem; }
+      .cov-key b { width: 0.55rem; height: 0.55rem; }
+      .cov-blend { margin-top: 0.9rem; padding-top: 0.8rem; }
+      .cov-blend-val { font-size: 1.2rem; }
+      .chart { height: 6.5rem; gap: 0.5rem; margin-bottom: 0.8rem; }
+      .chart-val { font-size: 0.6rem; }
+    }
 
     /* ── SECTIONS ── */
     section { padding: 3.6rem 5vw; }
@@ -377,7 +538,7 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .hero-cred { max-width: none; }
-      .hero-video-frame { margin-top: 2.2rem; }
+      .hero-deck { margin-top: 2.2rem; }
     }
     @media (max-width: 600px) {
       #hero { padding: 112px 6vw 48px; }
@@ -386,7 +547,6 @@
       section { padding: 3.25rem 6vw; }
       .process-grid { grid-template-columns: 1fr; }
       .review-form .row { grid-template-columns: 1fr; }
-      .hero-video-play { width: 60px; height: 60px; font-size: 1.15rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -486,14 +646,175 @@
         </div>
       </div>
 
-      <figure class="hero-video-frame">
-        <video id="heroVideo" class="hero-video"
-               muted loop playsinline preload="metadata"
-               poster="assets/hero-poster.jpg"
-               aria-label="Animated overview of the Zolomon Kaliser market-sizing approach: total addressable market, the reachable opportunity, a research-to-scale roadmap, and the Market Brief, Market Report, and Strategy packages.">
-          <source src="assets/hero-video.mp4" type="video/mp4" />
-        </video>
-        <button class="hero-video-play" id="heroVideoPlay" type="button" aria-label="Play overview video" hidden>▶</button>
+      <figure class="hero-deck" id="heroDeck" role="group" aria-roledescription="carousel"
+              aria-label="Sample market assessment deliverable, four sections">
+        <div class="deck-viewport" id="deckViewport">
+
+          <!-- 01 -->
+          <section class="deck-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 4: Competitive landscape">
+            <div class="deck-head">
+              <div>
+                <div class="deck-eyebrow">01 · Competitive landscape <span>· Illustrative</span></div>
+                <h3 class="deck-title">Cleared devices, United States</h3>
+              </div>
+              <div class="deck-tag">Illustrative sample data</div>
+            </div>
+            <div class="deck-body">
+              <div class="deck-main">
+                <table class="deck-table">
+                  <thead>
+                    <tr><th scope="col">Device</th><th scope="col">Pathway</th><th scope="col" class="t-r">Price</th><th scope="col" class="t-r">Position</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="t-name">Cardiotek Vantage</td><td>510(k)</td><td class="t-num t-r">$14,200</td><td class="t-r"><span class="deck-pill">Incumbent</span></td></tr>
+                    <tr><td class="t-name">Nuvelle A2</td><td>De Novo</td><td class="t-num t-r">$9,800</td><td class="t-r"><span class="deck-pill">Challenger</span></td></tr>
+                    <tr><td class="t-name">Perisys One</td><td>510(k)</td><td class="t-num t-r">$11,400</td><td class="t-r"><span class="deck-pill">Value</span></td></tr>
+                    <tr><td class="t-name">Orbis Meridian</td><td>PMA</td><td class="t-num t-r">$26,500</td><td class="t-r"><span class="deck-pill">Premium</span></td></tr>
+                    <tr><td class="t-name">Halden Loop</td><td>510(k) exempt</td><td class="t-num t-r">$6,100</td><td class="t-r"><span class="deck-pill">Entrant</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <aside class="deck-aside">
+                <div class="deck-notes-label">Source notes</div>
+                <p class="deck-note">FDA 510(k) clearance database, Q2 2025. n = 14 cleared devices in scope.</p>
+                <p class="deck-note">Price is published list from three IDN contracts; net of rebate not disclosed.</p>
+                <p class="deck-note">Position assigned from labelled indication and share of cath-lab installs.</p>
+              </aside>
+            </div>
+            <div class="deck-foot"><span><strong>Zolomon Kaliser</strong> · Market assessment</span><span>01 / 04</span></div>
+          </section>
+
+          <!-- 02 -->
+          <section class="deck-slide" role="group" aria-roledescription="slide" aria-label="2 of 4: Market sizing">
+            <div class="deck-head">
+              <div>
+                <div class="deck-eyebrow">02 · Market sizing <span>· Illustrative</span></div>
+                <h3 class="deck-title">Total, served and obtainable</h3>
+              </div>
+              <div class="deck-tag">Illustrative sample data</div>
+            </div>
+            <div class="deck-body">
+              <div class="deck-main">
+                <div class="funnel">
+                  <div class="funnel-row">
+                    <div class="funnel-key">TAM</div>
+                    <div class="funnel-track">
+                      <div class="funnel-bar" style="width:100%"></div>
+                      <p class="funnel-note">US prevalence, CDC WONDER 2024 × $740 blended device ASP.</p>
+                    </div>
+                    <div class="funnel-fig"><div class="funnel-val">$1.8B</div><div class="funnel-pat">2.4M patients</div></div>
+                  </div>
+                  <div class="funnel-row">
+                    <div class="funnel-key">SAM</div>
+                    <div class="funnel-track">
+                      <div class="funnel-bar" style="width:25.7%"></div>
+                      <p class="funnel-note">26% managed in hospital cath-lab settings (NIS 2023).</p>
+                    </div>
+                    <div class="funnel-fig"><div class="funnel-val">$462M</div><div class="funnel-pat">610K patients</div></div>
+                  </div>
+                  <div class="funnel-row">
+                    <div class="funnel-key">SOM</div>
+                    <div class="funnel-track">
+                      <div class="funnel-bar" style="width:3.2%"></div>
+                      <p class="funnel-note">12.6% of SAM by year five across 340 target centers.</p>
+                    </div>
+                    <div class="funnel-fig"><div class="funnel-val">$58M</div><div class="funnel-pat">74K patients</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="deck-foot"><span><strong>Zolomon Kaliser</strong> · Market assessment</span><span>02 / 04</span></div>
+          </section>
+
+          <!-- 03 -->
+          <section class="deck-slide" role="group" aria-roledescription="slide" aria-label="3 of 4: Reimbursement and pricing">
+            <div class="deck-head">
+              <div>
+                <div class="deck-eyebrow">03 · Reimbursement &amp; pricing <span>· Illustrative</span></div>
+                <h3 class="deck-title">Coding and payment pathway</h3>
+              </div>
+              <div class="deck-tag">Illustrative sample data</div>
+            </div>
+            <div class="deck-body">
+              <div class="deck-main">
+                <table class="deck-table">
+                  <thead>
+                    <tr><th scope="col">Code</th><th scope="col">Descriptor</th><th scope="col">Setting</th><th scope="col" class="t-r">Nat'l avg</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="t-name t-num">33999</td><td>Unlisted cardiovascular proc.</td><td>HOPD</td><td class="t-num t-r">$1,284</td></tr>
+                    <tr><td class="t-name t-num">C9762</td><td>Cardiac MR w/ strain imaging</td><td>HOPD</td><td class="t-num t-r">$968</td></tr>
+                    <tr><td class="t-name t-num">93356</td><td>Myocardial strain, add-on</td><td>Facility</td><td class="t-num t-r">$312</td></tr>
+                    <tr><td class="t-name t-num">0623T</td><td>Coronary plaque quant.</td><td>Cat. III</td><td class="t-num t-r">Carrier-priced</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <aside class="deck-aside">
+                <div class="cov-label">Commercial payer coverage</div>
+                <div class="cov-bar" role="img" aria-label="Coverage split: covered 58 percent, prior authorization 27 percent, not covered 15 percent">
+                  <i style="width:58%;background:var(--navy)"></i>
+                  <i style="width:27%;background:#2f5480"></i>
+                  <i style="width:15%;background:var(--border)"></i>
+                </div>
+                <div class="cov-key"><b style="background:var(--navy)"></b>Covered <span>58%</span></div>
+                <div class="cov-key"><b style="background:#2f5480"></b>Prior auth <span>27%</span></div>
+                <div class="cov-key"><b style="background:var(--border)"></b>Not covered <span>15%</span></div>
+                <div class="cov-blend">
+                  <div class="cov-label">Blended allowed amount</div>
+                  <div class="cov-blend-val">$842</div>
+                  <p class="deck-note">Average allowed amount per procedure, blended across sites of service. CMS OPPS Addendum B, CY2025.</p>
+                </div>
+              </aside>
+            </div>
+            <div class="deck-foot"><span><strong>Zolomon Kaliser</strong> · Market assessment</span><span>03 / 04</span></div>
+          </section>
+
+          <!-- 04 -->
+          <section class="deck-slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Five-year revenue model">
+            <div class="deck-head">
+              <div>
+                <div class="deck-eyebrow">04 · Five-year revenue model <span>· Illustrative</span></div>
+                <h3 class="deck-title">Base case, US direct sales</h3>
+              </div>
+              <div class="deck-tag">Illustrative sample data</div>
+            </div>
+            <div class="deck-body">
+              <div class="deck-main">
+                <div class="chart" role="img" aria-label="Revenue by year in millions: 2.1, 6.2, 13.9, 26.5, 40.9">
+                  <div class="chart-col"><div class="chart-val">2.1</div><div class="chart-bar" style="height:5%"></div></div>
+                  <div class="chart-col"><div class="chart-val">6.2</div><div class="chart-bar" style="height:15%"></div></div>
+                  <div class="chart-col"><div class="chart-val">13.9</div><div class="chart-bar" style="height:34%"></div></div>
+                  <div class="chart-col"><div class="chart-val">26.5</div><div class="chart-bar" style="height:65%"></div></div>
+                  <div class="chart-col"><div class="chart-val">40.9</div><div class="chart-bar" style="height:100%"></div></div>
+                </div>
+                <table class="deck-table deck-table--wide">
+                  <thead>
+                    <tr><th scope="col">Revenue, $M</th><th scope="col" class="t-r">Y1</th><th scope="col" class="t-r">Y2</th><th scope="col" class="t-r">Y3</th><th scope="col" class="t-r">Y4</th><th scope="col" class="t-r">Y5</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row" class="t-name">Units</th><td class="t-num t-r">210</td><td class="t-num t-r">640</td><td class="t-num t-r">1,480</td><td class="t-num t-r">2,900</td><td class="t-num t-r">4,600</td></tr>
+                    <tr><th scope="row" class="t-name">ASP</th><td class="t-num t-r">9,800</td><td class="t-num t-r">9,650</td><td class="t-num t-r">9,400</td><td class="t-num t-r">9,150</td><td class="t-num t-r">8,900</td></tr>
+                    <tr><th scope="row" class="t-name">Revenue $M</th><td class="t-num t-r">2.1</td><td class="t-num t-r">6.2</td><td class="t-num t-r">13.9</td><td class="t-num t-r">26.5</td><td class="t-num t-r">40.9</td></tr>
+                    <tr><th scope="row" class="t-name">COGS $M</th><td class="t-num t-r">1.0</td><td class="t-num t-r">2.7</td><td class="t-num t-r">5.6</td><td class="t-num t-r">10.1</td><td class="t-num t-r">14.7</td></tr>
+                    <tr><th scope="row" class="t-name">Gross margin %</th><td class="t-num t-r">52</td><td class="t-num t-r">56</td><td class="t-num t-r">60</td><td class="t-num t-r">62</td><td class="t-num t-r">64</td></tr>
+                  </tbody>
+                </table>
+                <p class="deck-note" style="margin-top:1.2cqw">Illustrative sample data. Assumes 340 target centers and 3.4% annual ASP erosion.</p>
+              </div>
+            </div>
+            <div class="deck-foot"><span><strong>Zolomon Kaliser</strong> · Market assessment</span><span>04 / 04</span></div>
+          </section>
+        </div>
+
+        <div class="deck-ctrl">
+          <div class="deck-dots" id="deckDots" aria-label="Choose a section"></div>
+          <span class="deck-count" id="deckCount">01 / 04</span>
+          <div class="deck-arrows">
+            <button class="deck-arrow" type="button" id="deckPrev" aria-label="Previous section">‹</button>
+            <button class="deck-arrow" type="button" id="deckNext" aria-label="Next section">›</button>
+          </div>
+        </div>
+        <figcaption class="visually-hidden">Excerpt from a sample market assessment. All figures are illustrative and not client data.</figcaption>
       </figure>
 
       <p class="hero-cred">
@@ -921,26 +1242,73 @@
         }
       }
 
-      // ── HERO VIDEO: click-to-start, click-to-toggle; button shows whenever paused ──
-      var heroVideo = document.getElementById('heroVideo');
-      var heroPlay = document.getElementById('heroVideoPlay');
-      if (heroVideo) {
-        function syncPlayBtn() {
-          if (heroPlay) heroPlay.hidden = !heroVideo.paused;
+      // ── HERO DECK: arrows, dots, keyboard, swipe, auto-advance ──
+      var deck = document.getElementById('heroDeck');
+      if (deck) {
+        var slides = [].slice.call(deck.querySelectorAll('.deck-slide'));
+        var dotsBox = document.getElementById('deckDots');
+        var countEl = document.getElementById('deckCount');
+        var idx = 0, timer = null, dots = [], halted = false;
+        var labels = ['Competitive landscape', 'Market sizing', 'Reimbursement & pricing', 'Five-year revenue model'];
+        var DELAY = 9000;
+
+        function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+        function show(n, focusDot) {
+          idx = (n + slides.length) % slides.length;
+          slides.forEach(function (s, i) { s.classList.toggle('is-active', i === idx); });
+          dots.forEach(function (d, i) {
+            d.setAttribute('aria-current', i === idx ? 'true' : 'false');
+            d.tabIndex = i === idx ? 0 : -1;
+          });
+          countEl.textContent = pad(idx + 1) + ' / ' + pad(slides.length);
+          if (focusDot && dots[idx]) dots[idx].focus();
         }
-        heroVideo.muted = true;
-        heroVideo.playsInline = true;
-        heroVideo.addEventListener('play', syncPlayBtn);
-        heroVideo.addEventListener('playing', syncPlayBtn);
-        heroVideo.addEventListener('pause', syncPlayBtn);
-        if (heroPlay) {
-          heroPlay.onclick = function () { heroVideo.play(); };
-        }
-        heroVideo.addEventListener('click', function () {
-          if (heroVideo.paused) heroVideo.play();
-          else heroVideo.pause();
+
+        slides.forEach(function (s, i) {
+          var d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'deck-dot';
+          d.setAttribute('aria-label', 'Section ' + (i + 1) + ': ' + (labels[i] || ''));
+          d.onclick = function () { halt(); show(i); };
+          dotsBox.appendChild(d);
+          dots.push(d);
         });
-        syncPlayBtn();
+
+        function next() { show(idx + 1); }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+        function start() { if (!reduceMotion && !halted && !timer) timer = setInterval(next, DELAY); }
+        function halt() { halted = true; stop(); }   // once the reader takes control, stop advancing
+
+        document.getElementById('deckPrev').onclick = function () { halt(); show(idx - 1); };
+        document.getElementById('deckNext').onclick = function () { halt(); show(idx + 1); };
+
+        deck.addEventListener('mouseenter', stop);
+        deck.addEventListener('mouseleave', start);
+        deck.addEventListener('focusin', stop);
+        deck.addEventListener('focusout', function (e) {
+          if (!deck.contains(e.relatedTarget)) start();
+        });
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) stop(); else start();
+        });
+
+        dotsBox.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); halt(); show(idx - 1, true); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); halt(); show(idx + 1, true); }
+        });
+
+        var x0 = null;
+        deck.addEventListener('touchstart', function (e) { halt(); x0 = e.changedTouches[0].clientX; }, { passive: true });
+        deck.addEventListener('touchend', function (e) {
+          if (x0 === null) return;
+          var dx = e.changedTouches[0].clientX - x0;
+          if (Math.abs(dx) > 45) show(idx + (dx < 0 ? 1 : -1));
+          x0 = null;
+        }, { passive: true });
+
+        show(0);
+        start();
       }
 
       // ── NAV SHRINK ──
