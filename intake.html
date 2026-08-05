@@ -73,10 +73,17 @@
     nav.shrink { padding: 0.6rem 5vw; box-shadow: 0 2px 12px rgba(28, 43, 58, 0.06); }
 
     .nav-logo {
+      display: inline-flex; align-items: center; gap: 0.55rem;
       font-family: var(--serif);
       font-size: 1.2rem; font-weight: 600;
       color: var(--ink); letter-spacing: 0.01em;
       text-decoration: none;
+    }
+    .nav-mark { width: 30px; height: 30px; flex: none; display: block; transition: width 0.3s ease, height 0.3s ease; }
+    nav.shrink .nav-mark { width: 26px; height: 26px; }
+    @media (max-width: 420px) {
+      .nav-logo { font-size: 1.05rem; gap: 0.45rem; }
+      .nav-mark, nav.shrink .nav-mark { width: 25px; height: 25px; }
     }
 
     .nav-links { display: flex; gap: 1.9rem; list-style: none; align-items: center; }
@@ -254,6 +261,20 @@
     }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--navy); }
+    .footer-entity { margin-bottom: 0.5rem; }
+    .footer-entity strong { color: var(--ink); font-weight: 600; }
+
+    /* ── SITE DISCLAIMER BAND ── */
+    .site-disclaimer {
+      padding: 2.2rem 6vw; background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .site-disclaimer p {
+      max-width: 900px; margin: 0 auto;
+      font-size: 0.78rem; line-height: 1.75; color: var(--muted);
+      text-align: center;
+    }
+    .site-disclaimer a { color: var(--navy); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
 
     /* ── HAMBURGER / MOBILE MENU ── */
     .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 200; }
@@ -304,7 +325,16 @@
 <body>
 
   <nav id="nav">
-    <a href="index.html" class="nav-logo">Zolomon Kaliser</a>
+    <a href="index.html" class="nav-logo" aria-label="Zolomon Kaliser, ZKK Consulting LLC — home">
+      <svg class="nav-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <g fill="none" stroke-width="3">
+          <circle cx="32" cy="30" r="21" stroke="var(--navy)"/>
+          <circle cx="32" cy="34" r="13.5" stroke="var(--accent)"/>
+        </g>
+        <circle cx="32" cy="37.5" r="6.6" fill="var(--accent)"/>
+      </svg>
+      <span>Zolomon Kaliser</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html#why">Why Me</a></li>
       <li><a href="index.html#process">Process</a></li>
@@ -430,7 +460,11 @@
         <div class="confid-note">
           <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V7z"/></svg>
           <span><strong>Confidential by default.</strong> Everything you share here is treated as private,
-          and I'm glad to sign a mutual NDA before you send anything proprietary. Just say so above.</span>
+          and I'm glad to sign a mutual NDA before you send anything proprietary. Just say so above.
+          <br><br>
+          This form itself isn't covered by an NDA yet. Send a general description of your device and your
+          question, and hold anything proprietary until a mutual NDA is signed. An engagement begins only
+          when a Statement of Work is signed with ZKK Consulting LLC and the deposit is received.</span>
         </div>
 
         <button type="submit" class="btn btn-primary">Send Intake</button>
@@ -486,8 +520,20 @@
   </section>
   </main>
 
+  <div class="site-disclaimer">
+    <p>
+      Reports, models, and other deliverables provided by ZKK Consulting LLC are business research and
+      analysis only. They are not legal, regulatory, medical, tax, accounting, or investment advice, and are
+      not a guarantee of funding, regulatory clearance, reimbursement, or financial results. Reimbursement and
+      coding information reflects publicly available sources as of the report date and is not billing or coding
+      guidance. Clients remain responsible for their own regulatory, coding, clinical, and business decisions.
+      <a href="legal.html">Read the full disclaimers</a>.
+    </p>
+  </div>
+
   <footer>
-    <p>© 2026 Zolomon Kaliser. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="portfolio.html">Portfolio</a></p>
+    <p class="footer-entity">Zolomon Kaliser is a trade name of <strong>ZKK Consulting LLC</strong>, a Texas limited liability company.</p>
+    <p>© 2026 ZKK Consulting LLC. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="legal.html">Legal &amp; Disclaimers</a> &nbsp;·&nbsp; <a href="portfolio.html">Portfolio</a></p>
   </footer>
 
   <!-- Scroll-driven motion: GSAP + ScrollTrigger (free, open-source CDN) -->
